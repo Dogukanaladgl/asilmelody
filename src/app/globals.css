@@ -1,26 +1,80 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --museum-dark: #1a1817;
+  --museum-darker: #12100f;
+  --museum-bone: #ebe6e0;
+  --museum-bone-muted: #c9c2b8;
+  --museum-brown: #8b6f5c;
+  --museum-brown-deep: #5c4638;
+  --museum-amber: #c4a574;
+  --spotlight: radial-gradient(
+    ellipse 50% 45% at 50% 40%,
+    rgba(196, 165, 116, 0.18) 0%,
+    rgba(139, 111, 92, 0.08) 35%,
+    transparent 70%
+  );
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-museum-dark: var(--museum-dark);
+  --color-museum-darker: var(--museum-darker);
+  --color-museum-bone: var(--museum-bone);
+  --color-museum-bone-muted: var(--museum-bone-muted);
+  --color-museum-brown: var(--museum-brown);
+  --color-museum-brown-deep: var(--museum-brown-deep);
+  --color-museum-amber: var(--museum-amber);
+  --font-display: var(--font-display);
+  --font-body: var(--font-display);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--museum-dark);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--museum-dark);
+  color: var(--museum-bone);
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  overflow-x: clip;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--museum-brown) 55%, transparent);
+  color: var(--museum-bone);
+}
+
+.spot-glow {
+  background-image: var(--spotlight);
+}
+
+.museum-grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.cursor-lantern {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  mix-blend-mode: soft-light;
+  transition: opacity 0.4s ease;
+}
+
+@media (pointer: coarse) {
+  .cursor-lantern {
+    display: none;
+  }
 }
