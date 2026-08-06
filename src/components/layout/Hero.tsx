@@ -28,7 +28,7 @@ export function Hero() {
       </div>
 
       <a
-        href="#sergi"
+        href="#artists"
         className="absolute bottom-10 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-4"
       >
         <span className="text-[0.62rem] uppercase tracking-[0.4em] text-museum-bone-muted">

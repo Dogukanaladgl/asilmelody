@@ -25,7 +25,7 @@ export const artists: Artist[] = [
     id: "asi-ildeniz",
     name: "Asi İldeniz",
     quote: "İçim okyanus içimdekiler hâin..",
-    profileImage: "https://placehold.co/600x800/1A1817/EBE6E0?text=Asi+Ildeniz",
+    profileImage: "https://placehold.co/600x800/1A1817/EBE6E0/png?text=Asi+Ildeniz",
     platforms: {
       spotify: "https://open.spotify.com",
       appleMusic: "https://music.apple.com",
@@ -37,7 +37,7 @@ export const artists: Artist[] = [
     id: "asi-nildeniz",
     name: "Asi Nildeniz",
     quote: "Başaracağımı söylüyo My Kâhin..",
-    profileImage: "https://placehold.co/600x800/1A1817/EBE6E0?text=Asi+Nildeniz",
+    profileImage: "https://placehold.co/600x800/1A1817/EBE6E0/png?text=Asi+Nildeniz",
     platforms: {
       spotify: "https://open.spotify.com",
       appleMusic: "https://music.apple.com",
