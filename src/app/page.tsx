@@ -1,13 +1,10 @@
-import { Hero } from "@/components/home/Hero";
-import { Collection } from "@/components/home/Collection";
-import { ArtworkDetail } from "@/components/artwork/ArtworkDetail";
+import { Hero } from "@/components/layout/Hero";
 
 export default function Home() {
   return (
     <main className="relative flex-1">
       <Hero />
-      <Collection />
-      <ArtworkDetail />
+      <section id="sergi" className="min-h-[40vh] bg-museum-dark" aria-hidden />
     </main>
   );
 }

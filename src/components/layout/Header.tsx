@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 const navItems = [
-  { label: "ANA SAYFA", href: "#hero" },
-  { label: "ASİ İLDENİZ", href: "#asi-ildeniz" },
-  { label: "ASİ NİLDENİZ", href: "#asi-nildeniz" },
-  { label: "HAKKINDA", href: "#hakkinda" },
-  { label: "İLETİŞİM", href: "#iletisim" },
+  { label: "ANA SAYFA", href: "/" },
+  { label: "ASİ İLDENİZ", href: "/asi-ildeniz" },
+  { label: "ASİ NİLDENİZ", href: "/asi-nildeniz" },
+  { label: "HAKKINDA", href: "/hakkinda" },
+  { label: "İLETİŞİM", href: "/#iletisim" },
 ] as const;
 
 export function Header() {
@@ -33,7 +33,7 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-5 md:px-10">
-        <a href="#hero" className="group shrink-0">
+        <a href="/" className="group shrink-0">
           <span className="block font-display text-lg tracking-[0.22em] text-museum-bone transition-colors duration-300 group-hover:text-museum-brown md:text-xl">
             ASİL&apos;S A MELODY
           </span>
