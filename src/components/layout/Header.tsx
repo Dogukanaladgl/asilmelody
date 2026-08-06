@@ -6,7 +6,7 @@ const navItems = [
   { label: "ANA SAYFA", href: "/" },
   { label: "ASİ İLDENİZ", href: "/asi-ildeniz" },
   { label: "ASİ NİLDENİZ", href: "/asi-nildeniz" },
-  { label: "HAKKINDA", href: "/hakkinda" },
+  { label: "HAKKINDA", href: "/#hakkinda" },
   { label: "İLETİŞİM", href: "/#iletisim" },
 ] as const;
 
