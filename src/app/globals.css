@@ -43,6 +43,17 @@ body {
   color: var(--museum-bone);
   font-family: var(--font-display), Georgia, "Times New Roman", serif;
   overflow-x: clip;
+  caret-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+  user-select: text;
+  -webkit-user-select: text;
+  caret-color: auto;
 }
 
 ::selection {

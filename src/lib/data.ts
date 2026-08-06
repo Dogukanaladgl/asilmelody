@@ -53,3 +53,16 @@ export const companyInfo: CompanyInfo = {
   email: "info@asilmelody.com",
   whatsapp: "+905000000000",
 };
+
+export function getArtistById(id: string): Artist | undefined {
+  return artists.find((artist) => artist.id === id);
+}
+
+export function toPlatformList(platforms: ArtistPlatformLinks) {
+  return [
+    { name: "Apple Music", url: platforms.appleMusic },
+    { name: "Spotify", url: platforms.spotify },
+    { name: "Tidal", url: platforms.tidal },
+    { name: "YouTube", url: platforms.youtube },
+  ];
+}
