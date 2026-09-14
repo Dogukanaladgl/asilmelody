@@ -3,100 +3,129 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { useLenis } from "lenis/react";
 
 const navItems = [
-  { label: "ANA SAYFA", href: "/", match: "/" },
-  { label: "ASİL MELODY HAKKINDA", href: "/hakkinda", match: "/hakkinda" },
-  { label: "ASİ NİLDENİZ", href: "/asi-nildeniz", match: "/asi-nildeniz" },
-  { label: "ASİ İLDENİZ", href: "/asi-ildeniz", match: "/asi-ildeniz" },
-  { label: "İLETİŞİM", href: "/iletisim", match: "/iletisim" },
+  { label: "ANA SAYFA", short: "ANA SAYFA", href: "/", match: "/" },
+  {
+    label: "HAKKINDA",
+    short: "HAKKINDA",
+    href: "/hakkinda",
+    match: "/hakkinda",
+  },
+  {
+    label: "ASİ NİLDENİZ",
+    short: "NİLDENİZ",
+    href: "/asi-nildeniz",
+    match: "/asi-nildeniz",
+  },
+  {
+    label: "ASİ İLDENİZ",
+    short: "İLDENİZ",
+    href: "/asi-ildeniz",
+    match: "/asi-ildeniz",
+  },
+  { label: "İLETİŞİM", short: "İLETİŞİM", href: "/iletisim", match: "/iletisim" },
 ] as const;
 
 export function Header() {
   const pathname = usePathname();
+  const lenis = useLenis();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const isActive = (match: string) => {
-    if (match === "/") return pathname === "/";
-    return pathname === match;
+  const scrollPageToTop = () => {
+    if (lenis) {
+      lenis.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
   };
 
+  const isActive = (match: string) =>
+    match === "/" ? pathname === "/" : pathname === match;
+
   return (
-    <motion.header
-      initial={false}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 z-50 w-full transition-colors duration-500 ${
-        scrolled ? "bg-museum-dark/80 backdrop-blur-md" : "bg-transparent"
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-500 ${
+        scrolled
+          ? "border-b border-museum-brown/25 bg-museum-dark/95 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md"
+          : "border-b border-museum-brown/15 bg-museum-dark/90 backdrop-blur-sm"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-6 py-5 md:px-10">
-        <Link href="/" className="group shrink-0">
-          <span className="block font-display text-lg tracking-[0.22em] text-museum-bone transition-colors duration-300 group-hover:text-museum-brown md:text-xl">
+      <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-6 px-6 md:h-20 md:px-10">
+        <Link
+          href="/"
+          onClick={scrollPageToTop}
+          className="group shrink-0 leading-tight"
+        >
+          <span className="block font-display text-base tracking-[0.2em] text-museum-bone transition-colors duration-300 group-hover:text-museum-amber md:text-lg">
             ASİL&apos;S A MELODY
           </span>
-          <span className="mt-1 block text-[0.58rem] font-light tracking-[0.28em] text-museum-bone-muted">
+          <span className="mt-0.5 block text-[0.55rem] font-light tracking-[0.26em] text-museum-bone-muted">
             ® Evrenin Asil sesi
           </span>
         </Link>
 
         <nav
-          className="hidden items-center gap-5 xl:gap-7 lg:flex"
+          className="hidden items-center gap-6 lg:flex xl:gap-8"
           aria-label="Ana menü"
         >
           {navItems.map((item) => {
             const active = isActive(item.match);
             return (
               <Link
-                key={item.label}
+                key={item.href}
                 href={item.href}
-                className={`relative text-[0.68rem] uppercase tracking-[0.28em] transition-colors xl:text-xs xl:tracking-[0.3em] ${
+                onClick={scrollPageToTop}
+                className={`relative pb-1 text-[0.7rem] uppercase tracking-[0.28em] transition-colors duration-300 ${
                   active
-                    ? "text-museum-brown"
-                    : "text-museum-bone hover:text-museum-brown"
+                    ? "text-museum-amber"
+                    : "text-museum-bone/85 hover:text-museum-bone"
                 }`}
                 aria-current={active ? "page" : undefined}
               >
                 {item.label}
-                {active && (
-                  <span className="absolute -bottom-1 left-0 h-px w-full bg-museum-brown" />
-                )}
+                <span
+                  className={`absolute bottom-0 left-0 h-px bg-museum-amber transition-all duration-300 ${
+                    active ? "w-full opacity-100" : "w-0 opacity-0"
+                  }`}
+                />
               </Link>
             );
           })}
         </nav>
 
-        <nav className="flex items-center gap-3 lg:hidden" aria-label="Mobil menü">
+        <nav
+          className="flex max-w-[55%] flex-wrap items-center justify-end gap-x-3 gap-y-1 lg:hidden"
+          aria-label="Mobil menü"
+        >
           {navItems.map((item) => {
             const active = isActive(item.match);
             return (
               <Link
-                key={item.label}
+                key={item.href}
                 href={item.href}
-                className={`max-w-[4.5rem] truncate text-[0.52rem] uppercase tracking-[0.12em] transition-colors ${
+                onClick={scrollPageToTop}
+                className={`text-[0.58rem] uppercase tracking-[0.16em] transition-colors ${
                   active
-                    ? "text-museum-brown"
-                    : "text-museum-bone hover:text-museum-brown"
+                    ? "text-museum-amber"
+                    : "text-museum-bone/80 hover:text-museum-bone"
                 }`}
                 aria-current={active ? "page" : undefined}
-                title={item.label}
               >
-                {item.label === "ASİL MELODY HAKKINDA"
-                  ? "HAKKINDA"
-                  : item.label.split(" ").slice(-1)[0]}
+                {item.short}
               </Link>
             );
           })}
         </nav>
       </div>
-    </motion.header>
+    </header>
   );
 }

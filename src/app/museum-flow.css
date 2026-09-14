@@ -38,13 +38,11 @@
   background:
     linear-gradient(
       180deg,
-      transparent 0%,
-      var(--museum-carpet-deep) 4%,
-      var(--museum-carpet) 12%,
+      var(--museum-carpet-deep) 0%,
+      var(--museum-carpet) 8%,
       var(--museum-carpet-edge) 50%,
-      var(--museum-carpet) 88%,
-      var(--museum-carpet-deep) 96%,
-      transparent 100%
+      var(--museum-carpet) 92%,
+      var(--museum-carpet-deep) 100%
     ),
     repeating-linear-gradient(
       180deg,
@@ -55,12 +53,12 @@
     inset 8px 0 24px rgba(0, 0, 0, 0.35),
     inset -8px 0 24px rgba(0, 0, 0, 0.35),
     0 0 40px rgba(92, 21, 32, 0.25);
-  opacity: 0.72;
+  opacity: 0.78;
 }
 
 @media (max-width: 768px) {
   .carpet-runner {
     width: 4.5rem;
-    opacity: 0.45;
+    opacity: 0.5;
   }
 }

@@ -2,6 +2,10 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import {
+  GooeyFilterDefs,
+  GooeyPlatformButton,
+} from "@/components/ui/GooeyPlatformButton";
 
 export interface ArtistPlatform {
   name: string;
@@ -45,33 +49,28 @@ export function ArtistProfile({
 }: ArtistProfileProps) {
   return (
     <section className="relative mx-auto min-h-[80vh] max-w-7xl px-6 pb-20 pt-32">
+      <GooeyFilterDefs />
+
       <p className="mb-10 text-center text-[0.65rem] uppercase tracking-[0.45em] text-museum-brown lg:text-left">
         Sanatçı Salonu
       </p>
-      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[30rem_minmax(0,1fr)] lg:gap-16">
         <motion.div
           variants={fadeInRight}
-          initial="hidden"
+          initial={false}
           animate="visible"
-          className="museum-frame relative mx-auto w-full max-w-md overflow-hidden lg:max-w-none"
+          className="relative mx-auto w-full max-w-[30rem] overflow-hidden lg:mx-0 lg:w-[30rem]"
         >
-          <div className="relative aspect-[4/5] w-full">
+          <div className="relative aspect-[5/6] w-full overflow-hidden">
             <Image
               src={imageUrl}
               alt={name}
               fill
               priority
-              quality={100}
-              sizes="(max-width: 1024px) 92vw, 560px"
-              className="museum-photo object-cover object-top"
+              unoptimized
+              sizes="480px"
+              className="object-cover object-[center_15%]"
             />
-            <div className="absolute inset-0 bg-black/20" aria-hidden />
-          </div>
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-14 opacity-90"
-            aria-hidden
-          >
-            <div className="red-carpet mx-auto h-full w-[70%]" />
           </div>
         </motion.div>
 
@@ -79,7 +78,7 @@ export function ArtistProfile({
           <motion.div
             custom={0}
             variants={fadeInUp}
-            initial="hidden"
+            initial={false}
             animate="visible"
             aria-hidden
             className="select-none font-display text-7xl leading-none text-museum-brown/25 md:text-8xl"
@@ -90,7 +89,7 @@ export function ArtistProfile({
           <motion.blockquote
             custom={1}
             variants={fadeInUp}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="-mt-4 font-display text-3xl font-light italic leading-snug tracking-wide text-museum-bone md:text-4xl"
           >
@@ -100,7 +99,7 @@ export function ArtistProfile({
           <motion.div
             custom={2}
             variants={fadeInUp}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="mt-8"
           >
@@ -113,7 +112,7 @@ export function ArtistProfile({
           <motion.div
             custom={3}
             variants={fadeInUp}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="mt-14"
           >
@@ -124,14 +123,7 @@ export function ArtistProfile({
             <ul className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               {platforms.map((platform) => (
                 <li key={platform.name} className="sm:min-w-[11rem] sm:flex-1">
-                  <a
-                    href={platform.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex w-full items-center justify-center rounded-full border border-museum-brown bg-transparent px-6 py-3 text-center text-[0.7rem] uppercase tracking-[0.22em] text-museum-brown transition-colors duration-300 hover:bg-museum-brown/10"
-                  >
-                    {platform.name}
-                  </a>
+                  <GooeyPlatformButton name={platform.name} url={platform.url} />
                 </li>
               ))}
             </ul>

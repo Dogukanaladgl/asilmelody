@@ -50,14 +50,9 @@ export function GalleryWalk() {
       ref={sectionRef}
       className="relative z-[2] bg-transparent px-6 py-8 md:px-10 md:py-16"
     >
-      <div className="section-veil-top opacity-60" aria-hidden />
-
       <div className="relative mx-auto mb-16 max-w-3xl text-center md:mb-24">
-        <p className="text-[0.62rem] uppercase tracking-[0.45em] text-museum-brown/75">
-          Koridor
-        </p>
-        <h2 className="mt-3 font-display text-3xl tracking-[0.16em] text-museum-bone/90 md:text-4xl">
-          Eserler
+        <h2 className="font-display text-3xl tracking-[0.16em] text-museum-bone/90 md:text-4xl">
+          Eserler Koridoru
         </h2>
       </div>
 
@@ -80,7 +75,7 @@ export function GalleryWalk() {
                     src={exhibit.image}
                     alt={exhibit.title}
                     fill
-                    quality={100}
+                    unoptimized
                     sizes="(max-width: 768px) 92vw, 420px"
                     className="museum-photo object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.03]"
                   />
@@ -122,8 +117,6 @@ export function GalleryWalk() {
           );
         })}
       </div>
-
-      <div className="section-veil-bottom opacity-70" aria-hidden />
     </section>
   );
 }

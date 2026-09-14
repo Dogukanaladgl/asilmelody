@@ -31,7 +31,7 @@ export default function HakkindaPage() {
       <motion.p
         custom={0}
         variants={fadeInUp}
-        initial="hidden"
+        initial={false}
         animate="visible"
         className="font-display text-2xl tracking-widest text-museum-bone md:text-3xl"
       >
@@ -41,7 +41,7 @@ export default function HakkindaPage() {
       <motion.p
         custom={1}
         variants={fadeInUp}
-        initial="hidden"
+        initial={false}
         animate="visible"
         className="mt-3 text-sm tracking-[0.28em] text-museum-brown"
       >
@@ -51,7 +51,7 @@ export default function HakkindaPage() {
       <motion.h1
         custom={2}
         variants={fadeInUp}
-        initial="hidden"
+        initial={false}
         animate="visible"
         className="mt-14 max-w-3xl font-display text-4xl font-light leading-tight tracking-wide text-museum-bone md:text-5xl"
       >
@@ -64,7 +64,7 @@ export default function HakkindaPage() {
             key={text.slice(0, 24)}
             custom={index + 3}
             variants={fadeInUp}
-            initial="hidden"
+            initial={false}
             animate="visible"
             className="text-base font-light leading-relaxed tracking-wide md:text-lg"
           >
@@ -76,7 +76,7 @@ export default function HakkindaPage() {
       <motion.section
         custom={7}
         variants={fadeInUp}
-        initial="hidden"
+        initial={false}
         animate="visible"
         className="mt-24 w-full max-w-6xl"
       >
@@ -86,30 +86,37 @@ export default function HakkindaPage() {
         <div className="mx-auto mt-4 h-px w-12 bg-museum-brown/60" aria-hidden />
 
         <div className="mt-14 grid grid-cols-1 gap-14 md:grid-cols-3 md:gap-10">
-          {aboutProfiles.map((profile) => (
-            <Link
-              key={profile.id}
-              href={profile.href}
-              className="group flex flex-col items-center text-center"
-            >
-              <span className="relative h-32 w-32 overflow-hidden rounded-full border border-museum-brown/35 bg-museum-dark transition-shadow duration-500 group-hover:shadow-[0_0_15px_rgba(139,90,43,0.3)] md:h-36 md:w-36">
-                <Image
-                  src={profile.image}
-                  alt={profile.name}
-                  fill
-                  quality={95}
-                  sizes="144px"
-                  className="museum-photo object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-              </span>
-              <h3 className="mt-6 font-display text-xl tracking-[0.16em] text-museum-bone transition-colors duration-300 group-hover:text-museum-brown">
-                {profile.name}
-              </h3>
-              <p className="mt-4 max-w-xs text-sm font-light leading-relaxed tracking-wide text-museum-bone-muted">
-                {profile.bio}
-              </p>
-            </Link>
-          ))}
+          {aboutProfiles.map((profile) => {
+            const isLogo = profile.id === "asil-a-melody";
+            return (
+              <Link
+                key={profile.id}
+                href={profile.href}
+                className="group flex flex-col items-center text-center"
+              >
+                <span className="relative h-44 w-44 overflow-hidden rounded-full border border-museum-amber/40 bg-black transition-shadow duration-500 group-hover:shadow-[0_0_22px_rgba(224,192,138,0.28)] md:h-52 md:w-52 lg:h-56 lg:w-56">
+                  <Image
+                    src={profile.image}
+                    alt={profile.name}
+                    fill
+                    unoptimized
+                    sizes="224px"
+                    className={
+                      isLogo
+                        ? "object-cover"
+                        : "object-cover object-[center_18%] transition duration-700 group-hover:scale-105"
+                    }
+                  />
+                </span>
+                <h3 className="mt-6 font-display text-xl tracking-[0.16em] text-museum-bone transition-colors duration-300 group-hover:text-museum-amber">
+                  {profile.name}
+                </h3>
+                <p className="mt-4 max-w-xs px-3 text-sm font-light leading-relaxed tracking-wide text-museum-bone-muted">
+                  {profile.bio}
+                </p>
+              </Link>
+            );
+          })}
         </div>
       </motion.section>
     </main>

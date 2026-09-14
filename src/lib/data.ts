@@ -49,7 +49,7 @@ export const artists: Artist[] = [
     id: "asi-ildeniz",
     name: "Asi İldeniz",
     quote: "İçim okyanus içimdekiler hâin..",
-    profileImage: "/images/artists/asi-ildeniz.jpg",
+    profileImage: "/images/artists/asi-ildeniz-v3.webp",
     platforms: {
       spotify: "https://open.spotify.com",
       appleMusic: "https://music.apple.com",
@@ -61,7 +61,7 @@ export const artists: Artist[] = [
     id: "asi-nildeniz",
     name: "Asi Nildeniz",
     quote: "Başaracağımı söylüyo My Kâhin..",
-    profileImage: "/images/artists/asi-nildeniz.jpg",
+    profileImage: "/images/artists/asi-nildeniz-v3.webp",
     platforms: {
       spotify: "https://open.spotify.com",
       appleMusic: "https://music.apple.com",
@@ -79,7 +79,7 @@ export const exhibits: Exhibit[] = [
     catalogNumber: "AM-001",
     year: "2024",
     artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/abece.jpg",
+    image: "/images/exhibits/abece.webp",
     description: "Taçlar ve ateş arasında doğan ilk salon.",
     youtubeUrl:
       "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+ABECE",
@@ -91,7 +91,7 @@ export const exhibits: Exhibit[] = [
     catalogNumber: "AM-002",
     year: "2024",
     artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/yildirim-kivilcim.jpg",
+    image: "/images/exhibits/yildirim-kivilcim.webp",
     description: "Mavi yıldırım ile turuncu kıvılcımın buluştuğu koridor.",
     youtubeUrl:
       "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+Yildirim+Kivilcim",
@@ -103,7 +103,7 @@ export const exhibits: Exhibit[] = [
     catalogNumber: "AM-003",
     year: "2025",
     artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/gercek-zaman.jpg",
+    image: "/images/exhibits/gercek-zaman.webp",
     description: "Islak asfalt, neon ve klasik otomobiller eşliğinde bir gece sergisi.",
     youtubeUrl:
       "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+Gercek+Zaman",
@@ -115,7 +115,7 @@ export const exhibits: Exhibit[] = [
     catalogNumber: "AM-004",
     year: "2025",
     artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/asil-azmaz-bal-kokmaz.jpg",
+    image: "/images/exhibits/asil-azmaz-bal-kokmaz.webp",
     description: "Müzenin en ihtişamlı salonu — lüks, hız ve melodi.",
     youtubeUrl:
       "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+Asil+Azmaz+Bal+Kokmaz",
@@ -127,7 +127,7 @@ export const exhibits: Exhibit[] = [
     catalogNumber: "AM-005",
     year: "2025",
     artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/serbest-zaman.jpg",
+    image: "/images/exhibits/serbest-zaman.webp",
     description: "Gece ile gündüzün aynı çerçevede sergilendiği eser.",
     youtubeUrl:
       "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+Serbest+Zaman",
@@ -139,7 +139,7 @@ export const exhibits: Exhibit[] = [
     catalogNumber: "AM-006",
     year: "2025",
     artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/firavunun-tovbesi.jpg",
+    image: "/images/exhibits/firavunun-tovbesi.webp",
     description: "Piramitler ve altın yankılar arasında bir tövbe.",
     youtubeUrl:
       "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+Firavun+Tovbesi",
@@ -151,7 +151,7 @@ export const exhibits: Exhibit[] = [
     catalogNumber: "AM-007",
     year: "2024",
     artists: "Asi İldeniz & DJ Mic Check",
-    image: "/images/exhibits/2x2-5.jpg",
+    image: "/images/exhibits/2x2-5.webp",
     description: "Efsaneler duvarında yeni bir çerçeve.",
     youtubeUrl:
       "https://www.youtube.com/results?search_query=Asi+Ildeniz+2x2%3D5",
@@ -163,7 +163,7 @@ export const exhibits: Exhibit[] = [
     catalogNumber: "AM-008",
     year: "2024",
     artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/my-kahin.jpg",
+    image: "/images/exhibits/my-kahin.webp",
     description: "Sessizliğin içinden yükselen bir kehanet.",
     youtubeUrl:
       "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+My+Kahin",
@@ -180,15 +180,16 @@ export const companyInfo: CompanyInfo = {
   mapQuery: "Meram Bağları Seyir Alanı, Durunday, Meram/Konya",
 };
 
-export const heroImage = "/images/exhibits/asil-azmaz-bal-kokmaz-hero.png";
-export const brandMark = "/images/exhibits/abece.jpg";
+export const heroImage = "/images/exhibits/asil-azmaz-bal-kokmaz-hero.webp";
+export const brandMark = "/images/logo/logo.webp";
+export const brandLogo = "/images/logo/logo.webp";
 
 export const aboutProfiles: AboutProfile[] = [
   {
     id: "asi-ildeniz",
     name: "Asi İldeniz",
     href: "/asi-ildeniz",
-    image: "/images/artists/asi-ildeniz.jpg",
+    image: "/images/artists/asi-ildeniz-v3.webp",
     bio: "AsilMelody’nin kurucusu ve Ömer Faruk Urgancı’nın kişisel & müzikal izdüşümü. Kendi yazıp kendi besteleyen Asi İldeniz, sadece hissettiği melodileri tüm evrene sunuyor.",
   },
   {
@@ -202,7 +203,7 @@ export const aboutProfiles: AboutProfile[] = [
     id: "asi-nildeniz",
     name: "Asi Nildeniz",
     href: "/asi-nildeniz",
-    image: "/images/artists/asi-nildeniz.jpg",
+    image: "/images/artists/asi-nildeniz-v3.webp",
     bio: "Asi İldeniz’in müzikal evrenine eşlik etmek üzere yaratılan, hayal mi yoksa gerçek mi olduğu bilinmeyen Asi Nildeniz; AsilMelody çatısı altında, dijital sınırların ötesinden gelen fısıltılarla evrenin en asil seslerine hayat veriyor.",
   },
 ];

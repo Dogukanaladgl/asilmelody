@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import { aboutProfiles, companyInfo } from "@/lib/data";
+import type { ReactNode } from "react";
+import { companyInfo } from "@/lib/data";
 
 const socialLinks = [
   {
@@ -47,107 +46,85 @@ const socialLinks = [
   },
 ] as const;
 
+function FooterLabel({ children }: { children: ReactNode }) {
+  return (
+    <p className="mb-2.5 text-[0.72rem] uppercase tracking-[0.28em] text-museum-amber">
+      {children}
+    </p>
+  );
+}
+
 export function Footer() {
   return (
-    <footer className="relative z-[2] bg-transparent">
-      <div className="section-veil-top opacity-80" aria-hidden />
-      <div className="pointer-events-none absolute inset-0 bg-spotlight opacity-25" aria-hidden />
+    <footer className="relative z-[2] mt-auto border-t border-museum-brown/15 bg-museum-darker/80">
+      <div
+        className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-museum-carpet/40 to-transparent"
+        aria-hidden
+      />
 
-      <div className="relative mx-auto max-w-5xl px-6 py-20 md:px-10 md:py-24">
-        {/* Hakkımızda */}
-        <section id="hakkinda" className="scroll-mt-28 text-center">
-          <h2 className="font-display text-3xl tracking-[0.28em] text-museum-bone md:text-4xl">
-            Hakkımızda
-          </h2>
-          <div className="mx-auto mt-4 h-px w-12 bg-museum-brown/60" aria-hidden />
-
-          <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
-            {aboutProfiles.map((profile) => (
-              <Link
-                key={profile.id}
-                href={profile.href}
-                className="group flex flex-col items-center text-center"
-              >
-                <span className="relative h-28 w-28 overflow-hidden rounded-full border border-museum-brown/35 bg-museum-dark transition-shadow duration-500 group-hover:shadow-[0_0_15px_rgba(139,90,43,0.3)] md:h-32 md:w-32">
-                  <Image
-                    src={profile.image}
-                    alt={profile.name}
-                    fill
-                    quality={95}
-                    sizes="128px"
-                    className="museum-photo object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </span>
-                <h3 className="mt-5 font-display text-lg tracking-[0.14em] text-museum-bone transition-colors duration-300 group-hover:text-museum-brown">
-                  {profile.name}
-                </h3>
-                <p className="mt-3 max-w-[16rem] text-sm font-light leading-relaxed text-museum-bone-muted">
-                  {profile.bio}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        {/* İletişim — sade */}
-        <section className="mt-20 border-t border-museum-brown/15 pt-16 text-center">
-          <h3 className="font-display text-2xl tracking-[0.24em] text-museum-bone md:text-3xl">
-            Bize Ulaşın
-          </h3>
-          <p className="mt-3 text-sm font-light tracking-[0.18em] text-museum-bone-muted">
-            Birlikte Daha İyiyiz
-          </p>
-
-          <a
-            href="/iletisim"
-            className="mt-8 inline-flex items-center justify-center border border-museum-brown/45 px-8 py-3.5 text-[0.7rem] uppercase tracking-[0.28em] text-museum-bone transition-all duration-300 hover:border-museum-amber hover:bg-museum-brown/15 hover:text-museum-amber"
-          >
-            İletişim Sayfası
-          </a>
-
-          <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center gap-3 text-sm font-light text-museum-bone-muted md:flex-row md:justify-center md:gap-8">
-            <p className="max-w-xs leading-relaxed">{companyInfo.address}</p>
-            <span className="hidden h-3 w-px bg-museum-brown/30 md:block" aria-hidden />
+      <div className="relative mx-auto max-w-6xl px-6 py-14 md:px-10 md:py-16">
+        <div className="grid grid-cols-1 items-start gap-10 text-center text-sm font-light text-museum-bone-muted md:grid-cols-3 md:gap-8 md:text-left">
+          <div className="md:text-left">
+            <FooterLabel>E-posta</FooterLabel>
             <a
               href={`mailto:${companyInfo.email}`}
-              className="tracking-[0.12em] transition-colors hover:text-museum-amber"
+              className="tracking-[0.08em] text-museum-bone transition-colors hover:text-museum-amber"
             >
               {companyInfo.email}
             </a>
-            <span className="hidden h-3 w-px bg-museum-brown/30 md:block" aria-hidden />
-            <p>09:00 — 17:00</p>
           </div>
 
-          <ul className="mt-12 flex items-center justify-center gap-6">
-            {socialLinks.map((social) => (
-              <li key={social.label}>
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={social.label}
-                  className="text-museum-bone-muted transition-colors duration-300 hover:text-museum-brown"
-                >
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="h-4 w-4"
+          <div className="flex flex-col items-center text-center">
+            <FooterLabel>Sosyal</FooterLabel>
+            <ul className="flex flex-wrap items-center justify-center gap-3">
+              {socialLinks.map((social) => (
+                <li key={social.label}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-museum-amber/35 text-museum-bone transition-colors duration-300 hover:border-museum-amber hover:bg-museum-amber/10 hover:text-museum-amber"
                   >
-                    {social.icon}
-                  </svg>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="h-5 w-5"
+                    >
+                      {social.icon}
+                    </svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        <div className="mt-14 flex flex-col items-center gap-2 border-t border-museum-brown/10 pt-8 text-[0.58rem] uppercase tracking-[0.22em] text-museum-bone-muted/80 sm:flex-row sm:justify-between">
+          <div className="md:text-right">
+            <FooterLabel>Adres</FooterLabel>
+            <p className="leading-relaxed text-museum-bone md:ml-auto md:max-w-[18rem]">
+              {companyInfo.address}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-10 text-center">
+          <FooterLabel>Mesai Saatleri</FooterLabel>
+          <p className="text-sm font-light text-museum-bone">09:00 — 17:00</p>
+        </div>
+
+        <div className="mt-12 flex flex-col items-center gap-3 border-t border-museum-brown/15 pt-8 text-[0.58rem] uppercase tracking-[0.22em] text-museum-bone-muted/85 sm:flex-row sm:justify-between">
           <p>© 2026 Asil&apos;s a Melody</p>
-          <p>® Evrenin Asil sesi</p>
+          <p className="flex items-center gap-2">
+            <span
+              className="inline-block h-1 w-1 rounded-full bg-museum-brown"
+              aria-hidden
+            />
+            Evrenin Asil sesi
+          </p>
         </div>
       </div>
     </footer>

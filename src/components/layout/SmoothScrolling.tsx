@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, type ReactNode } from "react";
+import { usePathname } from "next/navigation";
 import { ReactLenis } from "lenis/react";
 import type { LenisRef } from "lenis/react";
 import { gsap, registerGsapPlugins, ScrollTrigger } from "@/lib/gsap";
@@ -11,6 +12,7 @@ interface SmoothScrollingProps {
 
 export function SmoothScrolling({ children }: SmoothScrollingProps) {
   const lenisRef = useRef<LenisRef>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     registerGsapPlugins();
@@ -42,6 +44,28 @@ export function SmoothScrolling({ children }: SmoothScrollingProps) {
       gsap.ticker.remove(update);
     };
   }, []);
+
+  // Always start at the top when navigating via header/links
+  useEffect(() => {
+    const scrollTop = () => {
+      const lenis = lenisRef.current?.lenis;
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true });
+      } else {
+        window.scrollTo(0, 0);
+      }
+      ScrollTrigger.refresh();
+    };
+
+    scrollTop();
+    const frame = requestAnimationFrame(scrollTop);
+    const timer = window.setTimeout(scrollTop, 40);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.clearTimeout(timer);
+    };
+  }, [pathname]);
 
   return (
     <ReactLenis

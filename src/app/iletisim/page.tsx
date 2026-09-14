@@ -33,7 +33,7 @@ export default function IletisimPage() {
         <motion.div
           custom={0}
           variants={fade}
-          initial="hidden"
+          initial={false}
           animate="visible"
           className="flex flex-col justify-center"
         >
@@ -122,7 +122,7 @@ export default function IletisimPage() {
         <motion.div
           custom={1}
           variants={fade}
-          initial="hidden"
+          initial={false}
           animate="visible"
           className="relative min-h-[420px] overflow-hidden border border-museum-brown/25 bg-museum-darker lg:min-h-full"
         >

@@ -5,11 +5,11 @@
 :root {
   --museum-dark: #1a1817;
   --museum-darker: #12100f;
-  --museum-bone: #ebe6e0;
-  --museum-bone-muted: #c9c2b8;
-  --museum-brown: #8b6f5c;
-  --museum-brown-deep: #5c4638;
-  --museum-amber: #c4a574;
+  --museum-bone: #f7f3ed;
+  --museum-bone-muted: #e4ddd3;
+  --museum-brown: #b08a72;
+  --museum-brown-deep: #7a5c4a;
+  --museum-amber: #e0c08a;
   --museum-carpet: #5c1820;
   --museum-carpet-deep: #3a0e14;
   --museum-carpet-light: #7a2430;
@@ -17,8 +17,8 @@
   --museum-wall: #161412;
   --spotlight: radial-gradient(
     ellipse 50% 45% at 50% 40%,
-    rgba(196, 165, 116, 0.18) 0%,
-    rgba(139, 111, 92, 0.08) 35%,
+    rgba(224, 192, 138, 0.22) 0%,
+    rgba(176, 138, 114, 0.1) 35%,
     transparent 70%
   );
 }
@@ -147,3 +147,84 @@ textarea,
     display: none;
   }
 }
+
+/* Gooey platform buttons — adapted from Uiverse.io (cssbuttons-io) */
+.c-button {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  width: 100%;
+  min-height: 2.85rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  text-decoration: none;
+  padding: 0.75em 1.5em;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.c-button__content {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.c-button--gooey {
+  color: var(--museum-brown);
+  border: 1px solid var(--museum-brown);
+  border-radius: 9999px;
+  background: transparent;
+  transition: color 700ms ease, border-color 700ms ease;
+}
+
+.c-button--gooey .c-button__blobs {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 9999px;
+  filter: url(#goo);
+}
+
+.c-button--gooey .c-button__blobs div {
+  position: absolute;
+  top: 0;
+  width: 34%;
+  height: 100%;
+  border-radius: 100%;
+  background-color: var(--museum-brown);
+  transform: scale(1.4) translateY(125%) translateZ(0);
+  transition: transform 700ms ease;
+}
+
+.c-button--gooey .c-button__blobs div:nth-child(1) {
+  left: -5%;
+}
+
+.c-button--gooey .c-button__blobs div:nth-child(2) {
+  left: 30%;
+  transition-delay: 60ms;
+}
+
+.c-button--gooey .c-button__blobs div:nth-child(3) {
+  left: 66%;
+  transition-delay: 25ms;
+}
+
+.c-button--gooey:hover {
+  color: var(--museum-bone);
+  border-color: var(--museum-brown);
+}
+
+.c-button--gooey:hover .c-button__blobs div {
+  transform: scale(1.4) translateY(0) translateZ(0);
+}
+

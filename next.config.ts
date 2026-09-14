@@ -1,12 +1,24 @@
 import type { NextConfig } from "next";
+import os from "os";
+
+/** Local network IPs so phone/LAN access can load Next.js JS chunks in dev. */
+function localNetworkHosts() {
+  const hosts = new Set<string>(["localhost", "127.0.0.1"]);
+
+  for (const interfaces of Object.values(os.networkInterfaces())) {
+    for (const item of interfaces ?? []) {
+      const isV4 = item.family === "IPv4" || (item.family as unknown) === 4;
+      if (isV4 && !item.internal) {
+        hosts.add(item.address);
+      }
+    }
+  }
+
+  return [...hosts];
+}
 
 const nextConfig: NextConfig = {
-  allowedDevOrigins: [
-    "192.168.1.98",
-    "192.168.1.104",
-    "172.20.10.3",
-    "localhost",
-  ],
+  allowedDevOrigins: localNetworkHosts(),
   images: {
     formats: ["image/avif", "image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1440, 1920, 2048],
