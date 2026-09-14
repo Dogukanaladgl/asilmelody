@@ -1,0 +1,66 @@
+.section-veil-top {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 8rem;
+  z-index: 15;
+  background: linear-gradient(
+    to bottom,
+    var(--museum-dark) 0%,
+    transparent 100%
+  );
+}
+
+.section-veil-bottom {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 10rem;
+  z-index: 15;
+  background: linear-gradient(
+    to top,
+    var(--museum-dark) 0%,
+    transparent 100%
+  );
+}
+
+.carpet-runner {
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  width: min(18vw, 11rem);
+  transform: translateX(-50%);
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      var(--museum-carpet-deep) 4%,
+      var(--museum-carpet) 12%,
+      var(--museum-carpet-edge) 50%,
+      var(--museum-carpet) 88%,
+      var(--museum-carpet-deep) 96%,
+      transparent 100%
+    ),
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 28px,
+      rgba(255, 220, 180, 0.035) 28px 29px
+    );
+  box-shadow:
+    inset 8px 0 24px rgba(0, 0, 0, 0.35),
+    inset -8px 0 24px rgba(0, 0, 0, 0.35),
+    0 0 40px rgba(92, 21, 32, 0.25);
+  opacity: 0.72;
+}
+
+@media (max-width: 768px) {
+  .carpet-runner {
+    width: 4.5rem;
+    opacity: 0.45;
+  }
+}

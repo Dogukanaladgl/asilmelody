@@ -2,26 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { artists, companyInfo } from "@/lib/data";
-
-const profiles = [
-  {
-    name: "Asi İldeniz",
-    href: "/asi-ildeniz",
-    image: artists[0].profileImage,
-  },
-  {
-    name: "Asil's a Melody",
-    href: "/",
-    image: "https://placehold.co/400x400/1A1817/EBE6E0/png?text=AM",
-  },
-  {
-    name: "Asi Nildeniz",
-    href: "/asi-nildeniz",
-    image: artists[1].profileImage,
-  },
-] as const;
+import { aboutProfiles, companyInfo } from "@/lib/data";
 
 const socialLinks = [
   {
@@ -45,9 +26,7 @@ const socialLinks = [
   {
     label: "TikTok",
     href: "https://tiktok.com",
-    icon: (
-      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
-    ),
+    icon: <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />,
   },
   {
     label: "X",
@@ -68,51 +47,50 @@ const socialLinks = [
   },
 ] as const;
 
-const MAP_SRC =
-  "https://maps.google.com/maps?q=Meram%20Ba%C4%9Flar%C4%B1%20Seyir%20Alan%C4%B1%2C%20Konya&t=&z=14&ie=UTF8&iwloc=&output=embed";
-
 export function Footer() {
   return (
-    <footer
-      id="iletisim"
-      className="relative border-t border-museum-brown/15 bg-museum-darker"
-    >
-      <div className="pointer-events-none absolute inset-0 bg-spotlight opacity-40" aria-hidden />
+    <footer className="relative z-[2] bg-transparent">
+      <div className="section-veil-top opacity-80" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-spotlight opacity-25" aria-hidden />
 
-      <div className="relative mx-auto max-w-6xl px-6 py-24 md:px-10">
+      <div className="relative mx-auto max-w-5xl px-6 py-20 md:px-10 md:py-24">
         {/* Hakkımızda */}
         <section id="hakkinda" className="scroll-mt-28 text-center">
           <h2 className="font-display text-3xl tracking-[0.28em] text-museum-bone md:text-4xl">
             Hakkımızda
           </h2>
+          <div className="mx-auto mt-4 h-px w-12 bg-museum-brown/60" aria-hidden />
 
-          <div className="mt-14 flex flex-wrap items-center justify-center gap-10 md:gap-16">
-            {profiles.map((profile) => (
+          <div className="mt-12 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-8">
+            {aboutProfiles.map((profile) => (
               <Link
-                key={profile.name}
+                key={profile.id}
                 href={profile.href}
-                className="group flex flex-col items-center gap-4"
+                className="group flex flex-col items-center text-center"
               >
                 <span className="relative h-28 w-28 overflow-hidden rounded-full border border-museum-brown/35 bg-museum-dark transition-shadow duration-500 group-hover:shadow-[0_0_15px_rgba(139,90,43,0.3)] md:h-32 md:w-32">
                   <Image
                     src={profile.image}
                     alt={profile.name}
                     fill
-                    unoptimized
+                    quality={95}
                     sizes="128px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="museum-photo object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </span>
-                <span className="max-w-[9rem] text-center text-[0.65rem] uppercase tracking-[0.28em] text-museum-bone-muted transition-colors duration-300 group-hover:text-museum-brown">
+                <h3 className="mt-5 font-display text-lg tracking-[0.14em] text-museum-bone transition-colors duration-300 group-hover:text-museum-brown">
                   {profile.name}
-                </span>
+                </h3>
+                <p className="mt-3 max-w-[16rem] text-sm font-light leading-relaxed text-museum-bone-muted">
+                  {profile.bio}
+                </p>
               </Link>
             ))}
           </div>
         </section>
 
-        {/* Bize Ulaşın */}
-        <section className="mt-24 text-center">
+        {/* İletişim — sade */}
+        <section className="mt-20 border-t border-museum-brown/15 pt-16 text-center">
           <h3 className="font-display text-2xl tracking-[0.24em] text-museum-bone md:text-3xl">
             Bize Ulaşın
           </h3>
@@ -120,43 +98,27 @@ export function Footer() {
             Birlikte Daha İyiyiz
           </p>
 
-          <motion.a
-            href="https://wa.me/905555555555"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.04 }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="mt-10 inline-flex items-center justify-center border border-museum-brown/40 bg-museum-brown/15 px-8 py-3.5 text-[0.7rem] uppercase tracking-[0.28em] text-museum-bone transition-colors duration-300 hover:border-museum-brown hover:bg-museum-brown/25"
+          <a
+            href="/iletisim"
+            className="mt-8 inline-flex items-center justify-center border border-museum-brown/45 px-8 py-3.5 text-[0.7rem] uppercase tracking-[0.28em] text-museum-bone transition-all duration-300 hover:border-museum-amber hover:bg-museum-brown/15 hover:text-museum-amber"
           >
-            Bize WhatsApp Üzerinden Ulaşın
-          </motion.a>
+            İletişim Sayfası
+          </a>
 
-          <div className="mx-auto mt-14 flex max-w-xl flex-col gap-6 text-sm font-light leading-relaxed tracking-[0.12em] text-museum-bone">
-            <p>{companyInfo.address}</p>
+          <div className="mx-auto mt-10 flex max-w-2xl flex-col items-center gap-3 text-sm font-light text-museum-bone-muted md:flex-row md:justify-center md:gap-8">
+            <p className="max-w-xs leading-relaxed">{companyInfo.address}</p>
+            <span className="hidden h-3 w-px bg-museum-brown/30 md:block" aria-hidden />
             <a
               href={`mailto:${companyInfo.email}`}
-              className="transition-colors duration-300 hover:text-museum-brown"
+              className="tracking-[0.12em] transition-colors hover:text-museum-amber"
             >
               {companyInfo.email}
             </a>
-            <p>Bugün açık 09:00 - 17:00</p>
+            <span className="hidden h-3 w-px bg-museum-brown/30 md:block" aria-hidden />
+            <p>09:00 — 17:00</p>
           </div>
-        </section>
 
-        {/* Dark map */}
-        <div className="mt-16 overflow-hidden border border-museum-brown/20">
-          <iframe
-            title="Asil Melody Konum — Meram, Konya"
-            src={MAP_SRC}
-            className="h-56 w-full grayscale invert opacity-80 contrast-125 md:h-72"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-
-        {/* Social + copyright */}
-        <div className="mt-16 flex flex-col items-center gap-10">
-          <ul className="flex items-center gap-7">
+          <ul className="mt-12 flex items-center justify-center gap-6">
             {socialLinks.map((social) => (
               <li key={social.label}>
                 <a
@@ -173,7 +135,7 @@ export function Footer() {
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className="h-5 w-5"
+                    className="h-4 w-4"
                   >
                     {social.icon}
                   </svg>
@@ -181,11 +143,11 @@ export function Footer() {
               </li>
             ))}
           </ul>
+        </section>
 
-          <div className="flex w-full flex-col gap-3 text-[0.62rem] uppercase tracking-[0.22em] text-museum-bone-muted sm:flex-row sm:items-center sm:justify-between">
-            <p>Copyright © 2026 Asil&apos;s a Melody - All Rights Reserved.</p>
-            <p>® Evrenin Asil sesi</p>
-          </div>
+        <div className="mt-14 flex flex-col items-center gap-2 border-t border-museum-brown/10 pt-8 text-[0.58rem] uppercase tracking-[0.22em] text-museum-bone-muted/80 sm:flex-row sm:justify-between">
+          <p>© 2026 Asil&apos;s a Melody</p>
+          <p>® Evrenin Asil sesi</p>
         </div>
       </div>
     </footer>

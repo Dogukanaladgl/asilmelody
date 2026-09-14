@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display } from "next/font/google";
 import { Providers } from "@/components/providers/Providers";
+import { SmoothScrolling } from "@/components/layout/SmoothScrolling";
 import { Header } from "@/components/layout/Header";
 import "./globals.css";
 
@@ -20,10 +21,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="tr" className={`${playfair.variable} h-full antialiased`}>
       <body className="min-h-full bg-museum-dark font-display text-museum-bone">
-        <Providers>
-          <Header />
-          {children}
-        </Providers>
+        <SmoothScrolling>
+          <Providers>
+            <Header />
+            {children}
+          </Providers>
+        </SmoothScrolling>
       </body>
     </html>
   );

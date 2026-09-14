@@ -44,25 +44,34 @@ export function ArtistProfile({
   platforms,
 }: ArtistProfileProps) {
   return (
-    <section className="mx-auto min-h-[80vh] max-w-7xl px-6 pb-20 pt-32">
+    <section className="relative mx-auto min-h-[80vh] max-w-7xl px-6 pb-20 pt-32">
+      <p className="mb-10 text-center text-[0.65rem] uppercase tracking-[0.45em] text-museum-brown lg:text-left">
+        Sanatçı Salonu
+      </p>
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <motion.div
           variants={fadeInRight}
           initial="hidden"
           animate="visible"
-          className="relative mx-auto w-full max-w-md overflow-hidden border border-museum-brown/30 shadow-2xl shadow-black lg:max-w-none"
+          className="museum-frame relative mx-auto w-full max-w-md overflow-hidden lg:max-w-none"
         >
           <div className="relative aspect-[4/5] w-full">
             <Image
               src={imageUrl}
               alt={name}
               fill
-              unoptimized
               priority
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover"
+              quality={100}
+              sizes="(max-width: 1024px) 92vw, 560px"
+              className="museum-photo object-cover object-top"
             />
             <div className="absolute inset-0 bg-black/20" aria-hidden />
+          </div>
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-14 opacity-90"
+            aria-hidden
+          >
+            <div className="red-carpet mx-auto h-full w-[70%]" />
           </div>
         </motion.div>
 
