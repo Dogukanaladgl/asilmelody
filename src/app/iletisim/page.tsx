@@ -2,13 +2,16 @@
 
 import { motion } from "framer-motion";
 import { companyInfo } from "@/lib/data";
+import {
+  GooeyButton,
+  GooeyFilterDefs,
+} from "@/components/ui/GooeyPlatformButton";
 
 const mapQuery = encodeURIComponent(companyInfo.mapQuery);
-const mapEmbedSrc = `https://maps.google.com/maps?q=${mapQuery}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+const mapEmbedSrc = `https://maps.google.com/maps?q=${mapQuery}&t=m&z=15&ie=UTF8&iwloc=&output=embed`;
 const googleMapsDirections = `https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`;
 const appleMapsDirections = `https://maps.apple.com/?daddr=${mapQuery}`;
 const whatsappHref = `https://wa.me/${companyInfo.whatsapp.replace(/\D/g, "")}`;
-const phoneHref = `tel:${companyInfo.phone.replace(/\s/g, "")}`;
 
 const fade = {
   hidden: { opacity: 0, y: 24 },
@@ -25,116 +28,78 @@ const fade = {
 
 export default function IletisimPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden px-6 pb-24 pt-36 md:pt-40">
-      <div className="pointer-events-none absolute inset-0 bg-spotlight opacity-40" aria-hidden />
+    <main className="relative min-h-screen overflow-hidden px-6 pb-24 pt-36 md:px-10 md:pt-40">
+      <div
+        className="pointer-events-none absolute inset-0 bg-spotlight opacity-40"
+        aria-hidden
+      />
+      <GooeyFilterDefs />
 
-      <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-14 lg:items-stretch">
-        {/* Sol — metin & iletişim */}
+      <div className="relative mx-auto max-w-6xl">
         <motion.div
           custom={0}
           variants={fade}
           initial={false}
           animate="visible"
-          className="flex flex-col justify-center"
+          className="mx-auto flex max-w-2xl flex-col items-center text-center"
         >
-          <h1 className="font-display text-3xl font-light leading-snug tracking-wide text-museum-bone md:text-4xl lg:text-[2.75rem]">
-            Yardım burada. Ne zaman ve ne şekilde ihtiyacınız olursa.
+          <h1 className="font-display text-4xl font-light tracking-[0.12em] text-museum-bone md:text-5xl">
+            Bize Ulaşın
           </h1>
+          <div
+            className="mt-4 h-px w-16 bg-museum-carpet-edge/80"
+            aria-hidden
+          />
 
-          <p className="mt-6 text-base font-medium tracking-wide text-museum-bone md:text-lg">
-            Daha da iyisi, gelin, yüz yüze görüşelim.
+          <p className="mt-8 text-lg font-light tracking-wide text-museum-bone md:text-xl">
+            Birlikte Daha İyiyiz
+          </p>
+          <p className="mt-3 max-w-md text-sm font-light leading-relaxed text-museum-bone-muted md:text-base">
+            Ortak çalışma, proje ve önerileriniz için iletişime geçebilirsiniz.
           </p>
 
-          <p className="mt-4 max-w-md text-sm font-light leading-relaxed text-museum-bone-muted md:text-base">
-            Müşterilerimize değer veriyoruz. Mesai saatleri içinde bizi
-            dilediğiniz zaman ziyaret edebilirsiniz. Ortak çalışma, proje ve
-            önerileriniz için de buradayız.
-          </p>
-
-          <div className="my-8 h-px w-full max-w-md bg-museum-brown/25" aria-hidden />
-
-          <div className="space-y-5 text-sm text-museum-bone-muted md:text-base">
-            <a
-              href={phoneHref}
-              className="block text-lg tracking-[0.08em] text-museum-bone transition-colors hover:text-museum-amber"
-            >
-              {companyInfo.phone}
-            </a>
-
-            <div>
-              <p className="text-[0.7rem] uppercase tracking-[0.28em] text-museum-brown">
-                Çalışma Saatleri
-              </p>
-              <p className="mt-2 font-light">{companyInfo.hours}</p>
-            </div>
-
-            <div>
-              <p className="text-[0.7rem] uppercase tracking-[0.28em] text-museum-brown">
-                Adres
-              </p>
-              <p className="mt-2 max-w-sm font-light leading-relaxed">
-                {companyInfo.address}
-              </p>
-            </div>
-
-            <a
-              href={`mailto:${companyInfo.email}`}
-              className="inline-block tracking-[0.1em] text-museum-brown transition-colors hover:text-museum-amber"
-            >
-              {companyInfo.email}
-            </a>
-          </div>
-
-          <div className="mt-10 flex max-w-md flex-col gap-3">
-            <a
+          <div className="mt-10 w-full max-w-sm">
+            <GooeyButton
               href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 border border-museum-brown/40 bg-museum-brown/10 px-5 py-3.5 text-[0.65rem] uppercase tracking-[0.24em] text-museum-bone transition-colors hover:border-museum-amber/50 hover:text-museum-amber"
-            >
-              <WhatsAppGlyph />
-              WhatsApp ile Ulaşın
-            </a>
-
-            <a
-              href={appleMapsDirections}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 bg-museum-bone/95 px-5 py-3.5 text-[0.65rem] uppercase tracking-[0.22em] text-museum-darker transition-opacity hover:opacity-90"
-            >
-              <AppleGlyph />
-              Apple Haritalar ile Yol Tarifi
-            </a>
-
-            <a
-              href={googleMapsDirections}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 bg-museum-brown-deep px-5 py-3.5 text-[0.65rem] uppercase tracking-[0.22em] text-museum-bone transition-colors hover:bg-museum-brown"
-            >
-              <GoogleGlyph />
-              Google Haritalar ile Yol Tarifi
-            </a>
+              label="WhatsApp Üzerinden Ulaşın"
+              icon={<WhatsAppGlyph />}
+            />
           </div>
         </motion.div>
 
-        {/* Sağ — harita */}
         <motion.div
           custom={1}
           variants={fade}
           initial={false}
           animate="visible"
-          className="relative min-h-[420px] overflow-hidden border border-museum-brown/25 bg-museum-darker lg:min-h-full"
+          className="mx-auto mt-16 flex w-full max-w-4xl flex-col items-center"
         >
-          <iframe
-            title="Asil Melody konum haritası"
-            src={mapEmbedSrc}
-            className="absolute inset-0 h-full w-full grayscale invert contrast-125 opacity-85"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
-          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-museum-brown/20" />
+          <div className="relative w-full min-h-[360px] overflow-hidden border border-museum-brown/25 bg-[#e8e4df] md:min-h-[440px]">
+            <iframe
+              title="Asil Melody konum haritası"
+              src={mapEmbedSrc}
+              className="absolute inset-0 h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+
+          <div className="mt-8 flex w-full max-w-sm flex-col items-center gap-4">
+            <p className="text-center text-[0.72rem] uppercase tracking-[0.28em] text-museum-amber">
+              Yol Tarifi
+            </p>
+            <GooeyButton
+              href={appleMapsDirections}
+              label="Apple ile Tarif Al"
+              icon={<AppleGlyph />}
+            />
+            <GooeyButton
+              href={googleMapsDirections}
+              label="Google ile Tarif Al"
+              icon={<GoogleGlyph />}
+            />
+          </div>
         </motion.div>
       </div>
     </main>
@@ -143,7 +108,7 @@ export default function IletisimPage() {
 
 function WhatsAppGlyph() {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 fill-current" aria-hidden>
       <path d="M20.5 3.5A11 11 0 0 0 3.4 17.7L2 22l4.4-1.3A11 11 0 1 0 20.5 3.5zm-8.5 17a9 9 0 0 1-4.6-1.3l-.3-.2-2.6.8.8-2.5-.2-.3a9 9 0 1 1 6.9 3.5zm5-6.7c-.3-.1-1.6-.8-1.9-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5.3-.4a.5.5 0 0 0 0-.5l-.9-2.1c-.2-.5-.5-.5-.6-.5h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5 5 0 0 0 1.1 2.7 11.5 11.5 0 0 0 4.4 3.9 5.2 5.2 0 0 0 3.2.9 2.7 2.7 0 0 0 1.8-.8 2.2 2.2 0 0 0 .5-1.6c0-.2-.2-.3-.4-.4z" />
     </svg>
   );
@@ -151,15 +116,15 @@ function WhatsAppGlyph() {
 
 function AppleGlyph() {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden>
-      <path d="M16.7 12.6c0-2.2 1.8-3.3 1.9-3.4a4.6 4.6 0 0 0-3.6-1.9c-1.5-.2-3 .9-3.7.9s-2-.9-3.2-.9A4.8 4.8 0 0 0 4 11.3c-1 1.8-.3 4.4.7 5.9.5.7 1.1 1.5 1.9 1.5s1.1-.5 2.1-.5 1.3.5 2.1.5 1.3-.7 1.9-1.5a10 10 0 0 0 .9-1.8 4.2 4.2 0 0 1-2.9-4zm-2.6-7.2a4.4 4.4 0 0 0 1-3.1 4.5 4.5 0 0 0-2.9 1.5 4.2 4.2 0 0 0-1 3 3.7 3.7 0 0 0 2.9-1.4z" />
+    <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0 fill-current" aria-hidden>
+      <path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.474 2.341-1.261 3.723 1.338.104 2.715-.688 3.548-1.711z" />
     </svg>
   );
 }
 
 function GoogleGlyph() {
   return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" aria-hidden>
+    <svg viewBox="0 0 24 24" className="h-4 w-4 shrink-0" aria-hidden>
       <path
         fill="currentColor"
         d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4a4.6 4.6 0 0 1-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"

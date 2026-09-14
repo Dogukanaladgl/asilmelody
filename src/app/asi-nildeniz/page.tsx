@@ -15,6 +15,7 @@ export default function AsiNildenizPage() {
         quote={artist.quote}
         imageUrl={artist.profileImage}
         platforms={toPlatformList(artist.platforms)}
+        imagePosition="right"
       />
     </main>
   );

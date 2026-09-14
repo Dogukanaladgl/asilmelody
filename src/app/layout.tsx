@@ -4,7 +4,7 @@ import { Providers } from "@/components/providers/Providers";
 import { SmoothScrolling } from "@/components/layout/SmoothScrolling";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { UrlMask } from "@/components/layout/UrlMask";
+import { ViewPathProvider } from "@/components/layout/ViewPathProvider";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -25,10 +25,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col bg-museum-dark font-display text-museum-bone">
         <SmoothScrolling>
           <Providers>
-            <UrlMask />
-            <Header />
-            <div className="flex flex-1 flex-col">{children}</div>
-            <Footer />
+            <ViewPathProvider>
+              <Header />
+              <div className="flex flex-1 flex-col">{children}</div>
+              <Footer />
+            </ViewPathProvider>
           </Providers>
         </SmoothScrolling>
       </body>

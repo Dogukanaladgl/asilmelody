@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useLenis } from "lenis/react";
+import { useViewPath } from "@/components/layout/ViewPathProvider";
 
 const navItems = [
   { label: "ANA SAYFA", short: "ANA SAYFA", href: "/", match: "/" },
@@ -14,24 +14,29 @@ const navItems = [
     match: "/hakkinda",
   },
   {
-    label: "ASİ NİLDENİZ",
-    short: "NİLDENİZ",
-    href: "/asi-nildeniz",
-    match: "/asi-nildeniz",
-  },
-  {
     label: "ASİ İLDENİZ",
     short: "İLDENİZ",
     href: "/asi-ildeniz",
     match: "/asi-ildeniz",
   },
+  {
+    label: "ASİ NİLDENİZ",
+    short: "NİLDENİZ",
+    href: "/asi-nildeniz",
+    match: "/asi-nildeniz",
+  },
   { label: "İLETİŞİM", short: "İLETİŞİM", href: "/iletisim", match: "/iletisim" },
 ] as const;
 
 export function Header() {
-  const pathname = usePathname();
+  const { viewPath, onNavClick } = useViewPath();
   const lenis = useLenis();
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -48,8 +53,16 @@ export function Header() {
     }
   };
 
-  const isActive = (match: string) =>
-    match === "/" ? pathname === "/" : pathname === match;
+  // Avoid active-state hydration mismatch (cookie / rewritten "/" vs real page).
+  const isActive = (match: string) => {
+    if (!mounted) return false;
+    return match === "/" ? viewPath === "/" : viewPath === match;
+  };
+
+  const go = (href: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+    scrollPageToTop();
+    onNavClick(href)(event);
+  };
 
   return (
     <header
@@ -62,7 +75,7 @@ export function Header() {
       <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-6 px-6 md:h-20 md:px-10">
         <Link
           href="/"
-          onClick={scrollPageToTop}
+          onClick={go("/")}
           className="group shrink-0 leading-tight"
         >
           <span className="block font-display text-base tracking-[0.2em] text-museum-bone transition-colors duration-300 group-hover:text-museum-amber md:text-lg">
@@ -83,7 +96,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={scrollPageToTop}
+                onClick={go(item.href)}
                 className={`relative pb-1 text-[0.7rem] uppercase tracking-[0.28em] transition-colors duration-300 ${
                   active
                     ? "text-museum-amber"
@@ -112,7 +125,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={scrollPageToTop}
+                onClick={go(item.href)}
                 className={`text-[0.58rem] uppercase tracking-[0.16em] transition-colors ${
                   active
                     ? "text-museum-amber"

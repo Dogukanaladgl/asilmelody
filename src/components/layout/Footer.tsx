@@ -3,6 +3,8 @@
 import type { ReactNode } from "react";
 import { companyInfo } from "@/lib/data";
 
+const phoneHref = `tel:${companyInfo.phone.replace(/\s/g, "")}`;
+
 const socialLinks = [
   {
     label: "Facebook",
@@ -64,14 +66,26 @@ export function Footer() {
 
       <div className="relative mx-auto max-w-6xl px-6 py-14 md:px-10 md:py-16">
         <div className="grid grid-cols-1 items-start gap-10 text-center text-sm font-light text-museum-bone-muted md:grid-cols-3 md:gap-8 md:text-left">
-          <div className="md:text-left">
-            <FooterLabel>E-posta</FooterLabel>
-            <a
-              href={`mailto:${companyInfo.email}`}
-              className="tracking-[0.08em] text-museum-bone transition-colors hover:text-museum-amber"
-            >
-              {companyInfo.email}
-            </a>
+          <div className="space-y-8 md:text-left">
+            <div>
+              <FooterLabel>E-posta</FooterLabel>
+              <a
+                href={`mailto:${companyInfo.email}`}
+                className="tracking-[0.08em] text-museum-bone transition-colors hover:text-museum-amber"
+              >
+                {companyInfo.email}
+              </a>
+            </div>
+
+            <div>
+              <FooterLabel>Telefon</FooterLabel>
+              <a
+                href={phoneHref}
+                className="tracking-[0.08em] text-museum-bone transition-colors hover:text-museum-amber"
+              >
+                {companyInfo.phone}
+              </a>
+            </div>
           </div>
 
           <div className="flex flex-col items-center text-center">
@@ -113,7 +127,7 @@ export function Footer() {
 
         <div className="mt-10 text-center">
           <FooterLabel>Mesai Saatleri</FooterLabel>
-          <p className="text-sm font-light text-museum-bone">09:00 — 17:00</p>
+          <p className="text-sm font-light text-museum-bone">Haftaiçi: 09:00 — 17:00</p>
         </div>
 
         <div className="mt-12 flex flex-col items-center gap-3 border-t border-museum-brown/15 pt-8 text-[0.58rem] uppercase tracking-[0.22em] text-museum-bone-muted/85 sm:flex-row sm:justify-between">

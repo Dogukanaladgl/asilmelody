@@ -2,7 +2,9 @@ export interface ArtistPlatformLinks {
   spotify: string;
   appleMusic: string;
   tidal: string;
+  youtubeMusic: string;
   youtube: string;
+  instagram: string;
 }
 
 export interface Artist {
@@ -54,7 +56,9 @@ export const artists: Artist[] = [
       spotify: "https://open.spotify.com",
       appleMusic: "https://music.apple.com",
       tidal: "https://tidal.com",
+      youtubeMusic: "https://music.youtube.com",
       youtube: "https://youtube.com",
+      instagram: "https://instagram.com",
     },
   },
   {
@@ -66,53 +70,19 @@ export const artists: Artist[] = [
       spotify: "https://open.spotify.com",
       appleMusic: "https://music.apple.com",
       tidal: "https://tidal.com",
+      youtubeMusic: "https://music.youtube.com",
       youtube: "https://youtube.com",
+      instagram: "https://instagram.com",
     },
   },
 ];
 
 export const exhibits: Exhibit[] = [
   {
-    id: "abece",
-    title: "ABECE",
-    subtitle: "Kraliyet açılışı",
-    catalogNumber: "AM-001",
-    year: "2024",
-    artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/abece.webp",
-    description: "Taçlar ve ateş arasında doğan ilk salon.",
-    youtubeUrl:
-      "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+ABECE",
-  },
-  {
-    id: "yildirim-kivilcim",
-    title: "Yıldırım & Kıvılcım",
-    subtitle: "İkili fırtına",
-    catalogNumber: "AM-002",
-    year: "2024",
-    artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/yildirim-kivilcim.webp",
-    description: "Mavi yıldırım ile turuncu kıvılcımın buluştuğu koridor.",
-    youtubeUrl:
-      "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+Yildirim+Kivilcim",
-  },
-  {
-    id: "gercek-zaman",
-    title: "Gerçek Zaman",
-    subtitle: "Gece bulvarı",
-    catalogNumber: "AM-003",
-    year: "2025",
-    artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/gercek-zaman.webp",
-    description: "Islak asfalt, neon ve klasik otomobiller eşliğinde bir gece sergisi.",
-    youtubeUrl:
-      "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+Gercek+Zaman",
-  },
-  {
     id: "asil-azmaz",
     title: "Asil Azmaz & Bal Kokmaz",
-    subtitle: "Kırmızı halı",
-    catalogNumber: "AM-004",
+    subtitle: "Original Mix",
+    catalogNumber: "AM-001",
     year: "2025",
     artists: "Asi İldeniz & Asi Nildeniz",
     image: "/images/exhibits/asil-azmaz-bal-kokmaz.webp",
@@ -121,10 +91,82 @@ export const exhibits: Exhibit[] = [
       "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+Asil+Azmaz+Bal+Kokmaz",
   },
   {
+    id: "yildirim-kivilcim",
+    title: "Yıldırım & Kıvılcım",
+    subtitle: "Final Mix",
+    catalogNumber: "AM-002",
+    year: "2024",
+    artists: "Asi Nildeniz & Asi İldeniz",
+    image: "/images/exhibits/yildirim-kivilcim.webp",
+    description: "Mavi yıldırım ile turuncu kıvılcımın buluştuğu koridor.",
+    youtubeUrl:
+      "https://www.youtube.com/results?search_query=Asi+Nildeniz+Asi+Ildeniz+Yildirim+Kivilcim",
+  },
+  {
+    id: "abece",
+    title: "ABECE",
+    subtitle: "Original Mix",
+    catalogNumber: "AM-003",
+    year: "2024",
+    artists: "Asi Nildeniz & Asi İldeniz",
+    image: "/images/exhibits/abece.webp",
+    description: "Taçlar ve ateş arasında doğan ilk salon.",
+    youtubeUrl:
+      "https://www.youtube.com/results?search_query=Asi+Nildeniz+Asi+Ildeniz+ABECE",
+  },
+  {
+    id: "firavunun-tovbesi",
+    title: "Firavunun Tövbesi",
+    subtitle: "Original Version",
+    catalogNumber: "AM-004",
+    year: "2025",
+    artists: "Asi Nildeniz & Asi İldeniz",
+    image: "/images/exhibits/firavunun-tovbesi.webp",
+    description: "Piramitler ve altın yankılar arasında bir tövbe.",
+    youtubeUrl:
+      "https://www.youtube.com/results?search_query=Asi+Nildeniz+Asi+Ildeniz+Firavun+Tovbesi",
+  },
+  {
+    id: "anlat-sen-ben-dinlerim",
+    title: "Anlat Sen — Ben Dinlerim",
+    subtitle: "Extended Mix",
+    catalogNumber: "AM-005",
+    year: "2025",
+    artists: "Asi Nildeniz & Asi İldeniz",
+    image: "/images/exhibits/yildirim-kivilcim-poster.webp",
+    description: "Fırtınalı bir gökyüzü altında anlatılan bir hikâye.",
+    youtubeUrl:
+      "https://www.youtube.com/results?search_query=Asi+Nildeniz+Asi+Ildeniz+Anlat+Sen+Ben+Dinlerim",
+  },
+  {
+    id: "my-kahin",
+    title: "My Kâhin",
+    subtitle: "Original Mix",
+    catalogNumber: "AM-006",
+    year: "2024",
+    artists: "Asi İldeniz & Asi Nildeniz",
+    image: "/images/exhibits/my-kahin.webp",
+    description: "Sessizliğin içinden yükselen bir kehanet.",
+    youtubeUrl:
+      "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+My+Kahin",
+  },
+  {
+    id: "gercek-zaman",
+    title: "Gerçek Zaman",
+    subtitle: "Gece bulvarı",
+    catalogNumber: "AM-007",
+    year: "2025",
+    artists: "Asi İldeniz & Asi Nildeniz",
+    image: "/images/exhibits/gercek-zaman.webp",
+    description: "Islak asfalt, neon ve klasik otomobiller eşliğinde bir gece sergisi.",
+    youtubeUrl:
+      "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+Gercek+Zaman",
+  },
+  {
     id: "serbest-zaman",
     title: "Serbest Zaman",
     subtitle: "Ay ve güneş",
-    catalogNumber: "AM-005",
+    catalogNumber: "AM-008",
     year: "2025",
     artists: "Asi İldeniz & Asi Nildeniz",
     image: "/images/exhibits/serbest-zaman.webp",
@@ -133,40 +175,16 @@ export const exhibits: Exhibit[] = [
       "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+Serbest+Zaman",
   },
   {
-    id: "firavunun-tovbesi",
-    title: "Firavunun Tövbesi",
-    subtitle: "Antik salon",
-    catalogNumber: "AM-006",
-    year: "2025",
-    artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/firavunun-tovbesi.webp",
-    description: "Piramitler ve altın yankılar arasında bir tövbe.",
-    youtubeUrl:
-      "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+Firavun+Tovbesi",
-  },
-  {
     id: "2x2-5",
     title: "2 × 2 = 5",
     subtitle: "Duvar of fame",
-    catalogNumber: "AM-007",
+    catalogNumber: "AM-009",
     year: "2024",
     artists: "Asi İldeniz & DJ Mic Check",
     image: "/images/exhibits/2x2-5.webp",
     description: "Efsaneler duvarında yeni bir çerçeve.",
     youtubeUrl:
       "https://www.youtube.com/results?search_query=Asi+Ildeniz+2x2%3D5",
-  },
-  {
-    id: "my-kahin",
-    title: "My Kâhin",
-    subtitle: "Kehanet salonu",
-    catalogNumber: "AM-008",
-    year: "2024",
-    artists: "Asi İldeniz & Asi Nildeniz",
-    image: "/images/exhibits/my-kahin.webp",
-    description: "Sessizliğin içinden yükselen bir kehanet.",
-    youtubeUrl:
-      "https://www.youtube.com/results?search_query=Asi+Ildeniz+Asi+Nildeniz+My+Kahin",
   },
 ];
 
@@ -217,6 +235,8 @@ export function toPlatformList(platforms: ArtistPlatformLinks) {
     { name: "Apple Music", url: platforms.appleMusic },
     { name: "Spotify", url: platforms.spotify },
     { name: "Tidal", url: platforms.tidal },
+    { name: "YouTube Music", url: platforms.youtubeMusic },
     { name: "YouTube", url: platforms.youtube },
+    { name: "Instagram", url: platforms.instagram },
   ];
 }

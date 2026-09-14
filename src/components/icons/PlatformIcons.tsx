@@ -33,3 +33,22 @@ export function YouTubeIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function YouTubeMusicIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
+      <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 17.8A7.8 7.8 0 1 1 19.8 12 7.8 7.8 0 0 1 12 19.8z" />
+      <path d="M10 8.4v7.2l6-3.6z" />
+    </svg>
+  );
+}
+
+export function InstagramIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...props}>
+      <path d="M12 7a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8.2A3.2 3.2 0 1 1 15.2 12 3.2 3.2 0 0 1 12 15.2z" />
+      <circle cx="17.5" cy="6.5" r="1.2" />
+      <path d="M17 2H7a5 5 0 0 0-5 5v10a5 5 0 0 0 5 5h10a5 5 0 0 0 5-5V7a5 5 0 0 0-5-5zm3.2 15a3.2 3.2 0 0 1-3.2 3.2H7A3.2 3.2 0 0 1 3.8 17V7A3.2 3.2 0 0 1 7 3.8h10A3.2 3.2 0 0 1 20.2 7z" />
+    </svg>
+  );
+}

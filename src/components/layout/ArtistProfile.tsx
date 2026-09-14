@@ -17,16 +17,18 @@ interface ArtistProfileProps {
   quote: string;
   imageUrl: string;
   platforms: ArtistPlatform[];
+  /** İldeniz: left (default). Nildeniz: right — eski site düzeni. */
+  imagePosition?: "left" | "right";
 }
 
-const fadeInRight = {
-  hidden: { opacity: 0, x: -48 },
+const fadeInFrom = (from: "left" | "right") => ({
+  hidden: { opacity: 0, x: from === "left" ? -48 : 48 },
   visible: {
     opacity: 1,
     x: 0,
     transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] as const },
   },
-};
+});
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 28 },
@@ -46,7 +48,10 @@ export function ArtistProfile({
   quote,
   imageUrl,
   platforms,
+  imagePosition = "left",
 }: ArtistProfileProps) {
+  const imageOnRight = imagePosition === "right";
+
   return (
     <section className="relative mx-auto min-h-[80vh] max-w-7xl px-6 pb-20 pt-32">
       <GooeyFilterDefs />
@@ -54,12 +59,20 @@ export function ArtistProfile({
       <p className="mb-10 text-center text-[0.65rem] uppercase tracking-[0.45em] text-museum-brown lg:text-left">
         Sanatçı Salonu
       </p>
-      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[30rem_minmax(0,1fr)] lg:gap-16">
+      <div
+        className={`grid grid-cols-1 items-center gap-12 lg:gap-16 ${
+          imageOnRight
+            ? "lg:grid-cols-[minmax(0,1fr)_30rem]"
+            : "lg:grid-cols-[30rem_minmax(0,1fr)]"
+        }`}
+      >
         <motion.div
-          variants={fadeInRight}
+          variants={fadeInFrom(imageOnRight ? "right" : "left")}
           initial={false}
           animate="visible"
-          className="relative mx-auto w-full max-w-[30rem] overflow-hidden lg:mx-0 lg:w-[30rem]"
+          className={`relative mx-auto w-full max-w-[30rem] overflow-hidden lg:mx-0 lg:w-[30rem] ${
+            imageOnRight ? "lg:order-2 lg:ml-auto" : ""
+          }`}
         >
           <div className="relative aspect-[5/6] w-full overflow-hidden">
             <Image
@@ -74,7 +87,7 @@ export function ArtistProfile({
           </div>
         </motion.div>
 
-        <div className="flex flex-col">
+        <div className={`flex flex-col ${imageOnRight ? "lg:order-1" : ""}`}>
           <motion.div
             custom={0}
             variants={fadeInUp}
