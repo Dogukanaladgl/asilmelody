@@ -81,7 +81,7 @@ export function ArtistProfile({
               fill
               priority
               unoptimized
-              sizes="480px"
+              sizes="640px"
               className="object-cover object-[center_15%]"
             />
           </div>

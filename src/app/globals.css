@@ -109,10 +109,31 @@ textarea,
 }
 
 .museum-frame {
-  border: 1px solid color-mix(in srgb, var(--museum-brown) 35%, transparent);
+  border: 1px solid color-mix(in srgb, var(--museum-brown) 45%, transparent);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--museum-brown) 22%, #241c17) 0%,
+      #161210 100%
+    );
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.55),
-    inset 0 0 0 1px rgba(196, 165, 116, 0.08);
+    inset 0 0 0 1px rgba(196, 165, 116, 0.1);
+  padding: 0.28rem;
+}
+
+.museum-frame--landscape {
+  padding: 0.32rem;
+}
+
+.museum-frame__mat {
+  background: transparent;
+  padding: 0;
+  overflow: hidden;
+}
+
+.museum-frame--landscape .museum-frame__mat {
+  padding: 0;
 }
 
 .museum-frame img,
@@ -226,5 +247,47 @@ textarea,
 
 .c-button--gooey:hover .c-button__blobs div {
   transform: scale(1.4) translateY(0) translateZ(0);
+}
+
+/* Kösele ayak izi — scroll footsteps (halı üzerinde iz bırakır) */
+.carpet-steps-container {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  width: 100%;
+  min-height: 100%;
+  overflow: visible;
+}
+
+.shoe-step {
+  position: absolute;
+  width: 32px;
+  height: 80px;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: stepFade 2.5s forwards ease-out;
+}
+
+@keyframes stepFade {
+  0% {
+    opacity: 0.88;
+    transform: var(--step-transform) scale(0.92);
+  }
+  12% {
+    opacity: 0.82;
+    transform: var(--step-transform) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: var(--step-transform) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shoe-step {
+    display: none;
+  }
 }
 

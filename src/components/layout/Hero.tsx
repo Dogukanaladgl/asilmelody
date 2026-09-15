@@ -6,6 +6,7 @@ import { useLayoutEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useViewPath } from "@/components/layout/ViewPathProvider";
 import { artists, brandLogo } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,6 +15,7 @@ const ildeniz = artists[0];
 const nildeniz = artists[1];
 
 export function Hero() {
+  const { onNavClick } = useViewPath();
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
 
@@ -70,6 +72,7 @@ export function Hero() {
             <div className="grid grid-cols-1 sm:grid-cols-3">
               <Link
                 href="/asi-ildeniz"
+                onClick={onNavClick("/asi-ildeniz")}
                 className="group relative aspect-square overflow-hidden bg-black"
               >
                 <Image
@@ -101,6 +104,7 @@ export function Hero() {
 
               <Link
                 href="/asi-nildeniz"
+                onClick={onNavClick("/asi-nildeniz")}
                 className="group relative aspect-square overflow-hidden bg-black"
               >
                 <Image

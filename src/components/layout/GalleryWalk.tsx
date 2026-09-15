@@ -56,39 +56,59 @@ export function GalleryWalk() {
         </h2>
       </div>
 
-      <div className="relative mx-auto flex max-w-6xl flex-col gap-24 md:gap-36">
+      <div
+        id="footsteps-track"
+        className="relative mx-auto flex max-w-6xl flex-col gap-24 md:gap-36"
+      >
         {exhibits.map((exhibit, index) => {
           const left = index % 2 === 0;
+          const landscape = exhibit.frame === "landscape";
 
           return (
             <article
               key={exhibit.id}
               data-exhibit
-              className={`group relative flex w-full max-w-md flex-col md:max-w-[min(42%,420px)] ${
+              className={`group relative flex w-full flex-col ${
+                landscape
+                  ? "max-w-lg md:max-w-[min(58%,34rem)]"
+                  : "max-w-md md:max-w-[min(42%,420px)]"
+              } ${
                 left ? "md:mr-auto md:items-start" : "md:ml-auto md:items-end"
               } ${left ? "self-start" : "self-end"}`}
             >
-              <div className="museum-frame relative w-full overflow-hidden bg-museum-dark/40">
-                <div className="pointer-events-none absolute inset-0 z-10 shadow-[inset_0_0_50px_rgba(0,0,0,0.4)]" />
-                <div className="relative aspect-[4/5] w-full">
-                  <Image
-                    src={exhibit.image}
-                    alt={exhibit.title}
-                    fill
-                    unoptimized
-                    sizes="(max-width: 768px) 92vw, 420px"
-                    className="museum-photo object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-museum-dark/70 via-transparent to-black/10" />
+              <div
+                className={`museum-frame relative w-full overflow-hidden ${
+                  landscape ? "museum-frame--landscape" : "museum-frame--portrait"
+                }`}
+              >
+                <div className="museum-frame__mat">
+                  <div
+                    className={`relative w-full overflow-hidden bg-black ${
+                      landscape ? "aspect-[16/9]" : "aspect-square"
+                    }`}
+                  >
+                    <Image
+                      src={exhibit.image}
+                      alt={exhibit.title}
+                      fill
+                      unoptimized
+                      priority={index < 2}
+                      sizes={
+                        landscape
+                          ? "(max-width: 768px) 100vw, 560px"
+                          : "(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 640px"
+                      }
+                      className="object-cover object-center transition-transform duration-[1.1s] ease-out group-hover:scale-[1.02]"
+                    />
+                  </div>
                 </div>
 
-                {/* Subtle museum plaque → YouTube */}
                 <a
                   href={exhibit.youtubeUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${exhibit.title} — YouTube’da izle`}
-                  className="absolute bottom-3 right-3 z-20 inline-flex items-center gap-2 border border-museum-brown/35 bg-museum-dark/70 px-3 py-2 text-museum-bone/70 backdrop-blur-sm transition-colors duration-500 hover:border-museum-amber/50 hover:text-museum-amber"
+                  className="absolute bottom-4 right-4 z-20 inline-flex items-center gap-2 border border-museum-brown/35 bg-museum-dark/70 px-3 py-2 text-museum-bone/70 backdrop-blur-sm transition-colors duration-500 hover:border-museum-amber/50 hover:text-museum-amber"
                 >
                   <YouTubeIcon className="h-3.5 w-3.5 shrink-0 opacity-80" />
                   <span className="text-[0.58rem] uppercase tracking-[0.28em]">

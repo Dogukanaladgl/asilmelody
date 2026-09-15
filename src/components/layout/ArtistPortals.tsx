@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useViewPath } from "@/components/layout/ViewPathProvider";
 import { artists } from "@/lib/data";
 
 type PortalSide = "asi-ildeniz" | "asi-nildeniz" | null;
@@ -26,6 +27,7 @@ const portals = [
 ] as const;
 
 export function ArtistPortals() {
+  const { onNavClick } = useViewPath();
   const [hovered, setHovered] = useState<PortalSide>(null);
 
   return (
@@ -54,6 +56,7 @@ export function ArtistPortals() {
             >
               <Link
                 href={href}
+                onClick={onNavClick(href)}
                 className="group relative block aspect-[3/4] w-full overflow-hidden bg-transparent"
               >
                 <Image
@@ -61,7 +64,7 @@ export function ArtistPortals() {
                   alt={artist.name}
                   fill
                   unoptimized
-                  sizes="(max-width: 640px) 22rem, 360px"
+                  sizes="(max-width: 640px) 22rem, 480px"
                   className="object-cover"
                   style={{
                     objectPosition,

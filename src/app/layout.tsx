@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="tr" className={`${playfair.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-museum-dark font-display text-museum-bone">
+      <body className="relative flex min-h-full flex-col bg-museum-dark font-display text-museum-bone">
         <SmoothScrolling>
           <Providers>
             <ViewPathProvider>

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useViewPath } from "@/components/layout/ViewPathProvider";
 import { aboutProfiles } from "@/lib/data";
 
 const paragraphs = [
@@ -26,6 +27,8 @@ const fadeInUp = {
 };
 
 export default function HakkindaPage() {
+  const { onNavClick } = useViewPath();
+
   return (
     <main className="flex min-h-screen flex-col items-center px-6 pb-24 pt-40 text-center">
       <motion.p
@@ -92,6 +95,7 @@ export default function HakkindaPage() {
               <Link
                 key={profile.id}
                 href={profile.href}
+                onClick={onNavClick(profile.href)}
                 className="group flex flex-col items-center text-center"
               >
                 <span className="relative h-44 w-44 overflow-hidden rounded-full border border-museum-amber/40 bg-black transition-shadow duration-500 group-hover:shadow-[0_0_22px_rgba(224,192,138,0.28)] md:h-52 md:w-52 lg:h-56 lg:w-56">

@@ -8,14 +8,14 @@ const phoneHref = `tel:${companyInfo.phone.replace(/\s/g, "")}`;
 const socialLinks = [
   {
     label: "Facebook",
-    href: "https://facebook.com",
+    href: "https://www.facebook.com/people/Asil-Melody/61574901124501/",
     icon: (
       <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
     ),
   },
   {
     label: "Instagram",
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/asilmelody/",
     icon: (
       <>
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -26,19 +26,19 @@ const socialLinks = [
   },
   {
     label: "TikTok",
-    href: "https://tiktok.com",
+    href: "https://www.tiktok.com/@asilmelody",
     icon: <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />,
   },
   {
     label: "X",
-    href: "https://x.com",
+    href: "https://x.com/asilmelody",
     icon: (
       <path d="M4 4l7.3 8.6L4.5 20H7l5.2-5.8L16.8 20H20l-7.5-8.8L19.5 4H17l-4.8 5.4L7.2 4z" />
     ),
   },
   {
     label: "YouTube",
-    href: "https://youtube.com",
+    href: "https://www.youtube.com/@Asilmelody",
     icon: (
       <>
         <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.6C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" />

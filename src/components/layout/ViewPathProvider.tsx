@@ -59,13 +59,15 @@ export function ViewPathProvider({ children }: { children: ReactNode }) {
   const [viewPath, setViewPath] = useState(pathname);
 
   useEffect(() => {
-    const stored = readCookie(VIEW_COOKIE);
-    const next =
-      stored && ALLOWED.has(stored)
-        ? stored
-        : ALLOWED.has(pathname)
-          ? pathname
-          : "/";
+    // Soft-nav to a real route: trust pathname and sync the cookie.
+    // On "/" (home or refresh after rewrite): restore remembered view from cookie.
+    let next = "/";
+    if (pathname !== "/" && ALLOWED.has(pathname)) {
+      next = pathname;
+    } else if (pathname === "/") {
+      const stored = readCookie(VIEW_COOKIE);
+      next = stored && ALLOWED.has(stored) ? stored : "/";
+    }
     setViewPath(next);
     writeCookie(next);
     maskUrl();

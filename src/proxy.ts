@@ -11,7 +11,7 @@ const ALLOWED = new Set([
   "/iletisim",
 ]);
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Refresh / direct open of "/": serve the remembered page, keep URL as "/".
