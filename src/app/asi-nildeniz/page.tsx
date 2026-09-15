@@ -9,10 +9,11 @@ export default function AsiNildenizPage() {
   if (!artist) return null;
 
   return (
-    <main className="min-h-screen bg-museum-dark">
+    <main className="min-h-screen bg-ink">
       <ArtistProfile
         name={artist.name}
         quote={artist.quote}
+        bio={artist.bio}
         imageUrl={artist.profileImage}
         platforms={toPlatformList(artist.platforms)}
         imagePosition="right"

@@ -50,7 +50,7 @@ const socialLinks = [
 
 function FooterLabel({ children }: { children: ReactNode }) {
   return (
-    <p className="mb-2.5 text-[0.72rem] uppercase tracking-[0.28em] text-museum-amber">
+    <p className="mb-2.5 text-[0.72rem] uppercase tracking-[0.28em] text-accent">
       {children}
     </p>
   );
@@ -58,20 +58,15 @@ function FooterLabel({ children }: { children: ReactNode }) {
 
 export function Footer() {
   return (
-    <footer className="relative z-[2] mt-auto border-t border-museum-brown/15 bg-museum-darker/80">
-      <div
-        className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-museum-carpet/40 to-transparent"
-        aria-hidden
-      />
-
+    <footer className="relative z-[2] mt-auto border-t border-cream/10 bg-ink-soft">
       <div className="relative mx-auto max-w-6xl px-6 py-14 md:px-10 md:py-16">
-        <div className="grid grid-cols-1 items-start gap-10 text-center text-sm font-light text-museum-bone-muted md:grid-cols-3 md:gap-8 md:text-left">
+        <div className="grid grid-cols-1 items-start gap-10 text-center text-sm font-light text-cream/65 md:grid-cols-3 md:gap-8 md:text-left">
           <div className="space-y-8 md:text-left">
             <div>
               <FooterLabel>E-posta</FooterLabel>
               <a
                 href={`mailto:${companyInfo.email}`}
-                className="tracking-[0.08em] text-museum-bone transition-colors hover:text-museum-amber"
+                className="tracking-[0.08em] text-cream transition-colors hover:text-accent"
               >
                 {companyInfo.email}
               </a>
@@ -81,7 +76,7 @@ export function Footer() {
               <FooterLabel>Telefon</FooterLabel>
               <a
                 href={phoneHref}
-                className="tracking-[0.08em] text-museum-bone transition-colors hover:text-museum-amber"
+                className="tracking-[0.08em] text-cream transition-colors hover:text-accent"
               >
                 {companyInfo.phone}
               </a>
@@ -98,7 +93,7 @@ export function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-museum-amber/35 text-museum-bone transition-colors duration-300 hover:border-museum-amber hover:bg-museum-amber/10 hover:text-museum-amber"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors duration-300 hover:border-accent hover:text-accent"
                   >
                     <svg
                       viewBox="0 0 24 24"
@@ -119,26 +114,15 @@ export function Footer() {
 
           <div className="md:text-right">
             <FooterLabel>Adres</FooterLabel>
-            <p className="leading-relaxed text-museum-bone md:ml-auto md:max-w-[18rem]">
+            <p className="leading-relaxed text-cream md:ml-auto md:max-w-[18rem]">
               {companyInfo.address}
             </p>
           </div>
         </div>
 
-        <div className="mt-10 text-center">
-          <FooterLabel>Mesai Saatleri</FooterLabel>
-          <p className="text-sm font-light text-museum-bone">Haftaiçi: 09:00 — 17:00</p>
-        </div>
-
-        <div className="mt-12 flex flex-col items-center gap-3 border-t border-museum-brown/15 pt-8 text-[0.58rem] uppercase tracking-[0.22em] text-museum-bone-muted/85 sm:flex-row sm:justify-between">
+        <div className="mt-12 flex flex-col items-center gap-3 border-t border-cream/10 pt-8 text-[0.58rem] uppercase tracking-[0.22em] text-cream/50 sm:flex-row sm:justify-between">
           <p>© 2026 Asil&apos;s a Melody</p>
-          <p className="flex items-center gap-2">
-            <span
-              className="inline-block h-1 w-1 rounded-full bg-museum-brown"
-              aria-hidden
-            />
-            Evrenin Asil sesi
-          </p>
+          <p>Evrenin Asil sesi</p>
         </div>
       </div>
     </footer>

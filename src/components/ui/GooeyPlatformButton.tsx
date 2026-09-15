@@ -8,18 +8,20 @@ import {
   YouTubeMusicIcon,
 } from "@/components/icons/PlatformIcons";
 
+const iconClass = "platform-icon";
+
 const platformIcons: Record<string, ReactNode> = {
-  "Apple Music": <AppleMusicIcon className="h-4 w-4 shrink-0" />,
-  Spotify: <SpotifyIcon className="h-4 w-4 shrink-0" />,
-  Tidal: <TidalIcon className="h-4 w-4 shrink-0" />,
-  "YouTube Music": <YouTubeMusicIcon className="h-4 w-4 shrink-0" />,
-  YouTube: <YouTubeIcon className="h-4 w-4 shrink-0" />,
-  Instagram: <InstagramIcon className="h-4 w-4 shrink-0" />,
+  "Apple Music": <AppleMusicIcon className={iconClass} />,
+  Spotify: <SpotifyIcon className={iconClass} />,
+  Tidal: <TidalIcon className={iconClass} />,
+  "YouTube Music": <YouTubeMusicIcon className={iconClass} />,
+  YouTube: <YouTubeIcon className={iconClass} />,
+  Instagram: <InstagramIcon className={iconClass} />,
 };
 
 interface GooeyButtonProps {
   href: string;
-  label: string;
+  label: ReactNode;
   icon?: ReactNode;
   external?: boolean;
 }
@@ -43,9 +45,11 @@ export function GooeyButton({
         {label}
       </span>
       <div className="c-button__blobs" aria-hidden>
-        <div />
-        <div />
-        <div />
+        <div className="c-button__blobs-inner">
+          <div />
+          <div />
+          <div />
+        </div>
       </div>
     </a>
   );
@@ -66,12 +70,18 @@ export function GooeyFilterDefs() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      version="1.1"
       className="pointer-events-none absolute h-0 w-0 overflow-hidden"
       aria-hidden
     >
       <defs>
-        <filter id="goo">
+        <filter
+          id="goo"
+          x="-50%"
+          y="-50%"
+          width="200%"
+          height="200%"
+          colorInterpolationFilters="sRGB"
+        >
           <feGaussianBlur
             in="SourceGraphic"
             stdDeviation="10"

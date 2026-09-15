@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useViewPath } from "@/components/layout/ViewPathProvider";
 import { aboutProfiles } from "@/lib/data";
+import { SharpImage } from "@/components/ui/SharpImage";
 
 const paragraphs = [
   "Asil Melody, sadece bir müzik platformu değil; notaların ve sessizliğin arasında yankılanan sanatsal bir serüvendir. Asi İldeniz ve Asi Nildeniz’in ruhundan kopan eserler, burada zamanın ötesinde bir müzede sergilenir.",
@@ -99,12 +99,11 @@ export default function HakkindaPage() {
                 className="group flex flex-col items-center text-center"
               >
                 <span className="relative h-44 w-44 overflow-hidden rounded-full border border-museum-amber/40 bg-black transition-shadow duration-500 group-hover:shadow-[0_0_22px_rgba(224,192,138,0.28)] md:h-52 md:w-52 lg:h-56 lg:w-56">
-                  <Image
+                  <SharpImage
                     src={profile.image}
                     alt={profile.name}
                     fill
-                    unoptimized
-                    sizes="224px"
+                    sizes="(max-width: 768px) 45vw, 280px"
                     className={
                       isLogo
                         ? "object-cover"

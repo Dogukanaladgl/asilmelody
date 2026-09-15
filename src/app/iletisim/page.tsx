@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { companyInfo } from "@/lib/data";
+import { companyInfo, contactCopy } from "@/lib/data";
 import {
   GooeyButton,
   GooeyFilterDefs,
@@ -39,27 +39,38 @@ export default function IletisimPage() {
           variants={fade}
           initial={false}
           animate="visible"
-          className="mx-auto flex max-w-2xl flex-col items-center text-center"
+          className="mx-auto flex max-w-3xl flex-col items-center text-center"
         >
-          <h1 className="font-display text-4xl font-light tracking-[0.12em] text-museum-bone md:text-5xl">
-            Bize Ulaşın
+          <p className="text-[0.62rem] uppercase tracking-[0.45em] text-museum-brown">
+            {contactCopy.eyebrow}
+          </p>
+          <h1 className="mt-4 font-display text-4xl font-light tracking-[0.12em] text-museum-bone md:text-5xl">
+            {contactCopy.title}
           </h1>
           <div
-            className="mt-4 h-px w-16 bg-museum-carpet-edge/80"
+            className="mt-4 h-px w-16 bg-accent/80"
             aria-hidden
           />
 
-          <p className="mt-8 text-lg font-light tracking-wide text-museum-bone md:text-xl">
-            Birlikte Daha İyiyiz
-          </p>
-          <p className="mt-3 max-w-md text-sm font-light leading-relaxed text-museum-bone-muted md:text-base">
-            Ortak çalışma, proje ve önerileriniz için iletişime geçebilirsiniz.
+          <p className="mt-8 text-lg font-light tracking-wide text-museum-amber md:text-xl">
+            {contactCopy.lead}
           </p>
 
-          <div className="mt-10 w-full max-w-sm">
+          <div className="mt-8 space-y-5 text-left sm:text-center">
+            {contactCopy.paragraphs.map((paragraph) => (
+              <p
+                key={paragraph.slice(0, 32)}
+                className="text-sm font-light leading-relaxed tracking-wide text-museum-bone-muted md:text-base"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+
+          <div className="mt-12 w-full max-w-sm">
             <GooeyButton
               href={whatsappHref}
-              label="WhatsApp Üzerinden Ulaşın"
+              label={contactCopy.whatsappLabel}
               icon={<WhatsAppGlyph />}
             />
           </div>
@@ -70,9 +81,15 @@ export default function IletisimPage() {
           variants={fade}
           initial={false}
           animate="visible"
-          className="mx-auto mt-16 flex w-full max-w-4xl flex-col items-center"
+          className="mx-auto mt-20 flex w-full max-w-4xl flex-col items-center"
         >
-          <div className="relative w-full min-h-[360px] overflow-hidden border border-museum-brown/25 bg-[#e8e4df] md:min-h-[440px]">
+          <h2 className="font-display text-2xl tracking-[0.18em] text-museum-bone md:text-3xl">
+            {contactCopy.mapLabel}
+          </h2>
+          <p className="mt-4 max-w-2xl text-center text-sm font-light leading-relaxed text-museum-bone-muted md:text-base">
+            {contactCopy.mapHint}
+          </p>
+          <div className="relative mt-10 w-full min-h-[360px] overflow-hidden border border-museum-brown/25 bg-[#e8e4df] md:min-h-[440px]">
             <iframe
               title="Asil Melody konum haritası"
               src={mapEmbedSrc}

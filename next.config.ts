@@ -20,9 +20,10 @@ function localNetworkHosts() {
 const nextConfig: NextConfig = {
   allowedDevOrigins: localNetworkHosts(),
   images: {
-    formats: ["image/avif", "image/webp"],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1440, 1920, 2048],
-    imageSizes: [64, 96, 128, 256, 384, 512],
+    // AVIF bazen yumuşak görünebilir; WebP + yüksek kalite daha net
+    formats: ["image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1440, 1600, 1920, 2048, 2560],
+    imageSizes: [64, 96, 128, 256, 384, 512, 640, 768, 1024],
     qualities: [75, 85, 90, 95, 100],
     minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [

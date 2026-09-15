@@ -1,15 +1,15 @@
 import { Hero } from "@/components/layout/Hero";
-import { GalleryWalk } from "@/components/layout/GalleryWalk";
+import { FeaturedMusic } from "@/components/home/FeaturedMusic";
 import { ArtistPortals } from "@/components/layout/ArtistPortals";
+import { PartnerBridge } from "@/components/home/PartnerBridge";
 
 export default function Home() {
   return (
-    <main className="relative flex-1 overflow-x-clip bg-museum-dark">
-      <div className="carpet-runner hidden md:block" aria-hidden />
-
+    <main className="relative flex-1 overflow-x-clip bg-ink">
       <Hero />
-      <GalleryWalk />
+      <FeaturedMusic />
       <ArtistPortals />
+      <PartnerBridge />
     </main>
   );
 }

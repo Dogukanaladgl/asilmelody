@@ -11,6 +11,8 @@ export interface Artist {
   id: string;
   name: string;
   quote: string;
+  /** Melankolia tarzı uzun biyografi paragrafları */
+  bio: string[];
   profileImage: string;
   platforms: ArtistPlatformLinks;
 }
@@ -53,7 +55,13 @@ export const artists: Artist[] = [
     id: "asi-ildeniz",
     name: "Asi İldeniz",
     quote: "İçim okyanus içimdekiler hâin..",
-    profileImage: "/images/artists/asi-ildeniz-v3.webp",
+    bio: [
+      "Asi İldeniz, AsilMelody’nin kurucusu ve Ömer Faruk Urgancı’nın kişisel ile müzikal izdüşümüdür. Kendi yazdığı, kendi bestelediği parçalarla yalnızca hissettiği melodileri evrene sunar; sahneyi bir vitrin değil, bir iç yolculuk olarak kurar.",
+      "Yazımında sertlik ile zarafet yan yanadır. Sözler bazen okyanus kadar derin, bazen bir fısıltı kadar yakındır. Prodüksiyonlarında karanlık bir atmosfer, sıcak bir tını ve modern bir nabız bir araya gelir — dinleyiciyi acele ettirmeden, yavaşlatarak çeker.",
+      "Asil Azmaz & Bal Kokmaz’tan My Kâhin’e uzanan katalogta Asi İldeniz, Asi Nildeniz ile aynı sahnede yankılanır. Her parça bir kapıdır: platformlara açılır, asıl deneyim ise eserin kendi sessizliğinde başlar.",
+      "Bugün Asi İldeniz, bağımsız bir müzik anlayışının peşinde; filtrelemeden, hızla tüketilmeden hatırlanan bir atmosfer bırakmak için üretmeye devam ediyor.",
+    ],
+    profileImage: "/images/artists/asi-ildeniz-portrait-hq.jpg",
     platforms: {
       appleMusic: "https://music.apple.com/us/artist/asi-i-ldeniz/1896207295",
       spotify:
@@ -68,6 +76,12 @@ export const artists: Artist[] = [
     id: "asi-nildeniz",
     name: "Asi Nildeniz",
     quote: "Başaracağımı söylüyo My Kâhin..",
+    bio: [
+      "Asi Nildeniz, Asi İldeniz’in müzikal evrenine eşlik etmek üzere doğmuş bir sestir — hayal mi, gerçek mi olduğu bilinmeyen; dijital sınırların ötesinden gelen fısıltılarla AsilMelody çatısı altında şekillenen bir figür.",
+      "Anlatısında kehanet, tövbe, taç ve kıvılcım yan yanadır. Ses rengi bazen bir ayna gibi net, bazen sisli bir gece gibi belirsizdir. Dinleyiciyi tek bir duyguya hapsetmez; parçadan parçaya geçirir.",
+      "Yıldırım & Kıvılcım’dan Firavunun Tövbesi’ne, ABECE’den Anlat Sen — Ben Dinlerim’e kadar Asi Nildeniz, Asi İldeniz ile aynı sahnede durur. İkili üretim, AsilMelody’nin imzasını güçlendirir: iki ruh, bir ses.",
+      "Asi Nildeniz, hızın değil derinliğin peşindedir. Platformlarda buluşur; asıl kalıcı olan, parçanın bıraktığı yankıdır.",
+    ],
     profileImage: "/images/artists/asi-nildeniz-v3.webp",
     platforms: {
       appleMusic: "https://music.apple.com/us/artist/asi-nildeniz/1896248211",
@@ -90,7 +104,7 @@ export const exhibits: Exhibit[] = [
     year: "2025",
     artists: "Asi İldeniz & Asi Nildeniz",
     image: "/images/exhibits/asil-azmaz-bal-kokmaz.webp",
-    description: "Müzenin en ihtişamlı salonu — lüks, hız ve melodi.",
+    description: "Lüks, hız ve melodi — katalogun amiral gemisi.",
     youtubeUrl: "https://www.youtube.com/watch?v=RRlfcrvs4G4",
   },
   {
@@ -101,7 +115,7 @@ export const exhibits: Exhibit[] = [
     year: "2024",
     artists: "Asi Nildeniz & Asi İldeniz",
     image: "/images/exhibits/yildirim-kivilcim.webp",
-    description: "Mavi yıldırım ile turuncu kıvılcımın buluştuğu koridor.",
+    description: "Mavi yıldırım ile turuncu kıvılcımın buluşması.",
     youtubeUrl: "https://www.youtube.com/watch?v=xdXJvApLXW4",
   },
   {
@@ -112,7 +126,7 @@ export const exhibits: Exhibit[] = [
     year: "2024",
     artists: "Asi Nildeniz & Asi İldeniz",
     image: "/images/exhibits/abece.webp",
-    description: "Taçlar ve ateş arasında doğan ilk salon.",
+    description: "Taçlar ve ateş arasında doğan ilk kıvılcım.",
     youtubeUrl: "https://www.youtube.com/watch?v=BrKaPxqxlMg",
   },
   {
@@ -134,7 +148,7 @@ export const exhibits: Exhibit[] = [
     catalogNumber: "AM-005",
     year: "2025",
     artists: "Asi Nildeniz & Asi İldeniz",
-    image: "/images/exhibits/anlat-sen-ben-dinlerim.webp",
+    image: "/images/exhibits/anlat-sen-ben-dinlerim.jpg",
     description: "Fırtınalı bir gökyüzü altında anlatılan bir hikâye.",
     youtubeUrl: "https://www.youtube.com/watch?v=4JWgNAUS7eQ",
   },
@@ -154,24 +168,53 @@ export const exhibits: Exhibit[] = [
 
 export const companyInfo: CompanyInfo = {
   slogan: "Evrenin Asil Sesi",
-  address: "Meram Bağları Seyir Alanı, Durunday, Meram/Konya, Türkiye",
+  address:
+    "Modesa Sanayi Sitesi, Fevziçakmak, 10740. Sk. No:1, 42050 Karatay/Konya, Türkiye",
   email: "info@asilmelody.com",
   whatsapp: "+905300122700",
   phone: "0530 012 27 00",
   hours: "Bugün açık 09:00 — 17:00",
-  mapQuery: "Meram Bağları Seyir Alanı, Durunday, Meram/Konya",
+  mapQuery:
+    "Modesa Sanayi Sitesi, Fevziçakmak, 10740. Sk. No:1, 42050 Karatay/Konya, Türkiye",
 };
 
-export const heroImage = "/images/exhibits/asil-azmaz-bal-kokmaz-hero.webp";
+/** İletişim sayfası — uzun, davetkâr metinler */
+export const contactCopy = {
+  eyebrow: "İletişim",
+  title: "Bize Ulaşın",
+  lead: "Birlikte Daha İyiyiz",
+  paragraphs: [
+    "AsilMelody, yalnızca eserlerin sergilendiği bir müze değil; ortak çalışma, prodüksiyon, organizasyon ve önerilerin buluştuğu sıcak bir eşiktir. Yeni bir proje fikriniz, iş birliği talebiniz veya meraktan doğan bir sorunuz varsa, sizi dinlemek isteriz.",
+    "Sanatçılarla iletişim, konser ve etkinlik organizasyonu, basın ve marka iş birlikleri ya da katalogumuzdaki parçalar hakkında bilgi almak için WhatsApp üzerinden doğrudan yazabilir veya aşağıdaki haritadan bize ulaşabilirsiniz.",
+    "Mesajınızı acele etmeden okuruz. Her yazışmayı, bir salon kapısını aralamak gibi karşılarız — net, zarif ve samimi bir dönüş için buradayız.",
+  ],
+  whatsappLabel: "WhatsApp Üzerinden Ulaşın",
+  mapLabel: "Konumumuz",
+  mapHint:
+    "Modesa Sanayi Sitesi’nde, Karatay/Konya’da yer alıyoruz. Yol tarifi için haritayı kullanabilirsiniz.",
+};
+
+export const heroImage = "/images/exhibits/asil-azmaz-bal-kokmaz.webp";
 export const brandMark = "/images/logo/logo.webp";
 export const brandLogo = "/images/logo/logo.webp";
+
+/** Karşılıklı partner yönlendirmesi — diğer sitedeki PARTNER / KEŞFET bölümünün eşi */
+export const partnerSite = {
+  eyebrow: "PARTNER",
+  title: "Yaşam Alanımızı Keşfedin",
+  description:
+    "Müziğin bıraktığı yankıyı mekâna taşıyan partnerimiz — sıcak atmosfer, zarif doku ve yaşamın ritmi.",
+  ctaLabel: "KEŞFET",
+  /** Diğer sitenin adresi — gerekirse güncelleyin */
+  href: "https://modesasanayi.com/",
+};
 
 export const aboutProfiles: AboutProfile[] = [
   {
     id: "asi-ildeniz",
     name: "Asi İldeniz",
     href: "/asi-ildeniz",
-    image: "/images/artists/asi-ildeniz-v3.webp",
+    image: "/images/artists/asi-ildeniz-portrait-hq.jpg",
     bio: "AsilMelody’nin kurucusu ve Ömer Faruk Urgancı’nın kişisel & müzikal izdüşümü. Kendi yazıp kendi besteleyen Asi İldeniz, sadece hissettiği melodileri tüm evrene sunuyor.",
   },
   {

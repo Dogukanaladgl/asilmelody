@@ -14,15 +14,15 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Asil Melody — Warm Museum",
+  title: "Asil's a Melody — Evrenin Asil Sesi",
   description:
-    "Loş, sıcak ve prestijli bir müze atmosferinde müzik sergisi. Evrenin Asil Sesi.",
+    "Asi İldeniz & Asi Nildeniz. Asil's a Melody resmi müzik sitesi — diskografi, sanatçılar ve iletişim.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="tr" className={`${playfair.variable} h-full antialiased`}>
-      <body className="relative flex min-h-full flex-col bg-museum-dark font-display text-museum-bone">
+      <body className="relative flex min-h-full flex-col bg-ink font-display text-cream">
         <SmoothScrolling>
           <Providers>
             <ViewPathProvider>

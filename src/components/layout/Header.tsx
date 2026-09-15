@@ -39,7 +39,7 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -53,7 +53,6 @@ export function Header() {
     }
   };
 
-  // Avoid active-state hydration mismatch (cookie / rewritten "/" vs real page).
   const isActive = (match: string) => {
     if (!mounted) return false;
     return match === "/" ? viewPath === "/" : viewPath === match;
@@ -66,28 +65,24 @@ export function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,box-shadow] duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-500 ${
         scrolled
-          ? "border-b border-museum-brown/25 bg-museum-dark/95 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-md"
-          : "border-b border-museum-brown/15 bg-museum-dark/90 backdrop-blur-sm"
+          ? "border-b border-cream/10 bg-ink/90 backdrop-blur-xl"
+          : "border-b border-transparent bg-gradient-to-b from-ink/70 to-transparent"
       }`}
     >
       <div className="mx-auto flex h-[4.5rem] max-w-7xl items-center justify-between gap-6 px-6 md:h-20 md:px-10">
-        <Link
-          href="/"
-          onClick={go("/")}
-          className="group shrink-0 leading-tight"
-        >
-          <span className="block font-display text-base tracking-[0.2em] text-museum-bone transition-colors duration-300 group-hover:text-museum-amber md:text-lg">
+        <Link href="/" onClick={go("/")} className="group shrink-0 leading-tight">
+          <span className="block font-display text-base tracking-[0.22em] text-cream transition-colors duration-300 group-hover:text-accent md:text-lg">
             ASİL&apos;S A MELODY
           </span>
-          <span className="mt-0.5 block text-[0.55rem] font-light tracking-[0.26em] text-museum-bone-muted">
-            ® Evrenin Asil sesi
+          <span className="mt-0.5 block text-[0.55rem] font-light tracking-[0.26em] text-cream/55">
+            Evrenin Asil sesi
           </span>
         </Link>
 
         <nav
-          className="hidden items-center gap-6 lg:flex xl:gap-8"
+          className="hidden items-center gap-7 lg:flex xl:gap-9"
           aria-label="Ana menü"
         >
           {navItems.map((item) => {
@@ -97,16 +92,14 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={go(item.href)}
-                className={`relative pb-1 text-[0.7rem] uppercase tracking-[0.28em] transition-colors duration-300 ${
-                  active
-                    ? "text-museum-amber"
-                    : "text-museum-bone/85 hover:text-museum-bone"
+                className={`relative pb-1 text-[0.68rem] uppercase tracking-[0.26em] transition-colors duration-300 ${
+                  active ? "text-accent" : "text-cream/75 hover:text-cream"
                 }`}
                 aria-current={active ? "page" : undefined}
               >
                 {item.label}
                 <span
-                  className={`absolute bottom-0 left-0 h-px bg-museum-amber transition-all duration-300 ${
+                  className={`absolute bottom-0 left-0 h-px bg-accent transition-all duration-300 ${
                     active ? "w-full opacity-100" : "w-0 opacity-0"
                   }`}
                 />
@@ -127,9 +120,7 @@ export function Header() {
                 href={item.href}
                 onClick={go(item.href)}
                 className={`text-[0.58rem] uppercase tracking-[0.16em] transition-colors ${
-                  active
-                    ? "text-museum-amber"
-                    : "text-museum-bone/80 hover:text-museum-bone"
+                  active ? "text-accent" : "text-cream/70 hover:text-cream"
                 }`}
                 aria-current={active ? "page" : undefined}
               >

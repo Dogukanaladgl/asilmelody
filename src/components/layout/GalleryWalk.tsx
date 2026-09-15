@@ -51,9 +51,15 @@ export function GalleryWalk() {
       className="relative z-[2] bg-transparent px-6 py-8 md:px-10 md:py-16"
     >
       <div className="relative mx-auto mb-16 max-w-3xl text-center md:mb-24">
-        <h2 className="font-display text-3xl tracking-[0.16em] text-museum-bone/90 md:text-4xl">
+        <p className="text-[0.62rem] uppercase tracking-[0.45em] text-museum-amber/90">
+          Diskografi
+        </p>
+        <h2 className="mt-4 font-display text-3xl tracking-[0.16em] text-museum-bone md:text-5xl">
           Eserler Koridoru
         </h2>
+        <p className="mx-auto mt-5 max-w-md text-sm font-light leading-relaxed text-museum-bone-muted md:text-base">
+          Her parça bir salon. Spot altında dur; izle, dinle, yankıyı hisset.
+        </p>
       </div>
 
       <div
