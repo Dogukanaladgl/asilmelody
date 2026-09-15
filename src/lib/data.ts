@@ -156,8 +156,8 @@ export const companyInfo: CompanyInfo = {
   slogan: "Evrenin Asil Sesi",
   address: "Meram Bağları Seyir Alanı, Durunday, Meram/Konya, Türkiye",
   email: "info@asilmelody.com",
-  whatsapp: "+905555555555",
-  phone: "0555 555 55 55",
+  whatsapp: "+905300122700",
+  phone: "0530 012 27 00",
   hours: "Bugün açık 09:00 — 17:00",
   mapQuery: "Meram Bağları Seyir Alanı, Durunday, Meram/Konya",
 };

@@ -57,15 +57,20 @@ export function CarpetFootsteps({
   const timersRef = useRef<number[]>([]);
   const reducedMotion = useRef(false);
 
-  const syncHeight = (scrollLimit: number) => {
+  const syncHeight = () => {
     const container = containerRef.current;
     if (!container) return;
-    const docHeight = Math.max(
+    // Collapse first so this absolute layer does not inflate document height
+    // (that was leaving empty space under the footer on every page).
+    const previous = container.style.height;
+    container.style.height = "0px";
+    const contentHeight = Math.max(
+      document.body.scrollHeight,
       document.documentElement.scrollHeight,
-      scrollLimit + window.innerHeight,
       window.innerHeight,
     );
-    container.style.height = `${docHeight}px`;
+    const next = `${contentHeight}px`;
+    container.style.height = previous === next ? previous : next;
   };
 
   useEffect(() => {
@@ -73,9 +78,18 @@ export function CarpetFootsteps({
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    syncHeight(0);
+    syncHeight();
+    const onResize = () => syncHeight();
+    window.addEventListener("resize", onResize);
+    const resizeObserver =
+      typeof ResizeObserver !== "undefined"
+        ? new ResizeObserver(() => syncHeight())
+        : null;
+    resizeObserver?.observe(document.body);
 
     return () => {
+      window.removeEventListener("resize", onResize);
+      resizeObserver?.disconnect();
       timersRef.current.forEach((id) => window.clearTimeout(id));
       timersRef.current = [];
     };
@@ -90,15 +104,15 @@ export function CarpetFootsteps({
     if (container) {
       container.querySelectorAll(".shoe-step").forEach((node) => node.remove());
     }
-    syncHeight(0);
+    // Wait a frame so the new route's layout can settle before measuring.
+    const frame = requestAnimationFrame(() => syncHeight());
+    return () => cancelAnimationFrame(frame);
   }, [pathname]);
 
   useLenis(
     (lenis) => {
       const container = containerRef.current;
       if (!container || reducedMotion.current) return;
-
-      syncHeight(lenis.limit);
 
       const currentScrollY = lenis.scroll;
 
