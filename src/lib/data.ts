@@ -164,6 +164,28 @@ export const exhibits: Exhibit[] = [
     youtubeUrl: "https://www.youtube.com/watch?v=l8Y-6bZw7hE",
     frame: "landscape",
   },
+  {
+    id: "varligin-yoklugun",
+    title: "Varlığın & Yokluğun",
+    subtitle: "Original Mix",
+    catalogNumber: "AM-007",
+    year: "2026",
+    artists: "Asi İldeniz & Asi Nildeniz",
+    image: "/images/exhibits/varligin-yoklugun.webp",
+    description: "Varlık ile yokluk arasında yankılanan bir fısıltı.",
+    youtubeUrl: "https://www.youtube.com/watch?v=sD8lZ8uLs0Q",
+  },
+  {
+    id: "iki-carpi-iki-bes",
+    title: "2x2=5",
+    subtitle: "Original Mix",
+    catalogNumber: "AM-008",
+    year: "2026",
+    artists: "Asi İldeniz",
+    image: "/images/exhibits/2x2-5-cover.webp",
+    description: "İki kere iki — beş eder; ritmin paradox’u.",
+    youtubeUrl: "https://www.youtube.com/watch?v=F1-yiUK3QsA",
+  },
 ];
 
 export const companyInfo: CompanyInfo = {
