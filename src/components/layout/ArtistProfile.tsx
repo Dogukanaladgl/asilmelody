@@ -98,13 +98,13 @@ export function ArtistProfile({
           <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/25" />
         </div>
 
-        <div className="relative z-10 px-6 pb-14 pt-36 md:px-10 md:pb-16">
+        <div className="relative z-10 px-4 pb-10 pt-28 sm:px-6 sm:pb-14 sm:pt-36 md:px-10 md:pb-16">
           <div className="mx-auto max-w-6xl">
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75 }}
-              className="text-[0.62rem] uppercase tracking-[0.4em] text-accent"
+              className="text-[0.58rem] uppercase tracking-[0.3em] text-accent sm:text-[0.62rem] sm:tracking-[0.4em]"
             >
               Official Artist
             </motion.p>
@@ -113,7 +113,7 @@ export function ArtistProfile({
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 max-w-4xl font-display text-[clamp(2.8rem,10vw,6.5rem)] font-medium leading-[0.92] tracking-[0.06em] text-cream"
+              className="mt-3 max-w-4xl font-display text-[clamp(2.2rem,11vw,6.5rem)] font-medium leading-[0.92] tracking-[0.04em] text-cream sm:mt-4 sm:tracking-[0.06em]"
             >
               {marqueeName}
             </motion.h1>
@@ -122,7 +122,7 @@ export function ArtistProfile({
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.35 }}
-              className="mt-6 max-w-xl font-display text-xl italic leading-snug text-cream/85 md:text-2xl"
+              className="mt-5 max-w-xl font-display text-lg italic leading-snug text-cream/85 sm:mt-6 sm:text-xl md:text-2xl"
             >
               “{quote}”
             </motion.p>
@@ -131,17 +131,17 @@ export function ArtistProfile({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.5 }}
-              className="mt-9 flex flex-wrap gap-3"
+              className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap"
             >
               <a
                 href="#artist-bio"
-                className="inline-flex bg-cream px-6 py-3 text-[0.65rem] uppercase tracking-[0.28em] text-ink transition hover:bg-accent"
+                className="inline-flex min-h-12 items-center justify-center bg-cream px-6 py-3 text-[0.65rem] uppercase tracking-[0.24em] text-ink transition hover:bg-accent sm:tracking-[0.28em]"
               >
                 Biyografi
               </a>
               <a
                 href="#artist-listen"
-                className="inline-flex border border-cream/35 px-6 py-3 text-[0.65rem] uppercase tracking-[0.28em] text-cream transition hover:border-accent hover:text-accent"
+                className="inline-flex min-h-12 items-center justify-center border border-cream/35 px-6 py-3 text-[0.65rem] uppercase tracking-[0.24em] text-cream transition hover:border-accent hover:text-accent sm:tracking-[0.28em]"
               >
                 Dinle
               </a>
@@ -149,17 +149,17 @@ export function ArtistProfile({
           </div>
         </div>
 
-        <div className="relative z-10 overflow-hidden border-y border-cream/10 bg-ink/65 py-3 backdrop-blur-md">
+        <div className="relative z-10 overflow-hidden border-y border-cream/10 bg-ink/65 py-2.5 backdrop-blur-md sm:py-3">
           <div className="hero-marquee flex w-max whitespace-nowrap">
             {[0, 1].map((copy) => (
               <div key={copy} className="flex items-center" aria-hidden={copy === 1}>
                 {Array.from({ length: 8 }).map((_, i) => (
                   <span
                     key={`${copy}-${i}`}
-                    className="mx-7 font-display text-sm tracking-[0.35em] text-cream/40 md:text-base"
+                    className="mx-5 font-display text-xs tracking-[0.24em] text-cream/40 sm:mx-7 sm:text-sm sm:tracking-[0.35em] md:text-base"
                   >
                     {marqueeName}
-                    <span className="ml-7 text-accent/55">●</span>
+                    <span className="ml-5 text-accent/55 sm:ml-7">●</span>
                   </span>
                 ))}
               </div>
@@ -168,14 +168,17 @@ export function ArtistProfile({
         </div>
       </section>
 
-      <section id="artist-bio" className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
-        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
+      <section
+        id="artist-bio"
+        className="mx-auto max-w-6xl scroll-mt-20 px-4 py-14 sm:px-6 sm:py-20 md:px-10 md:py-28"
+      >
+        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.9 }}
-            className="relative aspect-[4/5] w-full overflow-hidden"
+            className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden lg:max-w-none"
           >
             <SharpImage
               src={imageUrl}
@@ -203,12 +206,12 @@ export function ArtistProfile({
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="mt-3 font-display text-3xl tracking-[0.08em] text-cream md:text-4xl"
+              className="mt-3 font-display text-2xl tracking-[0.08em] text-cream sm:text-3xl md:text-4xl"
             >
               {name}
             </motion.h2>
 
-            <div className="mt-8 space-y-5">
+            <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-5">
               {bio.map((paragraph, index) => (
                 <motion.p
                   key={paragraph.slice(0, 28)}
@@ -217,7 +220,7 @@ export function ArtistProfile({
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true, amount: 0.15 }}
-                  className="text-base font-light leading-relaxed text-cream/75 md:text-lg"
+                  className="text-sm font-light leading-relaxed text-cream/75 sm:text-base md:text-lg"
                 >
                   {paragraph}
                 </motion.p>
@@ -231,7 +234,7 @@ export function ArtistProfile({
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="mt-12"
+              className="mt-10 scroll-mt-24 sm:mt-12"
             >
               <h3 className="text-[0.68rem] uppercase tracking-[0.32em] text-accent">
                 Listen & Follow

@@ -26,7 +26,7 @@ const fade = {
 
 export default function IletisimPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden px-6 pb-24 pt-36 md:px-10 md:pt-40">
+    <main className="relative min-h-screen overflow-hidden px-4 pb-16 pt-28 sm:px-6 sm:pb-24 sm:pt-36 md:px-10 md:pt-40">
       <div
         className="pointer-events-none absolute inset-0 bg-spotlight opacity-40"
         aria-hidden
@@ -41,10 +41,10 @@ export default function IletisimPage() {
           animate="visible"
           className="mx-auto flex max-w-3xl flex-col items-center text-center"
         >
-          <p className="text-[0.62rem] uppercase tracking-[0.45em] text-museum-brown">
+          <p className="text-[0.58rem] uppercase tracking-[0.32em] text-museum-brown sm:text-[0.62rem] sm:tracking-[0.45em]">
             {contactCopy.eyebrow}
           </p>
-          <h1 className="mt-4 font-display text-4xl font-light tracking-[0.12em] text-museum-bone md:text-5xl">
+          <h1 className="mt-4 font-display text-3xl font-light tracking-[0.08em] text-museum-bone sm:text-4xl sm:tracking-[0.12em] md:text-5xl">
             {contactCopy.title}
           </h1>
           <div
@@ -52,11 +52,11 @@ export default function IletisimPage() {
             aria-hidden
           />
 
-          <p className="mt-8 text-lg font-light tracking-wide text-museum-amber md:text-xl">
+          <p className="mt-6 text-base font-light tracking-wide text-museum-amber sm:mt-8 sm:text-lg md:text-xl">
             {contactCopy.lead}
           </p>
 
-          <div className="mt-8 space-y-5 text-left sm:text-center">
+          <div className="mt-6 space-y-4 text-left sm:mt-8 sm:space-y-5 sm:text-center">
             {contactCopy.paragraphs.map((paragraph) => (
               <p
                 key={paragraph.slice(0, 32)}
@@ -67,7 +67,7 @@ export default function IletisimPage() {
             ))}
           </div>
 
-          <div className="mt-12 w-full max-w-sm">
+          <div className="mt-10 w-full max-w-sm sm:mt-12">
             <GooeyButton
               href={whatsappHref}
               label={contactCopy.whatsappLabel}
@@ -81,15 +81,15 @@ export default function IletisimPage() {
           variants={fade}
           initial={false}
           animate="visible"
-          className="mx-auto mt-20 flex w-full max-w-4xl flex-col items-center"
+          className="mx-auto mt-14 flex w-full max-w-4xl flex-col items-center sm:mt-20"
         >
-          <h2 className="font-display text-2xl tracking-[0.18em] text-museum-bone md:text-3xl">
+          <h2 className="font-display text-xl tracking-[0.12em] text-museum-bone sm:text-2xl sm:tracking-[0.18em] md:text-3xl">
             {contactCopy.mapLabel}
           </h2>
-          <p className="mt-4 max-w-2xl text-center text-sm font-light leading-relaxed text-museum-bone-muted md:text-base">
+          <p className="mt-3 max-w-2xl text-center text-sm font-light leading-relaxed text-museum-bone-muted sm:mt-4 md:text-base">
             {contactCopy.mapHint}
           </p>
-          <div className="relative mt-10 w-full min-h-[360px] overflow-hidden border border-museum-brown/25 bg-[#e8e4df] md:min-h-[440px]">
+          <div className="relative mt-8 w-full min-h-[280px] overflow-hidden border border-museum-brown/25 bg-[#e8e4df] sm:mt-10 sm:min-h-[360px] md:min-h-[440px]">
             <iframe
               title="Asil Melody konum haritası"
               src={mapEmbedSrc}

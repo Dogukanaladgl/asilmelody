@@ -205,6 +205,17 @@ img,
   transform: scale(1.4) translateY(0);
 }
 
+@media (hover: none) {
+  .c-button--gooey:active {
+    color: var(--ink);
+    box-shadow: inset 0 0 0 1.5px var(--accent);
+  }
+
+  .c-button--gooey:active .c-button__blobs-inner div {
+    transform: scale(1.4) translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .c-button--gooey .c-button__blobs-inner div {
     transition: none;
@@ -239,6 +250,16 @@ img,
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 640px) {
+  .works-marquee {
+    animation-duration: 42s;
+  }
+
+  .hero-marquee {
+    animation-duration: 28s;
   }
 }
 

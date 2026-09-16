@@ -3,6 +3,10 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useViewPath } from "@/components/layout/ViewPathProvider";
+import {
+  GooeyButton,
+  GooeyFilterDefs,
+} from "@/components/ui/GooeyPlatformButton";
 import { SharpImage } from "@/components/ui/SharpImage";
 import { artists } from "@/lib/data";
 
@@ -23,7 +27,16 @@ export function ArtistPortals() {
   const { onNavClick } = useViewPath();
 
   return (
-    <section id="artists" className="relative z-[2] bg-ink-soft px-6 py-16 md:px-10 md:py-24">
+    <section
+      id="artists"
+      className="relative z-[2] scroll-mt-20 px-4 pb-14 pt-4 sm:px-6 sm:pb-16 sm:pt-6 md:px-10 md:pb-24 md:pt-8"
+      style={{
+        background:
+          "linear-gradient(180deg, #0a0908 0%, #0e0c0a 18%, #12100e 42%, #12100e 100%)",
+      }}
+    >
+      <GooeyFilterDefs />
+
       <div className="mx-auto max-w-4xl text-center">
         <p className="text-[0.62rem] uppercase tracking-[0.4em] text-accent">
           Artists
@@ -35,7 +48,7 @@ export function ArtistPortals() {
           İki ses, bir marka. Portreye tıkla — resmi hesaplara ve biyografiye geç.
         </p>
 
-        <div className="mt-14 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-10 md:gap-16">
+        <div className="mt-10 grid grid-cols-2 gap-5 sm:mt-14 sm:gap-12 md:gap-20">
           {portals.map(({ artist, href, objectPosition }, index) => (
             <motion.div
               key={artist.id}
@@ -50,30 +63,36 @@ export function ArtistPortals() {
                 onClick={onNavClick(href)}
                 className="group flex flex-col items-center text-center"
               >
-                <span className="relative h-44 w-44 overflow-hidden rounded-full border border-accent/40 bg-ink shadow-[0_0_0_1px_rgba(212,180,138,0.12)] transition duration-500 group-hover:border-accent group-hover:shadow-[0_0_28px_rgba(212,180,138,0.22)] md:h-52 md:w-52 lg:h-56 lg:w-56">
+                <span className="relative h-36 w-36 overflow-hidden rounded-full border border-accent/45 bg-ink shadow-[0_0_0_1px_rgba(212,180,138,0.14)] transition duration-500 group-hover:border-accent group-hover:shadow-[0_0_32px_rgba(212,180,138,0.24)] sm:h-52 sm:w-52 md:h-60 md:w-60 lg:h-64 lg:w-64">
                   <SharpImage
                     src={artist.profileImage}
                     alt={artist.name}
                     fill
-                    sizes="(max-width: 768px) 176px, 224px"
+                    sizes="(max-width: 640px) 144px, (max-width: 768px) 208px, (max-width: 1024px) 240px, 256px"
                     className="object-cover transition duration-700 group-hover:scale-105"
                     style={{ objectPosition }}
                   />
                 </span>
 
-                <p className="mt-6 text-[0.58rem] uppercase tracking-[0.35em] text-accent">
+                <p className="mt-5 text-[0.52rem] uppercase tracking-[0.3em] text-accent sm:mt-6 sm:text-[0.58rem] sm:tracking-[0.35em]">
                   Official
                 </p>
-                <h3 className="mt-2 font-display text-xl tracking-[0.14em] text-cream transition-colors duration-300 group-hover:text-accent md:text-2xl">
+                <h3 className="mt-1.5 font-display text-base tracking-[0.1em] text-cream transition-colors duration-300 group-hover:text-accent sm:mt-2 sm:text-xl sm:tracking-[0.14em] md:text-2xl">
                   {artist.name.toLocaleUpperCase("tr-TR")}
                 </h3>
-                <p className="mt-3 max-w-[16rem] font-display text-sm italic leading-relaxed text-cream/70">
+                <p className="mt-2 hidden max-w-[16rem] font-display text-sm italic leading-relaxed text-cream/70 sm:mt-3 sm:block">
                   “{artist.quote}”
                 </p>
-                <span className="mt-6 inline-flex rounded-full border border-cream/30 px-5 py-2 text-[0.58rem] uppercase tracking-[0.28em] text-cream transition group-hover:border-accent group-hover:bg-accent group-hover:text-ink">
-                  Profili Aç
-                </span>
               </Link>
+
+              <div className="mt-5 w-full max-w-[10.5rem] sm:mt-7 sm:max-w-[12rem]">
+                <GooeyButton
+                  href={href}
+                  label="Profili Aç"
+                  external={false}
+                  onClick={onNavClick(href)}
+                />
+              </div>
             </motion.div>
           ))}
         </div>

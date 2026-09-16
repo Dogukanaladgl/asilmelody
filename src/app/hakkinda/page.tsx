@@ -30,13 +30,13 @@ export default function HakkindaPage() {
   const { onNavClick } = useViewPath();
 
   return (
-    <main className="flex min-h-screen flex-col items-center px-6 pb-24 pt-40 text-center">
+    <main className="flex min-h-screen flex-col items-center px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-24 sm:pt-40">
       <motion.p
         custom={0}
         variants={fadeInUp}
         initial={false}
         animate="visible"
-        className="font-display text-2xl tracking-widest text-museum-bone md:text-3xl"
+        className="font-display text-xl tracking-widest text-museum-bone sm:text-2xl md:text-3xl"
       >
         ASİL&apos;S A MELODY
       </motion.p>
@@ -46,7 +46,7 @@ export default function HakkindaPage() {
         variants={fadeInUp}
         initial={false}
         animate="visible"
-        className="mt-3 text-sm tracking-[0.28em] text-museum-brown"
+        className="mt-3 text-xs tracking-[0.22em] text-museum-brown sm:text-sm sm:tracking-[0.28em]"
       >
         ® Evrenin Asil sesi
       </motion.p>
@@ -56,12 +56,12 @@ export default function HakkindaPage() {
         variants={fadeInUp}
         initial={false}
         animate="visible"
-        className="mt-14 max-w-3xl font-display text-4xl font-light leading-tight tracking-wide text-museum-bone md:text-5xl"
+        className="mt-10 max-w-3xl font-display text-3xl font-light leading-tight tracking-wide text-museum-bone sm:mt-14 sm:text-4xl md:text-5xl"
       >
         Müziğin Sessizlikle Buluştuğu Yer
       </motion.h1>
 
-      <div className="mx-auto mt-12 max-w-2xl space-y-8 text-museum-bone/80">
+      <div className="mx-auto mt-10 max-w-2xl space-y-6 text-left text-museum-bone/80 sm:mt-12 sm:space-y-8 sm:text-center">
         {paragraphs.map((text, index) => (
           <motion.p
             key={text.slice(0, 24)}
@@ -69,7 +69,7 @@ export default function HakkindaPage() {
             variants={fadeInUp}
             initial={false}
             animate="visible"
-            className="text-base font-light leading-relaxed tracking-wide md:text-lg"
+            className="text-sm font-light leading-relaxed tracking-wide md:text-lg"
           >
             {text}
           </motion.p>
@@ -81,14 +81,14 @@ export default function HakkindaPage() {
         variants={fadeInUp}
         initial={false}
         animate="visible"
-        className="mt-24 w-full max-w-6xl"
+        className="mt-16 w-full max-w-6xl sm:mt-24"
       >
-        <h2 className="font-display text-2xl tracking-[0.28em] text-museum-bone md:text-3xl">
+        <h2 className="font-display text-xl tracking-[0.2em] text-museum-bone sm:text-2xl sm:tracking-[0.28em] md:text-3xl">
           Hakkımızda
         </h2>
         <div className="mx-auto mt-4 h-px w-12 bg-museum-brown/60" aria-hidden />
 
-        <div className="mt-14 grid grid-cols-1 gap-14 md:grid-cols-3 md:gap-10">
+        <div className="mt-10 grid grid-cols-1 gap-10 sm:mt-14 sm:gap-14 md:grid-cols-3 md:gap-10">
           {aboutProfiles.map((profile) => {
             const isLogo = profile.id === "asil-a-melody";
             return (
@@ -98,7 +98,7 @@ export default function HakkindaPage() {
                 onClick={onNavClick(profile.href)}
                 className="group flex flex-col items-center text-center"
               >
-                <span className="relative h-44 w-44 overflow-hidden rounded-full border border-museum-amber/40 bg-black transition-shadow duration-500 group-hover:shadow-[0_0_22px_rgba(224,192,138,0.28)] md:h-52 md:w-52 lg:h-56 lg:w-56">
+                <span className="relative h-36 w-36 overflow-hidden rounded-full border border-museum-amber/40 bg-black transition-shadow duration-500 group-hover:shadow-[0_0_22px_rgba(224,192,138,0.28)] sm:h-44 sm:w-44 md:h-52 md:w-52 lg:h-56 lg:w-56">
                   <SharpImage
                     src={profile.image}
                     alt={profile.name}
@@ -111,10 +111,10 @@ export default function HakkindaPage() {
                     }
                   />
                 </span>
-                <h3 className="mt-6 font-display text-xl tracking-[0.16em] text-museum-bone transition-colors duration-300 group-hover:text-museum-amber">
+                <h3 className="mt-5 font-display text-lg tracking-[0.12em] text-museum-bone transition-colors duration-300 group-hover:text-museum-amber sm:mt-6 sm:text-xl sm:tracking-[0.16em]">
                   {profile.name}
                 </h3>
-                <p className="mt-4 max-w-xs px-3 text-sm font-light leading-relaxed tracking-wide text-museum-bone-muted">
+                <p className="mt-3 max-w-xs px-2 text-sm font-light leading-relaxed tracking-wide text-museum-bone-muted sm:mt-4 sm:px-3">
                   {profile.bio}
                 </p>
               </Link>

@@ -58,15 +58,15 @@ function FooterLabel({ children }: { children: ReactNode }) {
 
 export function Footer() {
   return (
-    <footer className="relative z-[2] mt-auto border-t border-cream/10 bg-ink-soft">
-      <div className="relative mx-auto max-w-6xl px-6 py-14 md:px-10 md:py-16">
-        <div className="grid grid-cols-1 items-start gap-10 text-center text-sm font-light text-cream/65 md:grid-cols-3 md:gap-8 md:text-left">
-          <div className="space-y-8 md:text-left">
+    <footer className="relative z-[2] mt-auto border-t border-cream/10 bg-ink-soft pb-[env(safe-area-inset-bottom)]">
+      <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 md:px-10 md:py-16">
+        <div className="grid grid-cols-1 items-start gap-8 text-center text-sm font-light text-cream/65 sm:gap-10 md:grid-cols-3 md:gap-8 md:text-left">
+          <div className="space-y-6 sm:space-y-8 md:text-left">
             <div>
               <FooterLabel>E-posta</FooterLabel>
               <a
                 href={`mailto:${companyInfo.email}`}
-                className="tracking-[0.08em] text-cream transition-colors hover:text-accent"
+                className="break-all tracking-[0.04em] text-cream transition-colors hover:text-accent sm:tracking-[0.08em]"
               >
                 {companyInfo.email}
               </a>
@@ -85,7 +85,7 @@ export function Footer() {
 
           <div className="flex flex-col items-center text-center">
             <FooterLabel>Sosyal</FooterLabel>
-            <ul className="flex flex-wrap items-center justify-center gap-3">
+            <ul className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
               {socialLinks.map((social) => (
                 <li key={social.label}>
                   <a
@@ -114,13 +114,13 @@ export function Footer() {
 
           <div className="md:text-right">
             <FooterLabel>Adres</FooterLabel>
-            <p className="leading-relaxed text-cream md:ml-auto md:max-w-[18rem]">
+            <p className="mx-auto max-w-xs leading-relaxed text-cream md:ml-auto md:mr-0 md:max-w-[18rem]">
               {companyInfo.address}
             </p>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-3 border-t border-cream/10 pt-8 text-[0.58rem] uppercase tracking-[0.22em] text-cream/50 sm:flex-row sm:justify-between">
+        <div className="mt-10 flex flex-col items-center gap-2 border-t border-cream/10 pt-7 text-[0.55rem] uppercase tracking-[0.2em] text-cream/50 sm:mt-12 sm:gap-3 sm:pt-8 sm:text-[0.58rem] sm:tracking-[0.22em] sm:flex-row sm:justify-between">
           <p>© 2026 Asil&apos;s a Melody</p>
           <p>Evrenin Asil sesi</p>
         </div>

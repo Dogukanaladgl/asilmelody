@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { MouseEventHandler, ReactNode } from "react";
 import {
   AppleMusicIcon,
   InstagramIcon,
@@ -24,6 +24,8 @@ interface GooeyButtonProps {
   label: ReactNode;
   icon?: ReactNode;
   external?: boolean;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
+  className?: string;
 }
 
 export function GooeyButton({
@@ -31,14 +33,17 @@ export function GooeyButton({
   label,
   icon,
   external = true,
+  onClick,
+  className,
 }: GooeyButtonProps) {
   return (
     <a
       href={href}
+      onClick={onClick}
       {...(external
         ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}
-      className="c-button c-button--gooey"
+      className={["c-button c-button--gooey", className].filter(Boolean).join(" ")}
     >
       <span className="c-button__content">
         {icon}

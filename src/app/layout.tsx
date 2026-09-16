@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Playfair_Display } from "next/font/google";
 import { Providers } from "@/components/providers/Providers";
 import { SmoothScrolling } from "@/components/layout/SmoothScrolling";
@@ -17,6 +17,13 @@ export const metadata: Metadata = {
   title: "Asil's a Melody — Evrenin Asil Sesi",
   description:
     "Asi İldeniz & Asi Nildeniz. Asil's a Melody resmi müzik sitesi — diskografi, sanatçılar ve iletişim.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#0a0908",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
