@@ -72,7 +72,12 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 md:h-20 md:px-10">
-        <Link href="/" onClick={go("/")} className="group min-w-0 shrink leading-tight">
+        <Link
+          href="/"
+          onClick={go("/")}
+          aria-label="Asil's a Melody — Ana sayfa"
+          className="group min-w-0 shrink leading-tight"
+        >
           <span className="block truncate font-display text-sm tracking-[0.16em] text-cream transition-colors duration-300 group-hover:text-accent sm:text-base sm:tracking-[0.22em] md:text-lg">
             ASİL&apos;S A MELODY
           </span>
@@ -113,6 +118,7 @@ export function Header() {
           className="relative z-[60] flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors hover:border-accent hover:text-accent lg:hidden"
           aria-label={menuOpen ? "Menüyü kapat" : "Menüyü aç"}
           aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
           onClick={() => setMenuOpen((open) => !open)}
         >
           <span className="sr-only">{menuOpen ? "Kapat" : "Menü"}</span>
@@ -146,6 +152,7 @@ export function Header() {
         aria-hidden={!menuOpen}
       >
         <nav
+          id="mobile-menu"
           className="flex h-full flex-col gap-1 overflow-y-auto px-6 py-8"
           aria-label="Mobil menü"
         >

@@ -127,7 +127,7 @@ export function GalleryWalk() {
                 className={`mt-5 max-w-sm ${left ? "text-left" : "md:text-right"}`}
               >
                 <p className="text-[0.58rem] uppercase tracking-[0.35em] text-museum-brown/80">
-                  {exhibit.catalogNumber} · {exhibit.year}
+                  {exhibit.catalogNumber} & {exhibit.year}
                 </p>
                 <h3 className="mt-2 font-display text-2xl tracking-[0.12em] text-museum-bone">
                   {exhibit.title}

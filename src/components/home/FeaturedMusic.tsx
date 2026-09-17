@@ -30,6 +30,7 @@ function TrackCard({
       href={track.youtubeUrl}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label={`${track.title} — ${track.artists}. YouTube’da izle (yeni sekme)`}
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -79,7 +80,7 @@ function TrackCard({
           <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-4 sm:gap-4 sm:p-6 md:flex-row md:items-end md:justify-between md:p-10">
             <div>
               <p className="text-[0.55rem] uppercase tracking-[0.3em] text-accent sm:text-[0.6rem] sm:tracking-[0.35em]">
-                Featured · {track.year}
+                Featured & {track.year}
               </p>
               <h3 className="mt-2 font-display text-xl tracking-[0.06em] text-cream sm:text-2xl md:text-4xl">
                 {track.title}
@@ -97,7 +98,7 @@ function TrackCard({
           <>
             <div className="absolute inset-x-0 bottom-0 p-3 sm:p-5">
               <p className="truncate text-[0.5rem] uppercase tracking-[0.22em] text-cream/55 sm:text-[0.55rem] sm:tracking-[0.28em]">
-                {track.year} · {track.subtitle}
+                {track.year} & {track.subtitle}
               </p>
               <h3
                 className={`mt-1 font-display leading-snug tracking-[0.04em] text-cream transition group-hover:text-accent ${
@@ -129,6 +130,7 @@ export function FeaturedMusic() {
   return (
     <section
       id="music"
+      aria-labelledby="music-heading"
       className="relative z-[2] scroll-mt-20 px-4 pb-4 pt-14 sm:px-6 sm:pb-6 sm:pt-20 md:px-10 md:pb-8 md:pt-28"
       style={{
         background:
@@ -136,19 +138,22 @@ export function FeaturedMusic() {
       }}
     >
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-4">
+        <header className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-4">
           <div>
             <p className="text-[0.62rem] uppercase tracking-[0.4em] text-accent">
               Discography
             </p>
-            <h2 className="mt-3 font-display text-3xl tracking-[0.08em] text-cream md:text-5xl">
+            <h2
+              id="music-heading"
+              className="mt-3 font-display text-3xl tracking-[0.08em] text-cream md:text-5xl"
+            >
               Müzik
             </h2>
           </div>
           <p className="max-w-sm text-sm font-light leading-relaxed text-cream/60 md:text-right">
             Resmi klipler ve parçalar. Kapaklara tıkla, YouTube’da dinle.
           </p>
-        </div>
+        </header>
 
         <div className="mt-8 sm:mt-12">
           <TrackCard track={featured} index={0} featured />

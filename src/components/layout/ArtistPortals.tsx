@@ -29,6 +29,7 @@ export function ArtistPortals() {
   return (
     <section
       id="artists"
+      aria-labelledby="artists-heading"
       className="relative z-[2] scroll-mt-20 px-4 pb-14 pt-4 sm:px-6 sm:pb-16 sm:pt-6 md:px-10 md:pb-24 md:pt-8"
       style={{
         background:
@@ -41,7 +42,10 @@ export function ArtistPortals() {
         <p className="text-[0.62rem] uppercase tracking-[0.4em] text-accent">
           Artists
         </p>
-        <h2 className="mt-3 font-display text-3xl tracking-[0.1em] text-cream md:text-5xl">
+        <h2
+          id="artists-heading"
+          className="mt-3 font-display text-3xl tracking-[0.1em] text-cream md:text-5xl"
+        >
           Sanatçılar
         </h2>
         <p className="mx-auto mt-4 max-w-lg text-sm font-light text-cream/60">

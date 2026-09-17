@@ -50,15 +50,18 @@ const socialLinks = [
 
 function FooterLabel({ children }: { children: ReactNode }) {
   return (
-    <p className="mb-2.5 text-[0.72rem] uppercase tracking-[0.28em] text-accent">
+    <h2 className="mb-2.5 text-[0.72rem] font-normal uppercase tracking-[0.28em] text-accent">
       {children}
-    </p>
+    </h2>
   );
 }
 
 export function Footer() {
   return (
-    <footer className="relative z-[2] mt-auto border-t border-cream/10 bg-ink-soft pb-[env(safe-area-inset-bottom)]">
+    <footer
+      className="relative z-[2] mt-auto border-t border-cream/10 bg-ink-soft pb-[env(safe-area-inset-bottom)]"
+      role="contentinfo"
+    >
       <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 md:px-10 md:py-16">
         <div className="grid grid-cols-1 items-start gap-8 text-center text-sm font-light text-cream/65 sm:gap-10 md:grid-cols-3 md:gap-8 md:text-left">
           <div className="space-y-6 sm:space-y-8 md:text-left">
@@ -83,7 +86,10 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center text-center">
+          <nav
+            className="flex flex-col items-center text-center"
+            aria-label="Sosyal medya"
+          >
             <FooterLabel>Sosyal</FooterLabel>
             <ul className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
               {socialLinks.map((social) => (
@@ -91,8 +97,8 @@ export function Footer() {
                   <a
                     href={social.href}
                     target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
+                    rel="noopener noreferrer me"
+                    aria-label={`${social.label} (yeni sekme)`}
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors duration-300 hover:border-accent hover:text-accent"
                   >
                     <svg
@@ -103,6 +109,7 @@ export function Footer() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       className="h-5 w-5"
+                      aria-hidden
                     >
                       {social.icon}
                     </svg>
@@ -110,13 +117,13 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
           <div className="md:text-right">
             <FooterLabel>Adres</FooterLabel>
-            <p className="mx-auto max-w-xs leading-relaxed text-cream md:ml-auto md:mr-0 md:max-w-[18rem]">
+            <address className="mx-auto max-w-xs not-italic leading-relaxed text-cream md:ml-auto md:mr-0 md:max-w-[18rem]">
               {companyInfo.address}
-            </p>
+            </address>
           </div>
         </div>
 

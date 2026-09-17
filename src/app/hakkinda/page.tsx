@@ -30,7 +30,7 @@ export default function HakkindaPage() {
   const { onNavClick } = useViewPath();
 
   return (
-    <main className="flex min-h-screen flex-col items-center px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-24 sm:pt-40">
+    <main id="main-content" className="flex min-h-screen flex-col items-center px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-24 sm:pt-40">
       <motion.p
         custom={0}
         variants={fadeInUp}

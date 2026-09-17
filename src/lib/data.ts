@@ -228,7 +228,7 @@ export const partnerSite = {
     "Müziğin bıraktığı yankıyı mekâna taşıyan partnerimiz — sıcak atmosfer, zarif doku ve yaşamın ritmi.",
   ctaLabel: "KEŞFET",
   /** Diğer sitenin adresi — gerekirse güncelleyin */
-  href: "https://modesasanayi.com/",
+  href: "https://asilsaworld.ddogukan.dev/",
 };
 
 export const aboutProfiles: AboutProfile[] = [

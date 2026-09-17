@@ -15,7 +15,10 @@ export function SelectedWorks({ tracks }: SelectedWorksProps) {
   const loop = [...tracks, ...tracks];
 
   return (
-    <section className="overflow-hidden border-t border-cream/10 bg-ink-soft py-14 sm:py-20 md:py-24">
+    <section
+      className="overflow-hidden border-t border-cream/10 bg-ink-soft py-14 sm:py-20 md:py-24"
+      aria-labelledby="selected-works-heading"
+    >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 md:px-10">
         <motion.div
           initial={{ opacity: 0, y: 18 }}
@@ -26,7 +29,10 @@ export function SelectedWorks({ tracks }: SelectedWorksProps) {
           <p className="text-[0.62rem] uppercase tracking-[0.38em] text-accent">
             Selected Works
           </p>
-          <h2 className="mt-3 font-display text-2xl tracking-[0.08em] text-cream sm:text-3xl md:text-4xl">
+          <h2
+            id="selected-works-heading"
+            className="mt-3 font-display text-2xl tracking-[0.08em] text-cream sm:text-3xl md:text-4xl"
+          >
             Seçili Parçalar
           </h2>
           <p className="mt-3 max-w-md text-sm font-light text-cream/55">
@@ -59,6 +65,11 @@ export function SelectedWorks({ tracks }: SelectedWorksProps) {
               target="_blank"
               rel="noopener noreferrer"
               className="group relative w-[12.5rem] shrink-0 sm:w-[17rem] md:w-[18.5rem]"
+              aria-label={
+                index < tracks.length
+                  ? `${track.title} — YouTube’da izle (yeni sekme)`
+                  : undefined
+              }
               aria-hidden={index >= tracks.length ? true : undefined}
               tabIndex={index >= tracks.length ? -1 : undefined}
             >
@@ -80,7 +91,7 @@ export function SelectedWorks({ tracks }: SelectedWorksProps) {
                 </p>
               </div>
               <p className="mt-2.5 truncate text-[0.5rem] uppercase tracking-[0.22em] text-cream/45 sm:mt-3 sm:text-[0.55rem] sm:tracking-[0.28em]">
-                {track.year} · {track.subtitle}
+                {track.year} & {track.subtitle}
               </p>
             </a>
           ))}

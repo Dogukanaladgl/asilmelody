@@ -36,10 +36,18 @@ export function GooeyButton({
   onClick,
   className,
 }: GooeyButtonProps) {
+  const accessibleLabel =
+    typeof label === "string"
+      ? external
+        ? `${label} (yeni sekme)`
+        : label
+      : undefined;
+
   return (
     <a
       href={href}
       onClick={onClick}
+      aria-label={accessibleLabel}
       {...(external
         ? { target: "_blank", rel: "noopener noreferrer" }
         : {})}

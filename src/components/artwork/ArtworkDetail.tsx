@@ -68,7 +68,7 @@ export function ArtworkDetail() {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <p className="text-[0.62rem] uppercase tracking-[0.35em] text-museum-brown">
-                    {artwork.catalogNumber} · {artwork.year}
+                    {artwork.catalogNumber} & {artwork.year}
                   </p>
                   <h2
                     id="artwork-title"

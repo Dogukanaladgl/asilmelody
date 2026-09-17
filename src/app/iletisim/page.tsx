@@ -26,7 +26,7 @@ const fade = {
 
 export default function IletisimPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden px-4 pb-16 pt-28 sm:px-6 sm:pb-24 sm:pt-36 md:px-10 md:pt-40">
+    <main id="main-content" className="relative min-h-screen overflow-hidden px-4 pb-16 pt-28 sm:px-6 sm:pb-24 sm:pt-36 md:px-10 md:pt-40">
       <div
         className="pointer-events-none absolute inset-0 bg-spotlight opacity-40"
         aria-hidden
@@ -83,7 +83,10 @@ export default function IletisimPage() {
           animate="visible"
           className="mx-auto mt-14 flex w-full max-w-4xl flex-col items-center sm:mt-20"
         >
-          <h2 className="font-display text-xl tracking-[0.12em] text-museum-bone sm:text-2xl sm:tracking-[0.18em] md:text-3xl">
+          <h2
+            id="contact-map-heading"
+            className="font-display text-xl tracking-[0.12em] text-museum-bone sm:text-2xl sm:tracking-[0.18em] md:text-3xl"
+          >
             {contactCopy.mapLabel}
           </h2>
           <p className="mt-3 max-w-2xl text-center text-sm font-light leading-relaxed text-museum-bone-muted sm:mt-4 md:text-base">
@@ -91,7 +94,7 @@ export default function IletisimPage() {
           </p>
           <div className="relative mt-8 w-full min-h-[280px] overflow-hidden border border-museum-brown/25 bg-[#e8e4df] sm:mt-10 sm:min-h-[360px] md:min-h-[440px]">
             <iframe
-              title="Asil Melody konum haritası"
+              title="Asil Melody konum haritası — Modesa Sanayi Sitesi, Karatay/Konya"
               src={mapEmbedSrc}
               className="absolute inset-0 h-full w-full border-0"
               loading="lazy"

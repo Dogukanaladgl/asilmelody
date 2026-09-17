@@ -68,6 +68,7 @@ export function Hero() {
     <section
       ref={sectionRef}
       className="relative z-[2] flex min-h-[100svh] flex-col overflow-hidden bg-ink"
+      aria-labelledby="hero-heading"
     >
       <div
         ref={visualRef}
@@ -99,6 +100,7 @@ export function Hero() {
             </motion.p>
 
             <motion.h1
+              id="hero-heading"
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.05, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
@@ -164,6 +166,7 @@ export function Hero() {
                 key={artist.id}
                 href={href}
                 onClick={onNavClick(href)}
+                aria-label={`${artist.name} profiline git`}
                 className="group relative h-28 w-24 overflow-hidden rounded-sm sm:h-40 sm:w-28 md:h-52 md:w-40"
               >
                 <SharpImage
@@ -183,17 +186,20 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="relative z-10 overflow-hidden border-y border-cream/10 bg-ink/70 py-2.5 backdrop-blur-md sm:py-3">
+      <div
+        className="relative z-10 overflow-hidden border-y border-cream/10 bg-ink/70 py-2.5 backdrop-blur-md sm:py-3"
+        aria-hidden
+      >
         <div className="hero-marquee flex w-max whitespace-nowrap">
           {[0, 1].map((copy) => (
-            <div key={copy} className="flex items-center" aria-hidden={copy === 1}>
+            <div key={copy} className="flex items-center">
               {marqueeItems.map((item) => (
                 <span
                   key={`${copy}-${item}`}
                   className="mx-5 font-display text-xs tracking-[0.24em] text-cream/45 sm:mx-7 sm:text-sm sm:tracking-[0.32em] md:text-base"
                 >
                   {item}
-                  <span className="ml-5 text-accent/60 sm:ml-7">●</span>
+                  <span className="ml-5 text-accent/70 sm:ml-7">&</span>
                 </span>
               ))}
             </div>

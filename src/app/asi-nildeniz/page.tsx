@@ -9,7 +9,7 @@ export default function AsiNildenizPage() {
   if (!artist) return null;
 
   return (
-    <main className="min-h-screen bg-ink">
+    <main id="main-content" className="min-h-screen bg-ink">
       <ArtistProfile
         name={artist.name}
         quote={artist.quote}

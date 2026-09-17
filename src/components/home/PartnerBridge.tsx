@@ -6,7 +6,11 @@ import { GooeyButton } from "@/components/ui/GooeyPlatformButton";
 
 export function PartnerBridge() {
   return (
-    <section id="partner" className="relative z-[2] overflow-hidden">
+    <section
+      id="partner"
+      aria-labelledby="partner-heading"
+      className="relative z-[2] overflow-hidden"
+    >
       <div
         className="absolute inset-0"
         style={{
@@ -28,6 +32,7 @@ export function PartnerBridge() {
         </motion.p>
 
         <motion.h2
+          id="partner-heading"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}

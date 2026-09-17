@@ -81,6 +81,7 @@ export function ArtistProfile({
       <section
         ref={heroRef}
         className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden"
+        aria-labelledby="artist-hero-heading"
       >
         <div
           ref={visualRef}
@@ -110,6 +111,7 @@ export function ArtistProfile({
             </motion.p>
 
             <motion.h1
+              id="artist-hero-heading"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -149,17 +151,20 @@ export function ArtistProfile({
           </div>
         </div>
 
-        <div className="relative z-10 overflow-hidden border-y border-cream/10 bg-ink/65 py-2.5 backdrop-blur-md sm:py-3">
+        <div
+          className="relative z-10 overflow-hidden border-y border-cream/10 bg-ink/65 py-2.5 backdrop-blur-md sm:py-3"
+          aria-hidden
+        >
           <div className="hero-marquee flex w-max whitespace-nowrap">
             {[0, 1].map((copy) => (
-              <div key={copy} className="flex items-center" aria-hidden={copy === 1}>
+              <div key={copy} className="flex items-center">
                 {Array.from({ length: 8 }).map((_, i) => (
                   <span
                     key={`${copy}-${i}`}
                     className="mx-5 font-display text-xs tracking-[0.24em] text-cream/40 sm:mx-7 sm:text-sm sm:tracking-[0.35em] md:text-base"
                   >
                     {marqueeName}
-                    <span className="ml-5 text-accent/55 sm:ml-7">●</span>
+                    <span className="ml-5 text-accent/70 sm:ml-7">&</span>
                   </span>
                 ))}
               </div>
@@ -170,6 +175,7 @@ export function ArtistProfile({
 
       <section
         id="artist-bio"
+        aria-labelledby="artist-bio-heading"
         className="mx-auto max-w-6xl scroll-mt-20 px-4 py-14 sm:px-6 sm:py-20 md:px-10 md:py-28"
       >
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
@@ -201,6 +207,7 @@ export function ArtistProfile({
               About
             </motion.p>
             <motion.h2
+              id="artist-bio-heading"
               custom={1}
               variants={fadeInUp}
               initial="hidden"
