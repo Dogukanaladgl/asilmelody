@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, type MouseEvent } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { useLenis } from "lenis/react";
 import { useViewPath } from "@/components/layout/ViewPathProvider";
@@ -40,12 +41,22 @@ export function Header() {
 
   useEffect(() => {
     if (!menuOpen) return;
-    const prev = document.body.style.overflow;
+
+    const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
+    lenis?.stop();
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
     };
-  }, [menuOpen]);
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      lenis?.start();
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [menuOpen, lenis]);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -69,6 +80,77 @@ export function Header() {
     scrollPageToTop();
     onNavClick(href)(event);
   };
+
+  const mobileMenu =
+    mounted &&
+    createPortal(
+      <div
+        className={`fixed inset-0 z-[80] lg:hidden ${
+          menuOpen ? "pointer-events-auto" : "pointer-events-none"
+        }`}
+        aria-hidden={!menuOpen}
+      >
+        <button
+          type="button"
+          className={`absolute inset-0 bg-ink/70 transition-opacity duration-300 ${
+            menuOpen ? "opacity-100" : "opacity-0"
+          }`}
+          aria-label={t.common.closeMenu}
+          tabIndex={menuOpen ? 0 : -1}
+          onClick={() => setMenuOpen(false)}
+        />
+
+        <div
+          className={`absolute inset-x-0 top-0 flex max-h-[100dvh] flex-col border-b border-cream/10 bg-ink transition-transform duration-300 ease-out ${
+            menuOpen ? "translate-y-0" : "-translate-y-full"
+          }`}
+        >
+          <div className="flex h-16 shrink-0 items-center justify-between gap-3 px-4 sm:px-6">
+            <span className="font-display text-sm tracking-[0.16em] text-cream">
+              ASİL&apos;S A MELODY
+            </span>
+            <button
+              type="button"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream"
+              aria-label={t.common.closeMenu}
+              onClick={() => setMenuOpen(false)}
+            >
+              <span className="relative block h-3.5 w-5">
+                <span className="absolute left-0 top-1.5 block h-px w-full rotate-45 bg-current" />
+                <span className="absolute left-0 top-1.5 block h-px w-full -rotate-45 bg-current" />
+              </span>
+            </button>
+          </div>
+
+          <nav
+            id="mobile-menu"
+            className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain px-4 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-2 sm:px-6"
+            aria-label={t.nav.mobileNav}
+          >
+            {navItems.map((item) => {
+              const active = isActive(item.match);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={go(item.href)}
+                  className={`border-b border-cream/10 py-3.5 text-[0.72rem] uppercase tracking-[0.24em] transition-colors ${
+                    active ? "text-accent" : "text-cream/85 active:text-accent"
+                  }`}
+                  aria-current={active ? "page" : undefined}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <div className="mt-5 pb-4">
+              <LanguageToggle variant="inline" />
+            </div>
+          </nav>
+        </div>
+      </div>,
+      document.body,
+    );
 
   return (
     <header
@@ -154,40 +236,7 @@ export function Header() {
         </div>
       </div>
 
-      <div
-        className={`fixed inset-0 top-16 z-40 bg-ink/95 backdrop-blur-xl transition-[opacity,visibility] duration-300 lg:hidden ${
-          menuOpen
-            ? "visible opacity-100"
-            : "invisible pointer-events-none opacity-0"
-        }`}
-        aria-hidden={!menuOpen}
-      >
-        <nav
-          id="mobile-menu"
-          className="flex h-full flex-col gap-1 overflow-y-auto px-6 py-8"
-          aria-label={t.nav.mobileNav}
-        >
-          {navItems.map((item) => {
-            const active = isActive(item.match);
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={go(item.href)}
-                className={`border-b border-cream/10 py-4 text-[0.78rem] uppercase tracking-[0.28em] transition-colors ${
-                  active ? "text-accent" : "text-cream/85 active:text-accent"
-                }`}
-                aria-current={active ? "page" : undefined}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-          <div className="mt-6">
-            <LanguageToggle variant="inline" />
-          </div>
-        </nav>
-      </div>
+      {mobileMenu}
     </header>
   );
 }

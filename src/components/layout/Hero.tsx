@@ -87,19 +87,19 @@ export function Hero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.58 }}
-              className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start"
+              className="mt-6 flex flex-row flex-wrap items-center justify-center gap-2.5 sm:mt-7 sm:gap-3 lg:justify-start"
             >
               <a
                 href="#music"
                 onClick={scrollToId("music")}
-                className="inline-flex min-h-11 items-center justify-center bg-cream px-6 py-3 text-[0.65rem] uppercase tracking-[0.24em] text-ink transition hover:bg-accent hover:text-ink sm:px-7 sm:tracking-[0.28em]"
+                className="inline-flex min-h-9 items-center justify-center bg-cream px-4 py-2 text-[0.55rem] uppercase tracking-[0.2em] text-ink transition hover:bg-accent hover:text-ink sm:min-h-11 sm:px-7 sm:py-3 sm:text-[0.65rem] sm:tracking-[0.28em]"
               >
                 {t.hero.listenCta}
               </a>
               <a
                 href="#artists"
                 onClick={scrollToId("artists")}
-                className="inline-flex min-h-11 items-center justify-center border border-cream/35 px-6 py-3 text-[0.65rem] uppercase tracking-[0.24em] text-cream transition hover:border-accent hover:text-accent sm:px-7 sm:tracking-[0.28em]"
+                className="inline-flex min-h-9 items-center justify-center border border-cream/35 px-4 py-2 text-[0.55rem] uppercase tracking-[0.2em] text-cream transition hover:border-accent hover:text-accent sm:min-h-11 sm:px-7 sm:py-3 sm:text-[0.65rem] sm:tracking-[0.28em]"
               >
                 {t.hero.artistsCta}
               </a>
