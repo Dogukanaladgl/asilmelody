@@ -11,9 +11,8 @@ export default function AsiNildenizPage() {
   return (
     <main id="main-content" className="min-h-screen bg-ink">
       <ArtistProfile
+        artistId="asi-nildeniz"
         name={artist.name}
-        quote={artist.quote}
-        bio={artist.bio}
         imageUrl={artist.profileImage}
         platforms={toPlatformList(artist.platforms)}
         imagePosition="right"

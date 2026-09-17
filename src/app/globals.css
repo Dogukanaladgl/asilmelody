@@ -49,8 +49,8 @@
   --color-museum-carpet-light: var(--museum-carpet-light);
   --color-museum-carpet-edge: var(--museum-carpet-edge);
   --color-museum-wall: var(--museum-wall);
-  --font-display: var(--font-display);
-  --font-body: var(--font-display);
+  --font-display: var(--font-display), var(--font-noto-serif-jp);
+  --font-body: var(--font-display), var(--font-noto-serif-jp);
 }
 
 html {
@@ -65,7 +65,8 @@ html.lenis body {
 body {
   background: var(--ink);
   color: var(--cream);
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), var(--font-noto-serif-jp), Georgia,
+    "Times New Roman", serif;
   overflow-x: clip;
   caret-color: transparent;
   user-select: none;

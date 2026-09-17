@@ -18,7 +18,7 @@ export function JsonLd() {
       telephone: siteConfig.phoneE164,
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Modesa Sanayi Sitesi, Fevziçakmak, 10740. Sk. No:1",
+        streetAddress: "Fevziçakmak, 10740. Sk. No:1",
         addressLocality: "Karatay",
         addressRegion: "Konya",
         postalCode: "42050",

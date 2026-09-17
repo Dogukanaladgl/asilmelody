@@ -1,34 +1,26 @@
 "use client";
 
-import Link from "next/link";
-import { useLayoutEffect, useRef, type MouseEvent } from "react";
+import { useRef, type MouseEvent } from "react";
 import { motion } from "framer-motion";
 import { useLenis } from "lenis/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useViewPath } from "@/components/layout/ViewPathProvider";
-import { SharpImage } from "@/components/ui/SharpImage";
-import { artists, companyInfo, exhibits, heroImage } from "@/lib/data";
-
-gsap.registerPlugin(ScrollTrigger);
+import { HeroSpotifyCard } from "@/components/home/HeroSpotifyCard";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { exhibits } from "@/lib/data";
 
 const featured = exhibits[0];
-const ildeniz = artists[0];
-const nildeniz = artists[1];
-
-const marqueeItems = [
-  "ASIL'S A MELODY",
-  "ASİ İLDENİZ",
-  "ASİ NİLDENİZ",
-  companyInfo.slogan.toUpperCase(),
-  featured.title.toUpperCase(),
-];
 
 export function Hero() {
-  const { onNavClick } = useViewPath();
+  const { t } = useLanguage();
   const lenis = useLenis();
   const sectionRef = useRef<HTMLElement>(null);
-  const visualRef = useRef<HTMLDivElement>(null);
+
+  const marqueeItems = [
+    "ASIL'S A MELODY",
+    "ASİ İLDENİZ",
+    "ASİ NİLDENİZ",
+    t.hero.slogan.toUpperCase(),
+    featured.title.toUpperCase(),
+  ];
 
   const scrollToId =
     (id: string) => (event: MouseEvent<HTMLAnchorElement>) => {
@@ -42,61 +34,32 @@ export function Hero() {
       }
     };
 
-  useLayoutEffect(() => {
-    const section = sectionRef.current;
-    const visual = visualRef.current;
-    if (!section || !visual) return;
-
-    const ctx = gsap.context(() => {
-      gsap.to(visual, {
-        yPercent: 8,
-        scale: 1.03,
-        ease: "none",
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1.1,
-        },
-      });
-    }, section);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
     <section
       ref={sectionRef}
       className="relative z-[2] flex min-h-[100svh] flex-col overflow-hidden bg-ink"
       aria-labelledby="hero-heading"
     >
-      <div
-        ref={visualRef}
-        className="absolute inset-0 will-change-transform"
-        aria-hidden
-      >
-        <SharpImage
-          src={heroImage}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 65% 50% at 42% 42%, rgba(212,180,138,0.14) 0%, transparent 58%), radial-gradient(ellipse 45% 35% at 88% 62%, rgba(168,137,98,0.09) 0%, transparent 55%), linear-gradient(180deg, #12100e 0%, #0a0908 52%, #0a0908 100%)",
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/50 to-ink" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink/40 via-transparent to-ink/40" />
       </div>
 
-      <div className="relative z-10 flex flex-1 flex-col justify-end px-4 pb-8 pt-24 sm:px-6 sm:pb-10 sm:pt-28 md:px-10 md:pb-14 md:pt-32">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
-          <div className="max-w-3xl text-center lg:text-left">
+      <div className="relative z-10 flex flex-1 flex-col justify-center px-4 pb-8 pt-20 sm:px-6 sm:pb-10 sm:pt-24 md:px-10 md:pb-12 md:pt-28">
+        <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-8 lg:flex-row lg:items-center lg:justify-between lg:gap-14 xl:gap-16">
+          <div className="w-full max-w-2xl text-center lg:max-w-xl lg:text-left xl:max-w-2xl">
             <motion.p
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-[0.58rem] uppercase tracking-[0.28em] text-accent sm:text-[0.68rem] sm:tracking-[0.42em]"
+              className="text-[0.62rem] uppercase tracking-[0.32em] text-accent sm:text-[0.7rem] sm:tracking-[0.4em]"
             >
-              {companyInfo.slogan}
+              {t.hero.slogan}
             </motion.p>
 
             <motion.h1
@@ -104,7 +67,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 28 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.05, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-4 font-display text-[clamp(2.4rem,12vw,7rem)] font-medium leading-[0.92] tracking-[0.04em] text-cream sm:mt-5"
+              className="mt-3 font-display text-[clamp(2.35rem,7.5vw,5.25rem)] font-medium leading-[0.94] tracking-[0.04em] text-cream sm:mt-4"
             >
               ASİL&apos;S
               <br />
@@ -115,74 +78,37 @@ export function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.85, delay: 0.42 }}
-              className="mx-auto mt-5 max-w-md text-sm font-light leading-relaxed text-cream/75 sm:mt-6 sm:text-base lg:mx-0"
+              className="mx-auto mt-4 max-w-md text-sm font-light leading-relaxed text-cream/75 sm:mt-5 sm:text-[0.95rem] lg:mx-0"
             >
-              Asi İldeniz & Asi Nildeniz. Yeni nesil Türkçe rap ve elektronik
-              tınılar — tek bir markanın altında.
+              {t.hero.description}
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.58 }}
-              className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start"
+              className="mt-6 flex flex-col gap-3 sm:mt-7 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start"
             >
               <a
                 href="#music"
                 onClick={scrollToId("music")}
-                className="inline-flex min-h-12 items-center justify-center bg-cream px-6 py-3.5 text-[0.65rem] uppercase tracking-[0.24em] text-ink transition hover:bg-accent hover:text-ink sm:px-7 sm:tracking-[0.28em]"
+                className="inline-flex min-h-11 items-center justify-center bg-cream px-6 py-3 text-[0.65rem] uppercase tracking-[0.24em] text-ink transition hover:bg-accent hover:text-ink sm:px-7 sm:tracking-[0.28em]"
               >
-                Müziği Dinle
+                {t.hero.listenCta}
               </a>
               <a
                 href="#artists"
                 onClick={scrollToId("artists")}
-                className="inline-flex min-h-12 items-center justify-center border border-cream/35 px-6 py-3.5 text-[0.65rem] uppercase tracking-[0.24em] text-cream transition hover:border-accent hover:text-accent sm:px-7 sm:tracking-[0.28em]"
+                className="inline-flex min-h-11 items-center justify-center border border-cream/35 px-6 py-3 text-[0.65rem] uppercase tracking-[0.24em] text-cream transition hover:border-accent hover:text-accent sm:px-7 sm:tracking-[0.28em]"
               >
-                Sanatçılar
+                {t.hero.artistsCta}
               </a>
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.5 }}
-            className="mx-auto flex gap-3 sm:gap-4 lg:mx-0"
-          >
-            {[
-              {
-                artist: ildeniz,
-                href: "/asi-ildeniz",
-                position: "center 16%",
-              },
-              {
-                artist: nildeniz,
-                href: "/asi-nildeniz",
-                position: "center 20%",
-              },
-            ].map(({ artist, href, position }) => (
-              <Link
-                key={artist.id}
-                href={href}
-                onClick={onNavClick(href)}
-                aria-label={`${artist.name} profiline git`}
-                className="group relative h-28 w-24 overflow-hidden rounded-sm sm:h-40 sm:w-28 md:h-52 md:w-40"
-              >
-                <SharpImage
-                  src={artist.profileImage}
-                  alt={artist.name}
-                  fill
-                  sizes="(max-width: 768px) 28vw, 320px"
-                  className="object-cover transition duration-700 group-hover:scale-105"
-                  style={{ objectPosition: position }}
-                />
-                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/90 to-transparent px-1.5 pb-2 pt-8 text-center text-[0.5rem] uppercase tracking-[0.14em] text-cream sm:px-2 sm:pb-3 sm:pt-10 sm:tracking-[0.22em]">
-                  {artist.name}
-                </span>
-              </Link>
-            ))}
-          </motion.div>
+          <div className="flex w-full max-w-xl justify-center lg:w-auto lg:max-w-none lg:shrink-0 lg:justify-end">
+            <HeroSpotifyCard />
+          </div>
         </div>
       </div>
 

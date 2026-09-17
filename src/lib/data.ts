@@ -191,13 +191,13 @@ export const exhibits: Exhibit[] = [
 export const companyInfo: CompanyInfo = {
   slogan: "Evrenin Asil Sesi",
   address:
-    "Modesa Sanayi Sitesi, Fevziçakmak, 10740. Sk. No:1, 42050 Karatay/Konya, Türkiye",
+    "Fevziçakmak, 10740. Sk. No:1, 42050 Karatay/Konya, Türkiye",
   email: "info@asilmelody.com",
   whatsapp: "+905300122700",
   phone: "0530 012 27 00",
   hours: "Bugün açık 09:00 — 17:00",
   mapQuery:
-    "Modesa Sanayi Sitesi, Fevziçakmak, 10740. Sk. No:1, 42050 Karatay/Konya, Türkiye",
+    "Fevziçakmak, 10740. Sk. No:1, 42050 Karatay/Konya, Türkiye",
 };
 
 /** İletişim sayfası — uzun, davetkâr metinler */
@@ -213,12 +213,23 @@ export const contactCopy = {
   whatsappLabel: "WhatsApp Üzerinden Ulaşın",
   mapLabel: "Konumumuz",
   mapHint:
-    "Modesa Sanayi Sitesi’nde, Karatay/Konya’da yer alıyoruz. Yol tarifi için haritayı kullanabilirsiniz.",
+    "Karatay/Konya’da yer alıyoruz. Yol tarifi için haritayı kullanabilirsiniz.",
 };
 
 export const heroImage = "/images/exhibits/asil-azmaz-bal-kokmaz.webp";
 export const brandMark = "/images/logo/logo.webp";
 export const brandLogo = "/images/logo/logo.webp";
+
+/** Hero’daki Spotify oynatma listesi kartı */
+export const spotifyPlaylist = {
+  title: "Asil's a Melody",
+  artists: "Asi İldeniz & Asi Nildeniz",
+  badge: "Playlist",
+  ctaLabel: "Spotify'da Dinle",
+  coverImage: "/images/exhibits/asil-azmaz-bal-kokmaz.webp",
+  /** Resmi playlist URL’si — güncelleyebilirsiniz */
+  href: "https://open.spotify.com/intl-tr/artist/099xa3hznSJtxqK3VPmm0o",
+};
 
 /** Karşılıklı partner yönlendirmesi — diğer sitedeki PARTNER / KEŞFET bölümünün eşi */
 export const partnerSite = {

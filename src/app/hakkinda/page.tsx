@@ -3,15 +3,14 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useViewPath } from "@/components/layout/ViewPathProvider";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 import { aboutProfiles } from "@/lib/data";
+import {
+  getArtistLocalized,
+  getBrandCardBio,
+  type ArtistContentId,
+} from "@/lib/artistI18n";
 import { SharpImage } from "@/components/ui/SharpImage";
-
-const paragraphs = [
-  "Asil Melody, sadece bir müzik platformu değil; notaların ve sessizliğin arasında yankılanan sanatsal bir serüvendir. Asi İldeniz ve Asi Nildeniz’in ruhundan kopan eserler, burada zamanın ötesinde bir müzede sergilenir.",
-  "Her koridor loş bir ışıkla aydınlanır. Her parçanın bir vitrini, her sözün bir yankısı vardır. Ziyaretçi acele etmez; yavaşlar, dinler ve sanatın ağırlığını omuzlarında değil, kalbinde taşır.",
-  "Bu mekân, dinlemeyi bir alışverişe değil, bir ayine dönüştürür. Platformlara açılan kapılar yalnızca birer eşiktir; asıl deneyim, eserin kendi sessizliğinde başlar.",
-  "Biz, müziği hızla tüketilen bir nesne olmaktan çıkarıp, hatırlanan bir atmosfer haline getirmek için buradayız. Evrenin Asil sesi — sabırla, zarifçe, sonsuza kadar.",
-];
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 32 },
@@ -28,9 +27,18 @@ const fadeInUp = {
 
 export default function HakkindaPage() {
   const { onNavClick } = useViewPath();
+  const { t, language } = useLanguage();
+
+  const profileBio = (id: string) => {
+    if (id === "asil-a-melody") return getBrandCardBio(language);
+    return getArtistLocalized(id as ArtistContentId, language).cardBio;
+  };
 
   return (
-    <main id="main-content" className="flex min-h-screen flex-col items-center px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-24 sm:pt-40">
+    <main
+      id="main-content"
+      className="flex min-h-screen flex-col items-center px-4 pb-16 pt-28 text-center sm:px-6 sm:pb-24 sm:pt-40"
+    >
       <motion.p
         custom={0}
         variants={fadeInUp}
@@ -38,7 +46,7 @@ export default function HakkindaPage() {
         animate="visible"
         className="font-display text-xl tracking-widest text-museum-bone sm:text-2xl md:text-3xl"
       >
-        ASİL&apos;S A MELODY
+        {t.about.brand}
       </motion.p>
 
       <motion.p
@@ -48,7 +56,7 @@ export default function HakkindaPage() {
         animate="visible"
         className="mt-3 text-xs tracking-[0.22em] text-museum-brown sm:text-sm sm:tracking-[0.28em]"
       >
-        ® Evrenin Asil sesi
+        {t.about.registered}
       </motion.p>
 
       <motion.h1
@@ -58,11 +66,11 @@ export default function HakkindaPage() {
         animate="visible"
         className="mt-10 max-w-3xl font-display text-3xl font-light leading-tight tracking-wide text-museum-bone sm:mt-14 sm:text-4xl md:text-5xl"
       >
-        Müziğin Sessizlikle Buluştuğu Yer
+        {t.about.title}
       </motion.h1>
 
       <div className="mx-auto mt-10 max-w-2xl space-y-6 text-left text-museum-bone/80 sm:mt-12 sm:space-y-8 sm:text-center">
-        {paragraphs.map((text, index) => (
+        {t.about.paragraphs.map((text, index) => (
           <motion.p
             key={text.slice(0, 24)}
             custom={index + 3}
@@ -84,7 +92,7 @@ export default function HakkindaPage() {
         className="mt-16 w-full max-w-6xl sm:mt-24"
       >
         <h2 className="font-display text-xl tracking-[0.2em] text-museum-bone sm:text-2xl sm:tracking-[0.28em] md:text-3xl">
-          Hakkımızda
+          {t.about.sectionTitle}
         </h2>
         <div className="mx-auto mt-4 h-px w-12 bg-museum-brown/60" aria-hidden />
 
@@ -115,7 +123,7 @@ export default function HakkindaPage() {
                   {profile.name}
                 </h3>
                 <p className="mt-3 max-w-xs px-2 text-sm font-light leading-relaxed tracking-wide text-museum-bone-muted sm:mt-4 sm:px-3">
-                  {profile.bio}
+                  {profileBio(profile.id)}
                 </p>
               </Link>
             );

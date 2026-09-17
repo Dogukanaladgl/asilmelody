@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { companyInfo } from "@/lib/data";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const phoneHref = `tel:${companyInfo.phone.replace(/\s/g, "")}`;
 
@@ -57,6 +58,8 @@ function FooterLabel({ children }: { children: ReactNode }) {
 }
 
 export function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer
       className="relative z-[2] mt-auto border-t border-cream/10 bg-ink-soft pb-[env(safe-area-inset-bottom)]"
@@ -66,7 +69,7 @@ export function Footer() {
         <div className="grid grid-cols-1 items-start gap-8 text-center text-sm font-light text-cream/65 sm:gap-10 md:grid-cols-3 md:gap-8 md:text-left">
           <div className="space-y-6 sm:space-y-8 md:text-left">
             <div>
-              <FooterLabel>E-posta</FooterLabel>
+              <FooterLabel>{t.footer.email}</FooterLabel>
               <a
                 href={`mailto:${companyInfo.email}`}
                 className="break-all tracking-[0.04em] text-cream transition-colors hover:text-accent sm:tracking-[0.08em]"
@@ -76,7 +79,7 @@ export function Footer() {
             </div>
 
             <div>
-              <FooterLabel>Telefon</FooterLabel>
+              <FooterLabel>{t.footer.phone}</FooterLabel>
               <a
                 href={phoneHref}
                 className="tracking-[0.08em] text-cream transition-colors hover:text-accent"
@@ -88,9 +91,9 @@ export function Footer() {
 
           <nav
             className="flex flex-col items-center text-center"
-            aria-label="Sosyal medya"
+            aria-label={t.footer.socialNav}
           >
-            <FooterLabel>Sosyal</FooterLabel>
+            <FooterLabel>{t.footer.social}</FooterLabel>
             <ul className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3">
               {socialLinks.map((social) => (
                 <li key={social.label}>
@@ -98,7 +101,7 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer me"
-                    aria-label={`${social.label} (yeni sekme)`}
+                    aria-label={`${social.label} (${t.common.newTab})`}
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-cream/20 text-cream transition-colors duration-300 hover:border-accent hover:text-accent"
                   >
                     <svg
@@ -120,16 +123,16 @@ export function Footer() {
           </nav>
 
           <div className="md:text-right">
-            <FooterLabel>Adres</FooterLabel>
+            <FooterLabel>{t.footer.address}</FooterLabel>
             <address className="mx-auto max-w-xs not-italic leading-relaxed text-cream md:ml-auto md:mr-0 md:max-w-[18rem]">
               {companyInfo.address}
             </address>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-2 border-t border-cream/10 pt-7 text-[0.55rem] uppercase tracking-[0.2em] text-cream/50 sm:mt-12 sm:gap-3 sm:pt-8 sm:text-[0.58rem] sm:tracking-[0.22em] sm:flex-row sm:justify-between">
-          <p>© 2026 Asil&apos;s a Melody</p>
-          <p>Evrenin Asil sesi</p>
+        <div className="mt-10 flex flex-col items-center gap-2 border-t border-cream/10 pt-7 text-[0.55rem] uppercase tracking-[0.2em] text-cream/50 sm:mt-12 sm:flex-row sm:justify-between sm:gap-3 sm:pt-8 sm:text-[0.58rem] sm:tracking-[0.22em]">
+          <p>{t.footer.rights}</p>
+          <p>{t.footer.tagline}</p>
         </div>
       </div>
     </footer>

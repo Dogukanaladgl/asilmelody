@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/GooeyPlatformButton";
 import { SelectedWorks } from "@/components/layout/SelectedWorks";
 import { SharpImage } from "@/components/ui/SharpImage";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { getArtistLocalized } from "@/lib/artistI18n";
 import { exhibits } from "@/lib/data";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -20,9 +22,8 @@ export interface ArtistPlatform {
 }
 
 interface ArtistProfileProps {
+  artistId: "asi-ildeniz" | "asi-nildeniz";
   name: string;
-  quote: string;
-  bio: string[];
   imageUrl: string;
   platforms: ArtistPlatform[];
   imagePosition?: "left" | "right";
@@ -42,12 +43,13 @@ const fadeInUp = {
 };
 
 export function ArtistProfile({
+  artistId,
   name,
-  quote,
-  bio,
   imageUrl,
   platforms,
 }: ArtistProfileProps) {
+  const { t, language } = useLanguage();
+  const { quote, bio } = getArtistLocalized(artistId, language);
   const heroRef = useRef<HTMLElement>(null);
   const visualRef = useRef<HTMLDivElement>(null);
   const marqueeName = name.toLocaleUpperCase("tr-TR");
@@ -107,7 +109,7 @@ export function ArtistProfile({
               transition={{ duration: 0.75 }}
               className="text-[0.58rem] uppercase tracking-[0.3em] text-accent sm:text-[0.62rem] sm:tracking-[0.4em]"
             >
-              Official Artist
+              {t.artist.official}
             </motion.p>
 
             <motion.h1
@@ -139,13 +141,13 @@ export function ArtistProfile({
                 href="#artist-bio"
                 className="inline-flex min-h-12 items-center justify-center bg-cream px-6 py-3 text-[0.65rem] uppercase tracking-[0.24em] text-ink transition hover:bg-accent sm:tracking-[0.28em]"
               >
-                Biyografi
+                {t.artist.bio}
               </a>
               <a
                 href="#artist-listen"
                 className="inline-flex min-h-12 items-center justify-center border border-cream/35 px-6 py-3 text-[0.65rem] uppercase tracking-[0.24em] text-cream transition hover:border-accent hover:text-accent sm:tracking-[0.28em]"
               >
-                Dinle
+                {t.artist.listen}
               </a>
             </motion.div>
           </div>
@@ -204,7 +206,7 @@ export function ArtistProfile({
               viewport={{ once: true }}
               className="text-[0.62rem] uppercase tracking-[0.38em] text-accent"
             >
-              About
+              {t.artist.about}
             </motion.p>
             <motion.h2
               id="artist-bio-heading"
@@ -244,7 +246,7 @@ export function ArtistProfile({
               className="mt-10 scroll-mt-24 sm:mt-12"
             >
               <h3 className="text-[0.68rem] uppercase tracking-[0.32em] text-accent">
-                Listen & Follow
+                {t.artist.listenFollow}
               </h3>
               <ul className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {platforms.map((platform) => (

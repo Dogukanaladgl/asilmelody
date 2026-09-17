@@ -5,6 +5,8 @@ import type { Exhibit } from "@/lib/data";
 import { exhibits } from "@/lib/data";
 import { SharpImage } from "@/components/ui/SharpImage";
 import { YouTubeIcon } from "@/components/icons/YouTubeIcon";
+import { useLanguage } from "@/components/providers/LanguageProvider";
+import { formatMessage } from "@/lib/i18n";
 
 const bentoClass = [
   "col-span-2 sm:col-span-7 sm:row-span-2",
@@ -25,12 +27,17 @@ function TrackCard({
   index: number;
   featured?: boolean;
 }) {
+  const { t } = useLanguage();
+
   return (
     <motion.a
       href={track.youtubeUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`${track.title} — ${track.artists}. YouTube’da izle (yeni sekme)`}
+      aria-label={formatMessage(t.music.watchAria, {
+        title: track.title,
+        artists: track.artists,
+      })}
       initial={{ opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -80,7 +87,7 @@ function TrackCard({
           <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-4 sm:gap-4 sm:p-6 md:flex-row md:items-end md:justify-between md:p-10">
             <div>
               <p className="text-[0.55rem] uppercase tracking-[0.3em] text-accent sm:text-[0.6rem] sm:tracking-[0.35em]">
-                Featured & {track.year}
+                {t.music.featured} & {track.year}
               </p>
               <h3 className="mt-2 font-display text-xl tracking-[0.06em] text-cream sm:text-2xl md:text-4xl">
                 {track.title}
@@ -91,7 +98,7 @@ function TrackCard({
             </div>
             <span className="inline-flex w-fit items-center gap-2 bg-cream px-4 py-2.5 text-[0.6rem] uppercase tracking-[0.24em] text-ink transition group-hover:bg-accent sm:px-5 sm:py-3 sm:text-[0.65rem] sm:tracking-[0.28em]">
               <YouTubeIcon className="h-3.5 w-3.5" />
-              İzle
+              {t.common.watch}
             </span>
           </div>
         ) : (
@@ -115,7 +122,7 @@ function TrackCard({
             </div>
             <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 border border-cream/25 bg-ink/70 px-2 py-1.5 text-[0.5rem] uppercase tracking-[0.18em] text-cream backdrop-blur-sm sm:right-4 sm:top-4 sm:gap-2 sm:px-3 sm:py-2 sm:text-[0.55rem] sm:tracking-[0.22em] sm:opacity-0 sm:transition sm:group-hover:opacity-100">
               <YouTubeIcon className="h-3 w-3" />
-              İzle
+              {t.common.watch}
             </span>
           </>
         )}
@@ -125,6 +132,7 @@ function TrackCard({
 }
 
 export function FeaturedMusic() {
+  const { t } = useLanguage();
   const [featured, ...rest] = exhibits;
 
   return (
@@ -141,17 +149,17 @@ export function FeaturedMusic() {
         <header className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between md:gap-4">
           <div>
             <p className="text-[0.62rem] uppercase tracking-[0.4em] text-accent">
-              Discography
+              {t.music.eyebrow}
             </p>
             <h2
               id="music-heading"
               className="mt-3 font-display text-3xl tracking-[0.08em] text-cream md:text-5xl"
             >
-              Müzik
+              {t.music.title}
             </h2>
           </div>
           <p className="max-w-sm text-sm font-light leading-relaxed text-cream/60 md:text-right">
-            Resmi klipler ve parçalar. Kapaklara tıkla, YouTube’da dinle.
+            {t.music.subtitle}
           </p>
         </header>
 

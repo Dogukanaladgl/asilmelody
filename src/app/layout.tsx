@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display } from "next/font/google";
+import { Noto_Sans_JP, Noto_Serif_JP, Playfair_Display } from "next/font/google";
 import { Providers } from "@/components/providers/Providers";
 import { SmoothScrolling } from "@/components/layout/SmoothScrolling";
 import { Header } from "@/components/layout/Header";
@@ -11,8 +11,21 @@ import "./globals.css";
 
 const playfair = Playfair_Display({
   variable: "--font-display",
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin", "latin-ext", "cyrillic"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const notoSerifJp = Noto_Serif_JP({
+  variable: "--font-noto-serif-jp",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const notoSansJp = Noto_Sans_JP({
+  variable: "--font-noto-sans-jp",
+  subsets: ["latin"],
   display: "swap",
 });
 
@@ -95,15 +108,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="tr" className={`${playfair.variable} h-full antialiased`}>
+    <html
+      lang="tr"
+      className={`${playfair.variable} ${notoSerifJp.variable} ${notoSansJp.variable} h-full antialiased`}
+    >
       <body className="relative flex min-h-full flex-col bg-ink font-display text-cream">
         <JsonLd />
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-cream focus:px-4 focus:py-2 focus:text-sm focus:tracking-[0.12em] focus:text-ink focus:uppercase"
-        >
-          İçeriğe geç
-        </a>
         <SmoothScrolling>
           <Providers>
             <ViewPathProvider>

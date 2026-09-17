@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { companyInfo, contactCopy } from "@/lib/data";
+import { companyInfo } from "@/lib/data";
 import {
   GooeyButton,
   GooeyFilterDefs,
 } from "@/components/ui/GooeyPlatformButton";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const mapQuery = encodeURIComponent(companyInfo.mapQuery);
 const mapEmbedSrc = `https://maps.google.com/maps?q=${mapQuery}&t=m&z=15&ie=UTF8&iwloc=&output=embed`;
@@ -25,8 +26,13 @@ const fade = {
 };
 
 export default function IletisimPage() {
+  const { t } = useLanguage();
+
   return (
-    <main id="main-content" className="relative min-h-screen overflow-hidden px-4 pb-16 pt-28 sm:px-6 sm:pb-24 sm:pt-36 md:px-10 md:pt-40">
+    <main
+      id="main-content"
+      className="relative min-h-screen overflow-hidden px-4 pb-16 pt-28 sm:px-6 sm:pb-24 sm:pt-36 md:px-10 md:pt-40"
+    >
       <div
         className="pointer-events-none absolute inset-0 bg-spotlight opacity-40"
         aria-hidden
@@ -42,22 +48,19 @@ export default function IletisimPage() {
           className="mx-auto flex max-w-3xl flex-col items-center text-center"
         >
           <p className="text-[0.58rem] uppercase tracking-[0.32em] text-museum-brown sm:text-[0.62rem] sm:tracking-[0.45em]">
-            {contactCopy.eyebrow}
+            {t.contact.eyebrow}
           </p>
           <h1 className="mt-4 font-display text-3xl font-light tracking-[0.08em] text-museum-bone sm:text-4xl sm:tracking-[0.12em] md:text-5xl">
-            {contactCopy.title}
+            {t.contact.title}
           </h1>
-          <div
-            className="mt-4 h-px w-16 bg-accent/80"
-            aria-hidden
-          />
+          <div className="mt-4 h-px w-16 bg-accent/80" aria-hidden />
 
           <p className="mt-6 text-base font-light tracking-wide text-museum-amber sm:mt-8 sm:text-lg md:text-xl">
-            {contactCopy.lead}
+            {t.contact.lead}
           </p>
 
           <div className="mt-6 space-y-4 text-left sm:mt-8 sm:space-y-5 sm:text-center">
-            {contactCopy.paragraphs.map((paragraph) => (
+            {t.contact.paragraphs.map((paragraph) => (
               <p
                 key={paragraph.slice(0, 32)}
                 className="text-sm font-light leading-relaxed tracking-wide text-museum-bone-muted md:text-base"
@@ -70,7 +73,7 @@ export default function IletisimPage() {
           <div className="mt-10 w-full max-w-sm sm:mt-12">
             <GooeyButton
               href={whatsappHref}
-              label={contactCopy.whatsappLabel}
+              label={t.contact.whatsapp}
               icon={<WhatsAppGlyph />}
             />
           </div>
@@ -87,14 +90,14 @@ export default function IletisimPage() {
             id="contact-map-heading"
             className="font-display text-xl tracking-[0.12em] text-museum-bone sm:text-2xl sm:tracking-[0.18em] md:text-3xl"
           >
-            {contactCopy.mapLabel}
+            {t.contact.mapLabel}
           </h2>
           <p className="mt-3 max-w-2xl text-center text-sm font-light leading-relaxed text-museum-bone-muted sm:mt-4 md:text-base">
-            {contactCopy.mapHint}
+            {t.contact.mapHint}
           </p>
           <div className="relative mt-8 w-full min-h-[280px] overflow-hidden border border-museum-brown/25 bg-[#e8e4df] sm:mt-10 sm:min-h-[360px] md:min-h-[440px]">
             <iframe
-              title="Asil Melody konum haritası — Modesa Sanayi Sitesi, Karatay/Konya"
+              title={t.contact.mapTitle}
               src={mapEmbedSrc}
               className="absolute inset-0 h-full w-full border-0"
               loading="lazy"
