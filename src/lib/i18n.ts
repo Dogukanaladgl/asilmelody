@@ -98,14 +98,10 @@ const tr = {
     lead: "Birlikte Daha İyiyiz",
     paragraphs: [
       "AsilMelody, yalnızca eserlerin sergilendiği bir müze değil; ortak çalışma, prodüksiyon, organizasyon ve önerilerin buluştuğu sıcak bir eşiktir. Yeni bir proje fikriniz, iş birliği talebiniz veya meraktan doğan bir sorunuz varsa, sizi dinlemek isteriz.",
-      "Sanatçılarla iletişim, konser ve etkinlik organizasyonu, basın ve marka iş birlikleri ya da katalogumuzdaki parçalar hakkında bilgi almak için WhatsApp üzerinden doğrudan yazabilir veya aşağıdaki haritadan bize ulaşabilirsiniz.",
+      "Sanatçılarla iletişim, konser ve etkinlik organizasyonu, basın ve marka iş birlikleri ya da katalogumuzdaki parçalar hakkında bilgi almak için WhatsApp üzerinden doğrudan yazabilirsiniz.",
       "Mesajınızı acele etmeden okuruz. Her yazışmayı, bir salon kapısını aralamak gibi karşılarız — net, zarif ve samimi bir dönüş için buradayız.",
     ],
     whatsapp: "WhatsApp Üzerinden Ulaşın",
-    mapLabel: "Konumumuz",
-    mapHint:
-      "Karatay/Konya’da yer alıyoruz. Yol tarifi için haritayı kullanabilirsiniz.",
-    mapTitle: "Asil Melody konum haritası — Fevziçakmak, Karatay/Konya",
   },
   artist: {
     official: "Resmi Sanatçı",
@@ -192,9 +188,6 @@ type DictionaryShape = {
     lead: string;
     paragraphs: string[];
     whatsapp: string;
-    mapLabel: string;
-    mapHint: string;
-    mapTitle: string;
   };
   artist: {
     official: string;
@@ -288,14 +281,10 @@ const en: DictionaryShape = {
     lead: "We Are Better Together",
     paragraphs: [
       "AsilMelody is not only a museum of works; it is a warm threshold where collaboration, production, events and ideas meet. If you have a project, a partnership request, or a curious question — we want to listen.",
-      "For artist contact, concerts and events, press and brand collaborations, or catalog inquiries, write to us on WhatsApp or reach us via the map below.",
+      "For artist contact, concerts and events, press and brand collaborations, or catalog inquiries, write to us on WhatsApp.",
       "We read every message without hurry. Each conversation is like opening a salon door — clear, graceful, and sincere.",
     ],
     whatsapp: "Contact via WhatsApp",
-    mapLabel: "Our Location",
-    mapHint:
-      "We are based in Karatay/Konya. Use the map for directions.",
-    mapTitle: "Asil Melody location map — Fevziçakmak, Karatay/Konya",
   },
   artist: {
     official: "Official Artist",
@@ -389,13 +378,10 @@ const ja: DictionaryShape = {
     lead: "一緒ならもっと良くなる",
     paragraphs: [
       "AsilMelody は作品の展示だけでなく、コラボレーション、制作、イベント、アイデアが出会う温かな入口です。プロジェクトや提携、ご質問があればお聞かせください。",
-      "アーティスト連絡、コンサート、プレスやブランド提携、カタログに関するお問い合わせは WhatsApp または下の地図からどうぞ。",
+      "アーティスト連絡、コンサート、プレスやブランド提携、カタログに関するお問い合わせは WhatsApp からどうぞ。",
       "メッセージは急がず読みます。一つひとつのやりとりを、サロンの扉を開けるように——明確で、優雅で、誠実に。",
     ],
     whatsapp: "WhatsAppで連絡",
-    mapLabel: "所在地",
-    mapHint: "カラタイ／コンヤにあります。道順は地図をご利用ください。",
-    mapTitle: "Asil Melody 地図 — Fevziçakmak, Karatay/Konya",
   },
   artist: {
     official: "公式アーティスト",
@@ -489,14 +475,10 @@ const es: DictionaryShape = {
     lead: "Juntos somos mejores",
     paragraphs: [
       "AsilMelody no es solo un museo de obras; es un umbral cálido donde se encuentran la colaboración, la producción, los eventos y las ideas. Si tienes un proyecto, una propuesta o una pregunta, queremos escucharte.",
-      "Para contacto con artistas, conciertos, prensa y marcas, o consultas del catálogo, escríbenos por WhatsApp o ubícanos en el mapa.",
+      "Para contacto con artistas, conciertos, prensa y marcas, o consultas del catálogo, escríbenos por WhatsApp.",
       "Leemos cada mensaje sin prisa. Cada conversación es como abrir la puerta de un salón — clara, elegante y sincera.",
     ],
     whatsapp: "Contactar por WhatsApp",
-    mapLabel: "Ubicación",
-    mapHint:
-      "Estamos en Karatay/Konya. Usa el mapa para llegar.",
-    mapTitle: "Mapa de Asil Melody — Fevziçakmak, Karatay/Konya",
   },
   artist: {
     official: "Artista oficial",
@@ -590,13 +572,10 @@ const ru: DictionaryShape = {
     lead: "Вместе мы лучше",
     paragraphs: [
       "AsilMelody — не только музей произведений, но и тёплый порог, где встречаются сотрудничество, продакшн, события и идеи. Если у вас есть проект, предложение или вопрос — мы хотим услышать вас.",
-      "По вопросам артистов, концертов, прессы и брендов, а также каталога пишите в WhatsApp или найдите нас на карте.",
+      "По вопросам артистов, концертов, прессы и брендов, а также каталога пишите в WhatsApp.",
       "Мы читаем каждое сообщение без спешки. Каждый разговор — как открытие двери салона: ясно, изящно и искренне.",
     ],
     whatsapp: "Написать в WhatsApp",
-    mapLabel: "Наше расположение",
-    mapHint: "Мы в Каратае/Конье. Используйте карту для маршрута.",
-    mapTitle: "Карта Asil Melody — Fevziçakmak, Karatay/Konya",
   },
   artist: {
     official: "Официальный артист",

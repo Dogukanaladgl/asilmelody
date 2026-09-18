@@ -39,7 +39,6 @@ export interface CompanyInfo {
   whatsapp: string;
   phone: string;
   hours: string;
-  mapQuery: string;
 }
 
 export interface AboutProfile {
@@ -196,24 +195,6 @@ export const companyInfo: CompanyInfo = {
   whatsapp: "+905300122700",
   phone: "0530 012 27 00",
   hours: "Bugün açık 09:00 — 17:00",
-  mapQuery:
-    "Fevziçakmak, 10740. Sk. No:1, 42050 Karatay/Konya, Türkiye",
-};
-
-/** İletişim sayfası — uzun, davetkâr metinler */
-export const contactCopy = {
-  eyebrow: "İletişim",
-  title: "Bize Ulaşın",
-  lead: "Birlikte Daha İyiyiz",
-  paragraphs: [
-    "AsilMelody, yalnızca eserlerin sergilendiği bir müze değil; ortak çalışma, prodüksiyon, organizasyon ve önerilerin buluştuğu sıcak bir eşiktir. Yeni bir proje fikriniz, iş birliği talebiniz veya meraktan doğan bir sorunuz varsa, sizi dinlemek isteriz.",
-    "Sanatçılarla iletişim, konser ve etkinlik organizasyonu, basın ve marka iş birlikleri ya da katalogumuzdaki parçalar hakkında bilgi almak için WhatsApp üzerinden doğrudan yazabilir veya aşağıdaki haritadan bize ulaşabilirsiniz.",
-    "Mesajınızı acele etmeden okuruz. Her yazışmayı, bir salon kapısını aralamak gibi karşılarız — net, zarif ve samimi bir dönüş için buradayız.",
-  ],
-  whatsappLabel: "WhatsApp Üzerinden Ulaşın",
-  mapLabel: "Konumumuz",
-  mapHint:
-    "Karatay/Konya’da yer alıyoruz. Yol tarifi için haritayı kullanabilirsiniz.",
 };
 
 export const heroImage = "/images/exhibits/asil-azmaz-bal-kokmaz.webp";
@@ -222,13 +203,13 @@ export const brandLogo = "/images/logo/logo.webp";
 
 /** Hero’daki Spotify oynatma listesi kartı */
 export const spotifyPlaylist = {
-  title: "Asil's a Melody",
+  title: "Serbest Zaman & Gerçek Zaman",
   artists: "Asi İldeniz & Asi Nildeniz",
   badge: "Playlist",
   ctaLabel: "Spotify'da Dinle",
   coverImage: "/images/exhibits/asil-azmaz-bal-kokmaz.webp",
   /** Resmi playlist URL’si — güncelleyebilirsiniz */
-  href: "https://open.spotify.com/intl-tr/artist/099xa3hznSJtxqK3VPmm0o",
+  href: "https://open.spotify.com/playlist/2dL1hGPf8n8jTZLOX1kUa7?si=_4Gns86dRV2ugG6pC3_CvQ",
 };
 
 /** Karşılıklı partner yönlendirmesi — diğer sitedeki PARTNER / KEŞFET bölümünün eşi */

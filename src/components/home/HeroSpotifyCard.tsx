@@ -57,10 +57,12 @@ export function HeroSpotifyCard() {
         <div className="mt-4 flex items-end justify-between gap-3">
           <span className="inline-flex items-center gap-2.5 text-sm font-medium text-white transition group-hover:text-[#1db954]">
             <span
-              className="flex h-6 w-6 items-center justify-center rounded-full border border-white/80 text-base leading-none"
+              className="flex h-6 w-6 items-center justify-center rounded-full border border-white/80"
               aria-hidden
             >
-              +
+              <svg viewBox="0 0 24 24" className="ml-0.5 h-3 w-3 fill-current">
+                <path d="M8 5.14v13.72L19 12 8 5.14z" />
+              </svg>
             </span>
             {t.spotify.cta}
           </span>

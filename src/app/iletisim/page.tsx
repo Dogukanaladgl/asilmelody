@@ -8,8 +8,6 @@ import {
 } from "@/components/ui/GooeyPlatformButton";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
-const mapQuery = encodeURIComponent(companyInfo.mapQuery);
-const mapEmbedSrc = `https://maps.google.com/maps?q=${mapQuery}&t=m&z=15&ie=UTF8&iwloc=&output=embed`;
 const whatsappHref = `https://wa.me/${companyInfo.whatsapp.replace(/\D/g, "")}`;
 
 const fade = {
@@ -75,34 +73,6 @@ export default function IletisimPage() {
               href={whatsappHref}
               label={t.contact.whatsapp}
               icon={<WhatsAppGlyph />}
-            />
-          </div>
-        </motion.div>
-
-        <motion.div
-          custom={1}
-          variants={fade}
-          initial={false}
-          animate="visible"
-          className="mx-auto mt-14 flex w-full max-w-4xl flex-col items-center sm:mt-20"
-        >
-          <h2
-            id="contact-map-heading"
-            className="font-display text-xl tracking-[0.12em] text-museum-bone sm:text-2xl sm:tracking-[0.18em] md:text-3xl"
-          >
-            {t.contact.mapLabel}
-          </h2>
-          <p className="mt-3 max-w-2xl text-center text-sm font-light leading-relaxed text-museum-bone-muted sm:mt-4 md:text-base">
-            {t.contact.mapHint}
-          </p>
-          <div className="relative mt-8 w-full min-h-[280px] overflow-hidden border border-museum-brown/25 bg-[#e8e4df] sm:mt-10 sm:min-h-[360px] md:min-h-[440px]">
-            <iframe
-              title={t.contact.mapTitle}
-              src={mapEmbedSrc}
-              className="absolute inset-0 h-full w-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
             />
           </div>
         </motion.div>
