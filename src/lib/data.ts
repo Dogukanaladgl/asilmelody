@@ -185,6 +185,30 @@ export const exhibits: Exhibit[] = [
     description: "İki kere iki — beş eder; ritmin paradox’u.",
     youtubeUrl: "https://www.youtube.com/watch?v=F1-yiUK3QsA",
   },
+  {
+    id: "problem-denklem",
+    title: "Problem & Denklem",
+    subtitle: "Original Mix",
+    catalogNumber: "AM-009",
+    year: "2026",
+    artists: "Asi İldeniz",
+    image: "/images/exhibits/problem-denklem.webp",
+    description: "Her problem bir yol gizler, her denklem bir gerçeği.",
+    youtubeUrl: "https://www.youtube.com/watch?v=956eqKiDShw",
+    frame: "landscape",
+  },
+  {
+    id: "timsah-gozyasi",
+    title: "Timsah & Gözyaşı",
+    subtitle: "Original Mix",
+    catalogNumber: "AM-010",
+    year: "2026",
+    artists: "Asi İldeniz & Asi Nildeniz",
+    image: "/images/exhibits/timsah-gozyasi.webp",
+    description: "Bataklıkta iki ruh, bir gözyaşı — sahte değil, gerçeğin yankısı.",
+    youtubeUrl: "https://www.youtube.com/watch?v=GYY7sUQu0l4",
+    frame: "landscape",
+  },
 ];
 
 export const companyInfo: CompanyInfo = {
