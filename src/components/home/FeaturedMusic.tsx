@@ -74,6 +74,11 @@ function TrackCard({
                 : "(max-width: 640px) 50vw, 42vw"
           }
           className="object-cover transition duration-700 group-hover:scale-[1.03]"
+          style={
+            track.imagePosition
+              ? { objectPosition: track.imagePosition }
+              : undefined
+          }
         />
         <div
           className={`absolute inset-0 transition duration-500 ${
