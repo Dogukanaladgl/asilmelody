@@ -134,6 +134,7 @@ export const exhibits: Exhibit[] = [
     image: "/images/exhibits/2x2-5-cover.webp",
     description: "İki kere iki — beş eder; ritmin paradox’u.",
     youtubeUrl: "https://www.youtube.com/watch?v=F1-yiUK3QsA",
+    frame: "landscape",
   },
   {
     id: "yildirim-kivilcim",

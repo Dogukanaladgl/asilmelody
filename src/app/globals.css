@@ -259,9 +259,31 @@ img,
   }
 }
 
+.music-marquee {
+  animation: music-marquee-scroll 70s linear infinite;
+  will-change: transform;
+}
+
+.music-marquee--paused {
+  animation-play-state: paused;
+}
+
+@keyframes music-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 640px) {
   .works-marquee {
     animation-duration: 42s;
+  }
+
+  .music-marquee {
+    animation-duration: 52s;
   }
 
   .hero-marquee {
@@ -271,7 +293,8 @@ img,
 
 @media (prefers-reduced-motion: reduce) {
   .hero-marquee,
-  .works-marquee {
+  .works-marquee,
+  .music-marquee {
     animation: none;
   }
 }
