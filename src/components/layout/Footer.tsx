@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { companyInfo } from "@/lib/data";
+import { companyInfo, partnerSite } from "@/lib/data";
 import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const phoneHref = `tel:${companyInfo.phone.replace(/\s/g, "")}`;
@@ -122,11 +122,26 @@ export function Footer() {
             </ul>
           </nav>
 
-          <div className="md:text-right">
-            <FooterLabel>{t.footer.address}</FooterLabel>
-            <address className="mx-auto max-w-xs not-italic leading-relaxed text-cream md:ml-auto md:mr-0 md:max-w-[18rem]">
-              {companyInfo.address}
-            </address>
+          <div className="space-y-6 sm:space-y-8 md:text-right">
+            <div>
+              <FooterLabel>{t.footer.livingSpace}</FooterLabel>
+              <a
+                href={partnerSite.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${t.footer.livingSpaceLink} (${t.common.newTab})`}
+                className="tracking-[0.04em] text-cream transition-colors hover:text-accent sm:tracking-[0.08em]"
+              >
+                {t.footer.livingSpaceLink}
+              </a>
+            </div>
+
+            <div>
+              <FooterLabel>{t.footer.address}</FooterLabel>
+              <address className="mx-auto max-w-xs not-italic leading-relaxed text-cream md:ml-auto md:mr-0 md:max-w-[18rem]">
+                {companyInfo.address}
+              </address>
+            </div>
           </div>
         </div>
 

@@ -75,6 +75,8 @@ const tr = {
     email: "E-posta",
     phone: "Telefon",
     social: "Sosyal",
+    livingSpace: "Yaşam Alanımız",
+    livingSpaceLink: "Asil's a World",
     address: "Adres",
     rights: "© 2026 Asil's a Melody",
     tagline: "Evrenin Asil sesi",
@@ -170,6 +172,8 @@ type DictionaryShape = {
     email: string;
     phone: string;
     social: string;
+    livingSpace: string;
+    livingSpaceLink: string;
     address: string;
     rights: string;
     tagline: string;
@@ -258,6 +262,8 @@ const en: DictionaryShape = {
     email: "Email",
     phone: "Phone",
     social: "Social",
+    livingSpace: "Our Living Space",
+    livingSpaceLink: "Asil's a World",
     address: "Address",
     rights: "© 2026 Asil's a Melody",
     tagline: "The Noble Voice of the Universe",
@@ -355,6 +361,8 @@ const ja: DictionaryShape = {
     email: "メール",
     phone: "電話",
     social: "ソーシャル",
+    livingSpace: "暮らしの空間",
+    livingSpaceLink: "Asil's a World",
     address: "住所",
     rights: "© 2026 Asil's a Melody",
     tagline: "宇宙の気高い声",
@@ -452,6 +460,8 @@ const es: DictionaryShape = {
     email: "Correo",
     phone: "Teléfono",
     social: "Social",
+    livingSpace: "Nuestro espacio",
+    livingSpaceLink: "Asil's a World",
     address: "Dirección",
     rights: "© 2026 Asil's a Melody",
     tagline: "La voz noble del universo",
@@ -549,6 +559,8 @@ const ru: DictionaryShape = {
     email: "Почта",
     phone: "Телефон",
     social: "Соцсети",
+    livingSpace: "Наше пространство",
+    livingSpaceLink: "Asil's a World",
     address: "Адрес",
     rights: "© 2026 Asil's a Melody",
     tagline: "Благородный голос вселенной",
