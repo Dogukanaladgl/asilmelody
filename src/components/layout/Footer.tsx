@@ -139,7 +139,7 @@ export function Footer() {
             <div>
               <FooterLabel>{t.footer.address}</FooterLabel>
               <address className="mx-auto max-w-xs not-italic leading-relaxed text-cream md:ml-auto md:mr-0 md:max-w-[18rem]">
-                {companyInfo.address}
+                Konya / Türkiye
               </address>
             </div>
           </div>
